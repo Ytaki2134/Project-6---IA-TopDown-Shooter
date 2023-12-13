@@ -31,6 +31,14 @@ public class BehaviouTreeView : GraphView
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/BTree/Editor/BehaviourTreeEditor.uss");
         Debug.Assert(styleSheet != null, "StyleSheet is null!");
         styleSheets.Add(styleSheet);
+
+        Undo.undoRedoPerformed += OnUndoRedo;
+    }
+
+    private void OnUndoRedo()
+    {
+        PopulateView(tree);
+        AssetDatabase.SaveAssets();
     }
 
     // Trouve une vue de nœud basée sur le nœud de l'arbre comportemental
@@ -46,6 +54,13 @@ public class BehaviouTreeView : GraphView
         graphViewChanged -= OnGraphViewChanged;
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
+
+        if(tree.rootNode == null)
+        {
+            tree.rootNode = tree.CreateNode(typeof(RootNode)) as RootNode;
+            EditorUtility.SetDirty(tree);
+            AssetDatabase.SaveAssets();
+        }
 
         // Création des vues de nœud
         tree.nodes.ForEach(n => CreateNodeView(n));
@@ -103,10 +118,18 @@ public class BehaviouTreeView : GraphView
                 tree.AddChild(parentView.node, childView.node);
             });
         }
-            return graphViewChange;
+        if(graphViewChange.movedElements != null)
+        {
+            nodes.ForEach(node =>
+            {
+                NodeView view = node as NodeView;
+                view.SortChildren();
+            });
+        }
+        return graphViewChange;
     }
-    // Construit le menu contextuel pour ajouter de nouveaux nœuds
 
+    // Construit le menu contextuel pour ajouter de nouveaux nœuds
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
     {
         //base.BuildContextualMenu(evt);
@@ -141,6 +164,15 @@ public class BehaviouTreeView : GraphView
         NodeView nodeView = new NodeView(node);
         nodeView.m_OnNodeSelected = m_OnNodeSelected;
         AddElement(nodeView);
+    }
+
+    public void UpdateNodeStates()
+    {
+        nodes.ForEach(n =>
+        {
+            NodeView view = n as NodeView;
+            view.UpdateState();
+        });
     }
 }
 

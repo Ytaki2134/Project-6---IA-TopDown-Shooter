@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor.Callbacks;
+using System;
 // Classe BehaviourTreeEditor
 // Cette classe est une extension d'EditorWindow dans Unity et sert d'interface utilisateur pour éditer des arbres comportementaux.
 // Elle fournit un environnement visuel pour créer, modifier et visualiser des arbres comportementaux.
@@ -15,6 +17,17 @@ public class BehaviourTreeEditor : EditorWindow
     {
         BehaviourTreeEditor wnd = GetWindow<BehaviourTreeEditor>();
         wnd.titleContent = new GUIContent("BehaviourTreeEditor");
+    }
+
+    [OnOpenAsset]
+    public static bool OnOpenAsset(int instanceID, int line)
+    {
+        if(Selection.activeObject is BehaviourTree)
+        {
+            OpenWindow();
+            return true;
+        }
+        return false;
     }
 
     // Fonction CreateGUI
@@ -39,21 +52,69 @@ public class BehaviourTreeEditor : EditorWindow
         OnSelectionChange();
     }
 
+    private void OnEnable()
+    {
+        EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+        EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+    }
+
+    
+
+    private void OnDisable()
+    {
+        EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+    }
+    private void OnPlayModeStateChanged(PlayModeStateChange obj)
+    {
+        switch(obj)
+        {
+            case PlayModeStateChange.EnteredEditMode:
+                OnSelectionChange();
+                break;
+            case PlayModeStateChange.ExitingEditMode:
+                break;
+            case PlayModeStateChange.EnteredPlayMode:
+                OnSelectionChange();
+                break;
+            case PlayModeStateChange.ExitingPlayMode:
+                break;
+        }
+    }
     // Fonction OnSelectionChange
     // Appelée lorsqu'un arbre comportemental est sélectionné pour le charger dans l'éditeur.
     private void OnSelectionChange()
     {
         BehaviourTree tree = Selection.activeObject as BehaviourTree;
-        if (tree && AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID()))
+        // Ajoutez des vérifications de null pour éviter la NullReferenceException.
+        if (tree == null && Selection.activeGameObject != null)
         {
-            treeView.PopulateView(tree);
+            BehaviourTreeRunner runner = Selection.activeGameObject.GetComponent<BehaviourTreeRunner>();
+            if (runner && runner.tree != null)
+            {
+                tree = runner.tree;
+            }
+        }
+
+        if (tree != null)
+        {
+            // Assurez-vous également que treeView n'est pas null avant d'appeler PopulateView
+            if (Application.isPlaying || AssetDatabase.CanOpenAssetInEditor(tree.GetInstanceID()))
+            {
+                treeView?.PopulateView(tree); // Utilisation de l'opérateur conditionnel '?'
+            }
         }
     }
+
 
     // Fonction OnNodeSelectionChanged
     // Appelée lorsqu'un nœud est sélectionné pour mettre à jour la vue de l'inspecteur.
     void OnNodeSelectionChanged(NodeView node)
     {
         inspectorView.UpdateSelection(node);
+    }
+
+    private void OnInspectorUpdate()
+    {
+        treeView?.UpdateNodeStates();
     }
 }

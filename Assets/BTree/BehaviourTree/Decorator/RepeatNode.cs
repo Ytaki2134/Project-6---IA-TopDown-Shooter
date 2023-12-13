@@ -7,6 +7,7 @@ using UnityEngine;
 // Le nœud RepeatNode continue de renvoyer l'état Running, ce qui entraîne une répétition constante du comportement de l'enfant.
 public class RepeatNode : DecoratorNode
 {
+
     // Fonction OnStart
     // Implémentée si une logique spéciale est nécessaire au démarrage du nœud RepeatNode.
     protected override void OnStart()
@@ -24,6 +25,7 @@ public class RepeatNode : DecoratorNode
     // Cela crée un cycle de répétition continuelle pour le nœud enfant.
     protected override State OnUpdate()
     {
+
         m_child.Update();
         return State.Running;
     }

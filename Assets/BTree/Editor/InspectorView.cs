@@ -34,7 +34,12 @@ public class InspectorView : VisualElement
         editor = Editor.CreateEditor(nodeView.node);
 
         // Crée et ajoute un conteneur IMGUI pour afficher l'interface de l'éditeur
-        IMGUIContainer container = new IMGUIContainer(() => { editor.OnInspectorGUI(); });
+        IMGUIContainer container = new IMGUIContainer(() => {
+            if (editor.target)
+            {
+                editor.OnInspectorGUI(); 
+            }
+        });
         Add(container);
     }
 }

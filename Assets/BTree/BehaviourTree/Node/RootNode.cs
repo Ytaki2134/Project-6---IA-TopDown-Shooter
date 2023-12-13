@@ -16,6 +16,7 @@ public class RootNode : Node
     // Crée et retourne une copie de ce nœud racine, y compris son enfant.
     public override Node Clone()
     {
+        
         RootNode node = Instantiate(this);
         node.m_child = child.Clone(); // Assurez-vous de cloner également l'enfant
         return node;
@@ -25,6 +26,7 @@ public class RootNode : Node
     // Implémentée si une logique spéciale est nécessaire au démarrage du nœud racine.
     protected override void OnStart()
     {
+
     }
 
     // Fonction OnStop (implémentation vide)
@@ -37,6 +39,7 @@ public class RootNode : Node
     // Met à jour le nœud enfant et retourne son état comme l'état du nœud racine.
     protected override State OnUpdate()
     {
+
         return child.Update();
     }
 }

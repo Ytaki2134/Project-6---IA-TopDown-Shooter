@@ -1,6 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7708830064621437869
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
+  m_Name: New Behaviour Tree 1
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 7649808156399943847}
+  treeState: 0
+  nodes:
+  - {fileID: 7649808156399943847}
+--- !u!114 &7649808156399943847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,115 +30,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: de25dcf54a16c354388c315029a31d79
-  position: {x: -21.616028, y: 225.99998}
---- !u!114 &-846483570431087677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744c2ecefd2cde74f852ccdae9a7f484, type: 3}
-  m_Name: WaitNode
-  m_EditorClassIdentifier: 
-  state: 1
-  started: 0
-  guid: e35a47862c84fe64fba35ead6079242a
-  position: {x: 408.1769, y: 216.05563}
-  duration: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
-  m_Name: New Behaviour Tree 1
-  m_EditorClassIdentifier: 
-  rootNode: {fileID: -7708830064621437869}
-  treeState: 0
-  nodes:
-  - {fileID: -846483570431087677}
-  - {fileID: 1828909977675406776}
-  - {fileID: 8965168309445684379}
-  - {fileID: -7708830064621437869}
-  - {fileID: 1613091379883924379}
-  - {fileID: 586792202412582358}
---- !u!114 &586792202412582358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744c2ecefd2cde74f852ccdae9a7f484, type: 3}
-  m_Name: WaitNode
-  m_EditorClassIdentifier: 
-  state: 1
-  started: 0
-  guid: f32e23421395cfe4881595a22a776f02
-  position: {x: 432.99994, y: 525.0648}
-  duration: 1
---- !u!114 &1613091379883924379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21397c62879a92b469635fcecc8ec0ce, type: 3}
-  m_Name: DebugLogNode
-  m_EditorClassIdentifier: 
-  state: 1
-  started: 0
-  guid: 79215f1fe6705ea46ac5651b042a6baa
-  position: {x: 398.99988, y: 337.17346}
-  message: Two
---- !u!114 &1828909977675406776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458d17870285de3489e0b18424f1cc60, type: 3}
-  m_Name: SequencerNode
-  m_EditorClassIdentifier: 
-  state: 1
-  started: 0
-  guid: 183ad5e2e35b6ec4f99cb3d7f1410ea8
-  position: {x: 144, y: 226}
-  children:
-  - {fileID: 8965168309445684379}
-  - {fileID: -846483570431087677}
-  - {fileID: 1613091379883924379}
-  - {fileID: 586792202412582358}
---- !u!114 &8965168309445684379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21397c62879a92b469635fcecc8ec0ce, type: 3}
-  m_Name: DebugLogNode
-  m_EditorClassIdentifier: 
-  state: 1
-  started: 0
-  guid: 4ed3cbcf99354be4e91ea4be81c6cbd1
-  position: {x: 408.1769, y: 87.055664}
-  message: One
+  guid: 8086bcdbc63053e45b95d0bdd83da677
+  position: {x: 0, y: 0}
+  moveToPosition: {x: 0, y: 0}

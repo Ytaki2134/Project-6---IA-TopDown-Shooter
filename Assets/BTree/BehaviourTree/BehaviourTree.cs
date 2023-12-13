@@ -33,9 +33,16 @@ public class BehaviourTree : ScriptableObject
         Node node = ScriptableObject.CreateInstance(type) as Node;
         node.name = type.Name;
         node.guid = GUID.Generate().ToString();
-        nodes.Add(node);
 
-        AssetDatabase.AddObjectToAsset(node, this);
+        Undo.RecordObject(this, "Behaviour Tree (CreateNode)");
+
+        nodes.Add(node);
+        if(!Application.isPlaying)
+        {
+            AssetDatabase.AddObjectToAsset(node, this);
+
+        }
+        Undo.RegisterCreatedObjectUndo(node, "Behaviour Tree (CreateNode)");
         AssetDatabase.SaveAssets();
         return node;
     }
@@ -44,8 +51,11 @@ public class BehaviourTree : ScriptableObject
     // Supprime un nœud spécifié de l'arbre et de la base de données d'assets.
     public void DeleteNode(Node node)
     {
+        Undo.RecordObject(this, "Behaviour Tree (DeleteNode)");
+
         nodes.Remove(node);
-        AssetDatabase.RemoveObjectFromAsset(node);
+        //AssetDatabase.RemoveObjectFromAsset(node);
+        Undo.DestroyObjectImmediate(node);
         AssetDatabase.SaveAssets();
     }
 
@@ -56,19 +66,29 @@ public class BehaviourTree : ScriptableObject
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator)
         {
+            Undo.RecordObject(decorator, "Behaviour Tree (AddChild)");
             decorator.m_child = (child);
+            EditorUtility.SetDirty(decorator);
+
         }
 
         RootNode rootNode = parent as RootNode;
         if (rootNode)
         {
+            Undo.RecordObject(rootNode, "Behaviour Tree (AddChild)");
+
             rootNode.m_child = (child);
+            EditorUtility.SetDirty(rootNode);
+
         }
 
         CompisiteNode composite = parent as CompisiteNode;
         if (composite)
         {
+            Undo.RecordObject(composite, "Behaviour Tree (AddChild)");
+
             composite.AddChildren(child);
+            EditorUtility.SetDirty(composite); 
         }
     }
 
@@ -79,19 +99,31 @@ public class BehaviourTree : ScriptableObject
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator)
         {
+            Undo.RecordObject(decorator, "Behaviour Tree (RemoveChild)");
+
             decorator.m_child = null;
+            EditorUtility.SetDirty(decorator);
+
         }
 
         RootNode rootNode = parent as RootNode;
         if (rootNode)
         {
+            Undo.RecordObject(rootNode, "Behaviour Tree (RemoveChild)");
+
             rootNode.m_child = (null);
+            EditorUtility.SetDirty(rootNode);
+
         }
 
         CompisiteNode composite = parent as CompisiteNode;
         if (composite)
         {
+            Undo.RecordObject(composite, "Behaviour Tree (RemoveChild)");
+
             composite.RemoveChildren(child);
+            EditorUtility.SetDirty(composite);
+
         }
     }
 
@@ -119,12 +151,25 @@ public class BehaviourTree : ScriptableObject
         return children;
     }
 
+
+    public void Traverse(Node node, System.Action<Node> visiter)
+    {
+        if (node)
+        {
+            visiter.Invoke(node);
+            var children = GetChildren(node);
+            children.ForEach((n) => Traverse(n, visiter));
+        }
+    }
+
     // Fonction Clone
     // Crée et retourne une copie profonde de l'arbre comportemental.
     public BehaviourTree Clone()
     {
         BehaviourTree tree = Instantiate(this);
         tree.rootNode = tree.rootNode.Clone();
+        tree.nodes = new List<Node>();
+        Traverse(tree.rootNode, (n) => tree.nodes.Add(n));
         return tree;
     }
 }

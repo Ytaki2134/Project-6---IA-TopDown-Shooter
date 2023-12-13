@@ -34,8 +34,10 @@ public class SequencerNode : CompisiteNode
             case State.Failure:
                 return State.Failure;
             case State.Success:
+
                 current++;
                 break;
+
         }
         return current == children.Count ? State.Success : State.Running;
     }

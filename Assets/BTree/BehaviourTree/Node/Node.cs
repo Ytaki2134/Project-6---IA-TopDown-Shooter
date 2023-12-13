@@ -30,11 +30,12 @@ public abstract class Node : ScriptableObject
             started = true;
         }
         state = OnUpdate();
-        if (state == State.Failure || state == State.Success)
+        if (state != State.Running)
         {
             OnStop();
             started = false;
         }
+       // Debug.Log($"Update called - Started: {started}, State: {state}");
 
         return state;
     }
