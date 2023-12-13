@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Statistics : MonoBehaviour
+public class TankStatistics : MonoBehaviour
 {
     [SerializeField] public float Speed = 15f;
     [SerializeField] public float BrakeSpeedMod = 0.9f;
