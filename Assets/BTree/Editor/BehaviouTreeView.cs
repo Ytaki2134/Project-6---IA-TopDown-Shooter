@@ -6,50 +6,51 @@ using UnityEditor;
 using System.Diagnostics;
 using System;
 using System.Linq;
+// Classe BehaviourTreeView
+// Cette classe est une extension de GraphView dans Unity et sert à visualiser et à manipuler graphiquement des arbres comportementaux.
+// Elle offre des fonctionnalités telles que le déplacement, le zoom, la sélection et la connexion des nœuds.
 public class BehaviouTreeView : GraphView
 {
-   // private Action<NodeView> OnNodeSelected;
-    public Action<NodeView> m_OnNodeSelected { get; set; }
+    public Action<NodeView> m_OnNodeSelected { get; set; }  // Action déclenchée lors de la sélection d'un nœud
 
-    public new class UxmlFactory : UxmlFactory<BehaviouTreeView, GraphView.UxmlTraits> { }
-    BehaviourTree tree;
+    public new class UxmlFactory : UxmlFactory<BehaviouTreeView, GraphView.UxmlTraits> { }  // Factory pour l'interface utilisateur XML
+    BehaviourTree tree;  // Référence à l'arbre comportemental actuel
+
     public BehaviouTreeView()
     {
-       Insert(0, new GridBackground());
+        // Initialisation de l'interface graphique
+        Insert(0, new GridBackground());
 
+        // Ajout de manipulations de base (déplacement, zoom, sélection, etc.)
         this.AddManipulator(new ContentDragger());
-
         this.AddManipulator(new ContentZoomer());
-
         this.AddManipulator(new SelectionDragger());
-
         this.AddManipulator(new RectangleSelector());
+
+        // Chargement et application de la feuille de style
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/BTree/Editor/BehaviourTreeEditor.uss");
         Debug.Assert(styleSheet != null, "StyleSheet is null!");
         styleSheets.Add(styleSheet);
-       
     }
+
+    // Trouve une vue de nœud basée sur le nœud de l'arbre comportemental
     NodeView FindNodeView(Node node)
     {
-        NodeView n = GetNodeByGuid(node.guid) as NodeView;
-        string s = node.guid;
         return GetNodeByGuid(node.guid) as NodeView;
     }
+
+    // Remplit la vue avec les nœuds de l'arbre comportemental
     internal void PopulateView(BehaviourTree tree)
     {
         this.tree = tree;
         graphViewChanged -= OnGraphViewChanged;
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
-        if(tree.rootNode == null)
-        {
-            tree.rootNode = tree.CreateNode(typeof(RootNode)) as RootNode;
-            EditorUtility.SetDirty(tree);
-            AssetDatabase.SaveAssets();
-        }
-        //Create Nodes
+
+        // Création des vues de nœud
         tree.nodes.ForEach(n => CreateNodeView(n));
-        //Create Edges
+
+        // Création des connexions entre les nœuds
         tree.nodes.ForEach(n =>
         {
             var children = tree.GetChildren(n);
@@ -57,18 +58,19 @@ public class BehaviouTreeView : GraphView
             {
                 NodeView childView = FindNodeView(c);
                 NodeView parentView = FindNodeView(n);
-
-
                 Edge edge = parentView.output.ConnectTo(childView.input);
                 AddElement(edge);
             });
         });
-
     }
+
+    // Détermine les ports compatibles pour la connexion
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
     {
-        return ports.ToList().Where(endPort => endPort.direction != startPort.direction && endPort.node !=startPort.node).ToList();
+        return ports.ToList().Where(endPort => endPort.direction != startPort.direction && endPort.node != startPort.node).ToList();
     }
+
+    // Gère les changements sur la vue graphique, comme la suppression ou l'ajout de connexions
 
     private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
     {
@@ -103,6 +105,7 @@ public class BehaviouTreeView : GraphView
         }
             return graphViewChange;
     }
+    // Construit le menu contextuel pour ajouter de nouveaux nœuds
 
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
     {
@@ -125,13 +128,14 @@ public class BehaviouTreeView : GraphView
             }
         }
     }
-
+    // Crée un nouveau nœud de type spécifié
     void CreateNode(System.Type type)
     {
-       Node node = tree.CreateNode(type);
+        Node node = tree.CreateNode(type);
         CreateNodeView(node);
     }
 
+    // Crée une vue pour le nœud spécifié
     void CreateNodeView(Node node)
     {
         NodeView nodeView = new NodeView(node);
