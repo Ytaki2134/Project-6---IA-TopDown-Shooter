@@ -3,6 +3,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform m_pivot;
+    [SerializeField] private Transform m_gunEnd;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
@@ -17,9 +18,11 @@ public class Gun : MonoBehaviour
     {
         FollowTargetPosition();
     }
+
     public void Fire()
     {
-
+        GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
+        temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
     }
 
     private void FollowTargetPosition()
