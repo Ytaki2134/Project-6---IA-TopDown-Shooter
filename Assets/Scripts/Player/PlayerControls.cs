@@ -23,6 +23,8 @@ public class PlayerControls : MonoBehaviour
         m_movement.SetBrakeSpeed(1f);
         m_movement.SetBrakeRotationSpeed(1f);
 
+        GetComponentInChildren<GunStatistics>().IsPlayer = true;
+
         #region Input Definitions
 
         // MOVE
