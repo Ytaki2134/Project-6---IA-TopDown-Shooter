@@ -131,22 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1177609578816800198, guid: a3cd7c52f84a92743ad099d0b6a9de4c, type: 3}
-      propertyPath: m_Size.x
-      value: 1.4467301
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177609578816800198, guid: a3cd7c52f84a92743ad099d0b6a9de4c, type: 3}
-      propertyPath: m_Size.y
-      value: 2.1759238
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177609578816800198, guid: a3cd7c52f84a92743ad099d0b6a9de4c, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0102927685
-      objectReference: {fileID: 0}
-    - target: {fileID: 1177609578816800198, guid: a3cd7c52f84a92743ad099d0b6a9de4c, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.050288916
-      objectReference: {fileID: 0}
     - target: {fileID: 7760592605917230738, guid: a3cd7c52f84a92743ad099d0b6a9de4c, type: 3}
       propertyPath: m_Name
       value: Test Enemy
@@ -530,5 +514,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 5189533124364328917}
-  - {fileID: 342567141}
   - {fileID: 68630815}
+  - {fileID: 342567141}
