@@ -28,7 +28,7 @@ public class BehaviouTreeView : GraphView
         this.AddManipulator(new RectangleSelector());
 
         // Chargement et application de la feuille de style
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/BTree/Editor/BehaviourTreeEditor.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/BTreeModule/Editor/BehaviourTreeEditor.uss");
         Debug.Assert(styleSheet != null, "StyleSheet is null!");
         styleSheets.Add(styleSheet);
 

@@ -38,9 +38,9 @@ public class BehaviourTreeEditor : EditorWindow
         VisualElement root = rootVisualElement;
 
         // Chargement et application de l'arbre visuel et de la feuille de style
-        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/BTree/Editor/BehaviourTreeEditor.uxml");
+        var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/BTreeModule/Editor/BehaviourTreeEditor.uxml");
         visualTree.CloneTree(root);
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/BTree/Editor/BehaviourTreeEditor.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/BTreeModule/Editor/BehaviourTreeEditor.uss");
         root.styleSheets.Add(styleSheet);
 
         // Initialisation des vues de l'arbre et de l'inspecteur
