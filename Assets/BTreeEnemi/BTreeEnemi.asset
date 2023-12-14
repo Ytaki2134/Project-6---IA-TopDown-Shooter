@@ -32,9 +32,9 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c116aa6d6157ec94b9a96f868ef3b4fc
-  position: {x: 0, y: 0}
+  position: {x: 294, y: 203}
   moveToPosition: {x: 0, y: 0}
-  child: {fileID: 0}
+  child: {fileID: 4884849812190107789}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,6 +53,9 @@ MonoBehaviour:
   - {fileID: -8461481612302365954}
   - {fileID: 4884849812190107789}
   - {fileID: -4276565114035231956}
+  blackboard:
+    moveToPostion: {x: 0, y: 0}
+    moveToObject: {fileID: 0}
 --- !u!114 &4884849812190107789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,9 +71,9 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ae007de4bae5c454db1535ff624abcba
-  position: {x: 123, y: 309}
+  position: {x: 256, y: 381}
   moveToPosition: {x: 0.21, y: 0}
-  _targetGameObject: {fileID: 4180570504376566114, guid: abf65f489121496428193e3ba34dd3cf, type: 3}
+  _targetGameObject: {fileID: 0}
   _waypoints:
   - {fileID: 4063172905539717732, guid: 3512fa34ec271b54987da43474fc591d, type: 3}
   - {fileID: 4493167057594643103, guid: f064b21bb1c1ed74f9b9ef14d66f8a13, type: 3}

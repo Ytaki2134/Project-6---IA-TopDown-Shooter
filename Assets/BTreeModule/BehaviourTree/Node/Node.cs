@@ -19,7 +19,7 @@ public abstract class Node : ScriptableObject
     public bool started = false;  // Indique si le nœud a déjà démarré
     public string guid;  // Identifiant unique du nœud
     public Vector2 position;  // Position du nœud dans l'interface utilisateur
-    public Vector2 moveToPosition;
+    public Blackboard blackboard;
     // Fonction Update
     // Met à jour l'état du nœud en exécutant la logique OnStart, OnUpdate et OnStop.
     public State Update()

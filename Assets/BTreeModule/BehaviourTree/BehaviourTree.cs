@@ -14,7 +14,7 @@ public class BehaviourTree : ScriptableObject
     public Node rootNode;  // Le nœud racine de l'arbre
     public Node.State treeState = Node.State.Running;  // L'état actuel de l'arbre
     public List<Node> nodes = new List<Node>();  // Liste de tous les nœuds dans l'arbre
-
+    public Blackboard blackboard = new Blackboard();
     // Fonction Update
     // Met à jour l'arbre comportemental en commençant par le nœud racine et retourne l'état actuel de l'arbre.
     public Node.State Update()

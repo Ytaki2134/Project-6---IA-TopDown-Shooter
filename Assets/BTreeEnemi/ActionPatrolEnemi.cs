@@ -7,6 +7,7 @@ public class ActionPatrolEnemi : ActionNode
 {
     [SerializeReference]
     public GameObject _targetGameObject;
+    
     [SerializeField]
     private GameObject[] _waypoints;
     private int _currentWaypointIndex = 0;
@@ -18,7 +19,7 @@ public class ActionPatrolEnemi : ActionNode
 
     protected override void OnStart()
     {
-
+        
     }
 
     protected override void OnStop()
