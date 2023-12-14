@@ -1,4 +1,3 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -37,6 +36,12 @@ public class Bullet : MonoBehaviour
         //Don't kill allied bullets
         if (gameObject.tag == collision.gameObject.tag)
             return;
+
+
+        if (collision.gameObject.GetComponent<Hull>() != null)
+        {
+            collision.gameObject.GetComponent<Hull>().RemoveHealth(m_gunStatistics.BulletDamage);
+        }
 
         Destroy(gameObject);
     }

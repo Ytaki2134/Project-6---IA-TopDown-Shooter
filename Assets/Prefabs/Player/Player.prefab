@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 5676789233512348038}
   - component: {fileID: 5901189593546567627}
   - component: {fileID: 8974933465087939789}
+  - component: {fileID: 5096873647043222675}
   - component: {fileID: 7450163294200336142}
   m_Layer: 6
   m_Name: Hull
@@ -368,6 +369,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Player: {fileID: 7760592605917230738}
+--- !u!114 &5096873647043222675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999172936890860945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353d763bf826a91478395e1897789c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &7450163294200336142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -500,10 +513,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b13b1df8600fc548b08b160db588a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 7760592605917230738}
   Speed: 80
   BrakeSpeedMod: 0.4
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5
+  Health: 20
 --- !u!1 &8394301354479254328
 GameObject:
   m_ObjectHideFlags: 0
