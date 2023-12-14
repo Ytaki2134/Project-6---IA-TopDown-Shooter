@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.UIElements;
+using UnityEngine;
 using UnityEngine.UIElements;
 // Classe InspectorView
 // Cette classe est un élément d'interface utilisateur personnalisé pour Unity qui agit comme un inspecteur.
@@ -14,10 +16,38 @@ public class InspectorView : VisualElement
     // L'éditeur associé à l'objet sélectionné
     Editor editor;
 
+
     // Constructeur par défaut
     public InspectorView()
     {
-        // Initialisation de l'InspectorView (optionnellement, ajoutez ici la logique d'initialisation)
+
+    }
+    public void UpdateWithSerializedObject(SerializedObject serializedObject)
+    {
+        Clear();
+
+        // Itérer sur les propriétés en utilisant la propriété racine
+        SerializedProperty iterator = serializedObject.GetIterator();
+        bool enterChildren = true;
+        while (iterator.NextVisible(enterChildren))
+        {
+            // La première fois, nous voulons entrer dans les enfants de la première propriété
+            enterChildren = false;
+
+            // Créez un PropertyField pour chaque propriété trouvée
+            PropertyField propertyField = new PropertyField(iterator.Copy()) { name = "PropertyField:" + iterator.propertyPath };
+
+            if (iterator.propertyPath == "m_Script" && serializedObject.targetObject != null)
+            {
+                propertyField.SetEnabled(value: false); // Désactive le champ du script pour qu'il ne soit pas modifiable
+            }
+            else
+            {
+                Add(propertyField);
+                propertyField.Bind(serializedObject); // Lie la propriété SerializedProperty au SerializedObject
+            }
+        }
+        serializedObject.ApplyModifiedProperties();
     }
 
     // Méthode UpdateSelection
@@ -40,6 +70,27 @@ public class InspectorView : VisualElement
                 editor.OnInspectorGUI(); 
             }
         });
+
+        // Création d'un SerializedObject à partir de l'objet cible (nodeView.node)
+        SerializedObject serializedObject = new SerializedObject(nodeView.node);
+
+        // Création d'un ObjectField pour la propriété que vous voulez modifier
+        ObjectField gameObjectField = new ObjectField("Target GameObject")
+        {
+            // Permettre la sélection d'objets de scène
+            allowSceneObjects = true
+        };
+
+        // Trouver la propriété SerializedProperty correspondant au champ de l'objet
+        SerializedProperty gameObjectProp = serializedObject.FindProperty("_targetGameObject");
+
+        // Lier le champ ObjectField à la propriété SerializedProperty
+        gameObjectField.BindProperty(gameObjectProp);
+
+        // Ajouter le champ ObjectField à l'interface utilisateur
+        Add(gameObjectField);
         Add(container);
     }
+
+    
 }

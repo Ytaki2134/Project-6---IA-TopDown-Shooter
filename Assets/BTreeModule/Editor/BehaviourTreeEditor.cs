@@ -84,6 +84,13 @@ public class BehaviourTreeEditor : EditorWindow
     // Appelée lorsqu'un arbre comportemental est sélectionné pour le charger dans l'éditeur.
     private void OnSelectionChange()
     {
+        GameObject selectedObject = Selection.activeGameObject;
+
+        if (selectedObject != null)
+        {
+            SerializedObject serializedObject = new SerializedObject(selectedObject);
+            inspectorView.UpdateWithSerializedObject(serializedObject);
+        }
         BehaviourTree tree = Selection.activeObject as BehaviourTree;
         // Ajoutez des vérifications de null pour éviter la NullReferenceException.
         if (tree == null && Selection.activeGameObject != null)

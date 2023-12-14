@@ -18,7 +18,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
 
     // Constructeur
     // Initialise la vue du nœud avec les données du nœud de l'arbre comportemental. 
-    public NodeView(Node node) : base("Assets/BTree/Editor/NodeView.uxml")
+    public NodeView(Node node) : base("Assets/BTreeModule/Editor/NodeView.uxml")
     {
         this.node = node;
         this.title = node.name;  // Titre du nœud dans l'éditeur
