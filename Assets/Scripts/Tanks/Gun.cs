@@ -29,13 +29,7 @@ public class Gun : MonoBehaviour
     private void FollowTargetPosition()
     {
         //Rotate Sprite
-
-        Debug.Log("m_targetPosition : " + m_targetPosition + " ;  transform.position : " + transform.position);
-
         var dir = (Vector3) m_targetPosition - transform.position;
-
-        Debug.Log("Direction Vector : " + dir.x + " " + dir.y);
-        Debug.Log("Atan2 : " + Mathf.Atan2(dir.y, dir.x));
 
         m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
         m_pivot.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_stats.RotationSpeed * m_stats.BrakeRotationSpeedMod);
