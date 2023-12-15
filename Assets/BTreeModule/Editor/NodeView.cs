@@ -132,13 +132,15 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         }
     }
 
-    public void SortChildren () {
+    public void SortChildren()
+    {
         CompisiteNode composite = node as CompisiteNode;
-        if (composite)
+        if (composite != null && composite.m_children != null)
         {
             composite.m_children.Sort(SortByHorizontalPosition);
         }
     }
+
 
     private int SortByHorizontalPosition(Node left, Node right)
     {

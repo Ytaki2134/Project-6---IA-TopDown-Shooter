@@ -40,16 +40,10 @@ public class ActionPatrolEnemi : ActionNode
         }
         else
         {
-            Debug.Log(_speed);
-
-            Debug.Log(_waypoints[0]);
-
             Transform wp = _waypoints[_currentWaypointIndex].GetComponent<Transform>();
-            Debug.Log(wp.position);
 
             if(Vector2.Distance(_targetGameObject.GetComponent<Transform>().position, wp.position) < 0.01f)
             {
-            
                 _targetGameObject.GetComponent<Transform>().position = wp.position;
                 _waitCounter = 0f;
                 _waiting = true;
@@ -62,10 +56,7 @@ public class ActionPatrolEnemi : ActionNode
             }
             else
             {
-               
                 _targetGameObject.GetComponent<Transform>().position  = Vector2.MoveTowards(_targetGameObject.GetComponent<Transform>().position, wp.position, _speed * Time.deltaTime);
-
-
                 Vector2 direction = (wp.position - _targetGameObject.GetComponent<Transform>().position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 _targetGameObject.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle);

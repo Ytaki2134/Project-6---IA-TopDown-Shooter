@@ -52,9 +52,12 @@ public class BehaviourTreeEditor : EditorWindow
         inspectorView = root.Q<InspectorView>();
         blackboardView = root.Q<IMGUIContainer>();
         blackboardView.onGUIHandler = () => {
-            treeObject.Update();
-            EditorGUILayout.PropertyField(blackboardProperty);
-            treeObject.ApplyModifiedProperties();
+            if (treeObject != null && treeObject.targetObject != null)
+            {
+                treeObject.Update();
+                EditorGUILayout.PropertyField(blackboardProperty);
+                treeObject.ApplyModifiedProperties();
+            }
         };
 
 

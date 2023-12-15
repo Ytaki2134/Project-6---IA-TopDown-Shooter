@@ -16,6 +16,11 @@ MonoBehaviour:
   treeState: 0
   nodes:
   - {fileID: 7649808156399943847}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
 --- !u!114 &7649808156399943847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,5 +36,9 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8086bcdbc63053e45b95d0bdd83da677
-  position: {x: 0, y: 0}
-  moveToPosition: {x: 0, y: 0}
+  position: {x: 471.92, y: 60.120003}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
