@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private Camera m_camera;
+    [SerializeField] private Animator[] m_TrackAnimator = new Animator[2];
     private PlayerInputs m_inputs;
     private Rigidbody2D m_rb;
     private TankStatistics m_TankStatistics;
@@ -23,6 +24,8 @@ public class PlayerControls : MonoBehaviour
         m_movement.SetBrakeSpeed(1f);
         m_movement.SetBrakeRotationSpeed(1f);
 
+        GetComponentInChildren<GunStatistics>().IsPlayer = true;
+
         #region Input Definitions
 
         // MOVE
@@ -32,12 +35,17 @@ public class PlayerControls : MonoBehaviour
             m_movement.SetSpeed(m_TankStatistics.Speed);
             m_movement.SetRotationSpeed(m_TankStatistics.RotationSpeed);
             m_movement.SetCurrentMovement(ctx.ReadValue<Vector2>());
-        };
 
+            m_TrackAnimator[0].SetBool("Enable", true);
+            m_TrackAnimator[1].SetBool("Enable", true);
+
+        };
         m_inputs.Player.Move.canceled += ctx =>
         {
             m_movement.SetSpeed(0f);
             m_movement.SetRotationSpeed(0f);
+            m_TrackAnimator[0].SetBool("Enable", false);
+            m_TrackAnimator[1].SetBool("Enable", false);
         };
 
         // BRAKE
