@@ -1,9 +1,15 @@
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private Camera m_camera;
+    [SerializeField] private CinemachineVirtualCamera m_Vcamera;
+    [SerializeField] private float m_MaxZoom = 18f;
+    [SerializeField] private float m_MinZoom = 8f;
+    [SerializeField] private Animator[] m_TrackAnimator = new Animator[2];
     private PlayerInputs m_inputs;
     private Rigidbody2D m_rb;
     private TankStatistics m_TankStatistics;
@@ -34,12 +40,17 @@ public class PlayerControls : MonoBehaviour
             m_movement.SetSpeed(m_TankStatistics.Speed);
             m_movement.SetRotationSpeed(m_TankStatistics.RotationSpeed);
             m_movement.SetCurrentMovement(ctx.ReadValue<Vector2>());
-        };
 
+            m_TrackAnimator[0].SetBool("Enable", true);
+            m_TrackAnimator[1].SetBool("Enable", true);
+
+        };
         m_inputs.Player.Move.canceled += ctx =>
         {
             m_movement.SetSpeed(0f);
             m_movement.SetRotationSpeed(0f);
+            m_TrackAnimator[0].SetBool("Enable", false);
+            m_TrackAnimator[1].SetBool("Enable", false);
         };
 
         // BRAKE
@@ -63,6 +74,18 @@ public class PlayerControls : MonoBehaviour
         m_inputs.Player.Fire.performed += ctx =>
         {
             m_gun.Fire();
+        };
+
+        // ZOOM
+
+        m_inputs.Player.Zoom.performed += ctx =>
+        {
+            if (ctx.ReadValue<Vector2>().normalized.y < 0f && m_Vcamera.m_Lens.OrthographicSize <= m_MinZoom || ctx.ReadValue<Vector2>().normalized.y > 0f && m_Vcamera.m_Lens.OrthographicSize >= m_MaxZoom)
+            {
+                return;
+            }
+
+            m_Vcamera.m_Lens.OrthographicSize += ctx.ReadValue<Vector2>().normalized.y;
         };
 
         #endregion
