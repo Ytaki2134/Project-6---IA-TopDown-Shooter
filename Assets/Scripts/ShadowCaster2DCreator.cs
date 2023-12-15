@@ -3,6 +3,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Tilemaps;
 
 
 
@@ -26,12 +27,12 @@ public class ShadowCaster2DCreator : MonoBehaviour
 
     public void Create()
     {
-        DestroyOldShadowCasters();
+        DestroyImmediateOldShadowCasters();
         tilemapCollider = GetComponent<CompositeCollider2D>();
-        Debug.Log(tilemapCollider.pathCount);
         for (int i = 0; i < tilemapCollider.pathCount; i++)
         {
             Vector2[] pathVertices = new Vector2[tilemapCollider.GetPathPointCount(i)];
+            Debug.Log(tilemapCollider.pathCount + " , " + tilemapCollider.GetPathPointCount(i));
             tilemapCollider.GetPath(i, pathVertices);
             GameObject shadowCaster = new GameObject("shadow_caster_" + i);
             shadowCaster.transform.parent = gameObject.transform;
@@ -49,20 +50,26 @@ public class ShadowCaster2DCreator : MonoBehaviour
             meshField.SetValue(shadowCasterComponent, new Mesh());
             generateShadowMeshMethod.Invoke(shadowCasterComponent,
             new object[] { meshField.GetValue(shadowCasterComponent), shapePathField.GetValue(shadowCasterComponent) });
-            Debug.Log("Create");
         }
     }
-    public void DestroyOldShadowCasters()
+    public void DestroyOldShadowCasters(int destroy)
+    {
+        var tempList = transform.Cast<Transform>().ToList();
+        DestroyImmediate(tempList[destroy].gameObject);
+        
+    }
+
+    public void DestroyImmediateOldShadowCasters()
     {
 
         var tempList = transform.Cast<Transform>().ToList();
         foreach (var child in tempList)
         {
-            Destroy(child.gameObject);
+            DestroyImmediate(child.gameObject);
         }
     }
-}
 
+}
 [CustomEditor(typeof(ShadowCaster2DCreator))]
 public class ShadowCaster2DTileMapEditor : Editor
 {
@@ -80,7 +87,7 @@ public class ShadowCaster2DTileMapEditor : Editor
         if (GUILayout.Button("Remove Shadows"))
         {
             var creator = (ShadowCaster2DCreator)target;
-            creator.DestroyOldShadowCasters();
+            creator.DestroyImmediateOldShadowCasters();
         }
         EditorGUILayout.EndHorizontal();
     }
