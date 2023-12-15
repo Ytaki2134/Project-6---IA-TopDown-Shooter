@@ -1,68 +1,87 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using UnityEngine.Windows;
 
 public class PlayerControls : MonoBehaviour
 {
-    private Rigidbody2D m_rb;
+    [SerializeField] private Camera m_camera;
+    [SerializeField] private Animator[] m_TrackAnimator = new Animator[2];
     private PlayerInputs m_inputs;
-    private Vector2 m_currentMovement;
-
-    private Quaternion m_targetRotation;
-
-    [SerializeField] public float Speed = 6f;
-    [SerializeField] public float BrakeSpeedMod = 0.5f;
-    private float m_speed;
-    private float m_brakeSpeedMod;
-
-    [SerializeField] public float RotationSpeed = 2f;
-    [SerializeField] public float BrakeRotationSpeedMod = 1.5f;
-    private float m_rotationSpeed;
-    private float m_brakeRotationSpeedMod;
-
-
+    private Rigidbody2D m_rb;
+    private TankStatistics m_TankStatistics;
+    private Movement m_movement;
+    private Gun m_gun;
 
     void Awake()
     {
-        m_rb = GetComponent<Rigidbody2D>();
         m_inputs = new PlayerInputs();
+        m_rb = GetComponent<Rigidbody2D>();
+        m_TankStatistics = GetComponent<TankStatistics>();
+        m_movement = GetComponentInChildren<Movement>();
+        m_gun = GetComponentInChildren<Gun>();
 
-        m_speed = 0f;
-        m_rotationSpeed = 0f;
-        m_brakeSpeedMod = 1f;
-        m_brakeRotationSpeedMod = 1f;
+        m_movement.SetSpeed(0f);
+        m_movement.SetRotationSpeed(0f);
+        m_movement.SetBrakeSpeed(1f);
+        m_movement.SetBrakeRotationSpeed(1f);
+
+        GetComponentInChildren<GunStatistics>().IsPlayer = true;
 
         #region Input Definitions
 
+        // MOVE
+
         m_inputs.Player.Move.performed += ctx =>
         {
-            m_speed = Speed;
-            m_rotationSpeed = RotationSpeed;
-            m_currentMovement = ctx.ReadValue<Vector2>();
-        };
+            m_movement.SetSpeed(m_TankStatistics.Speed);
+            m_movement.SetRotationSpeed(m_TankStatistics.RotationSpeed);
+            m_movement.SetCurrentMovement(ctx.ReadValue<Vector2>());
 
+            m_TrackAnimator[0].SetBool("Enable", true);
+            m_TrackAnimator[1].SetBool("Enable", true);
+
+        };
         m_inputs.Player.Move.canceled += ctx =>
         {
-            m_speed = 0f;
-            m_rotationSpeed = 0f;
+            m_movement.SetSpeed(0f);
+            m_movement.SetRotationSpeed(0f);
+            m_TrackAnimator[0].SetBool("Enable", false);
+            m_TrackAnimator[1].SetBool("Enable", false);
         };
+
+        // BRAKE
 
         m_inputs.Player.Brake.performed += ctx =>
         {
-            m_brakeSpeedMod = BrakeSpeedMod;
-            m_brakeRotationSpeedMod = BrakeRotationSpeedMod;
+            m_movement.SetBrakeSpeed(m_TankStatistics.BrakeSpeedMod);
+            m_movement.SetBrakeRotationSpeed(m_TankStatistics.BrakeRotationSpeedMod);
+            m_rb.drag = 5f;
         };
 
         m_inputs.Player.Brake.canceled += ctx =>
         {
-            m_brakeSpeedMod = 1f;
-            m_brakeRotationSpeedMod = 1f;
+            m_movement.SetBrakeSpeed(1f);
+            m_movement.SetBrakeRotationSpeed(1f);
+            m_rb.drag = 15f;
+        };
+
+        // FIRE
+
+        m_inputs.Player.Fire.performed += ctx =>
+        {
+            m_gun.Fire();
         };
 
         #endregion
+    }
+
+    void Update()
+    {
+        m_gun.SetTargetPosition(m_camera.ScreenToWorldPoint(Mouse.current.position.ReadValue()));
+    }
+
+    private void FixedUpdate()
+    {
+        m_movement.Move();
     }
 
     private void OnEnable()
@@ -73,21 +92,5 @@ public class PlayerControls : MonoBehaviour
     private void OnDisable()
     {
         m_inputs.Disable();
-    }
-
-
-    void Update()
-    {
-        Move();
-    }
-
-    private void Move()
-    {
-        //Rotate Sprite
-        m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-m_currentMovement.x, m_currentMovement.y) * Mathf.Rad2Deg);
-        transform.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_rotationSpeed * m_brakeRotationSpeedMod);
-
-        //Move Player (forward only)
-        m_rb.AddForce(transform.up * m_speed * m_brakeSpeedMod);
     }
 }
