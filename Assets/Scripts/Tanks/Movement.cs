@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    private Rigidbody2D m_rb;
+    [SerializeField] private GameObject m_Player;
 
     private Vector2 m_currentMovement;
     private Quaternion m_targetRotation;
@@ -13,11 +13,6 @@ public class Movement : MonoBehaviour
     private float m_rotationSpeed;
     private float m_brakeRotationSpeedMod;
 
-    private void Start()
-    {
-        m_rb = GetComponent<Rigidbody2D>();
-    }
-
     public void Move()
     {
         //Rotate Sprite
@@ -25,7 +20,7 @@ public class Movement : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_rotationSpeed * m_brakeRotationSpeedMod);
 
         //Move Player (forward only)
-        m_rb.AddForce(transform.up * m_speed * m_brakeSpeedMod);
+        m_Player.GetComponent<Rigidbody2D>().AddForce(transform.up * m_speed * m_brakeSpeedMod);
     }
 
     #region Setters
