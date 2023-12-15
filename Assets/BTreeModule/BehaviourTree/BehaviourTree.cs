@@ -34,6 +34,8 @@ public class BehaviourTree : ScriptableObject
         node.name = type.Name;
         node.guid = GUID.Generate().ToString();
 
+        node.blackboard = blackboard;
+
         Undo.RecordObject(this, "Behaviour Tree (CreateNode)");
 
         nodes.Add(node);
@@ -169,7 +171,11 @@ public class BehaviourTree : ScriptableObject
         BehaviourTree tree = Instantiate(this);
         tree.rootNode = tree.rootNode.Clone();
         tree.nodes = new List<Node>();
-        Traverse(tree.rootNode, (n) => tree.nodes.Add(n));
+        Traverse(tree.rootNode, (n) => {
+            n.blackboard = tree.blackboard; // Assurez-vous que le blackboard est mis à jour
+            tree.nodes.Add(n);
+        });
         return tree;
     }
+
 }

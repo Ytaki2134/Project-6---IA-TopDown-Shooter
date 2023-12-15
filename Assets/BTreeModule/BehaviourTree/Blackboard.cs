@@ -5,6 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class Blackboard
 {
-    public Vector2 moveToPostion;
-    public GameObject moveToObject;
+    [SerializeReference]
+    public GameObject _targetGameObject;
+    [SerializeField]
+    public  float _speed;
+    [SerializeField]
+    public GameObject[] _waypoints;
 }

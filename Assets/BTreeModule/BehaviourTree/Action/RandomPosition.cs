@@ -15,8 +15,8 @@ public class RandomPosition : ActionNode
     }
 
     protected override State OnUpdate() {
-        moveToPosition.x = Random.Range(min.x, max.x);
-        moveToPosition.y = Random.Range(min.y, max.y);
+       // moveToPosition.x = Random.Range(min.x, max.x);
+       // moveToPosition.y = Random.Range(min.y, max.y);
         return State.Success;
     }
 }

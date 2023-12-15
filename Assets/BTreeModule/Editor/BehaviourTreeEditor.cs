@@ -10,6 +10,10 @@ public class BehaviourTreeEditor : EditorWindow
 {
     BehaviouTreeView treeView;  // Vue de l'arbre comportemental
     InspectorView inspectorView;  // Vue de l'inspecteur pour modifier les propriétés des nœuds
+    IMGUIContainer blackboardView;
+    SerializedObject treeObject;
+
+    SerializedProperty blackboardProperty;
 
     // MenuItem pour ouvrir l'éditeur d'arbre comportemental
     [MenuItem("BehaviourTree/Editor ...")]
@@ -46,6 +50,13 @@ public class BehaviourTreeEditor : EditorWindow
         // Initialisation des vues de l'arbre et de l'inspecteur
         treeView = root.Q<BehaviouTreeView>();
         inspectorView = root.Q<InspectorView>();
+        blackboardView = root.Q<IMGUIContainer>();
+        blackboardView.onGUIHandler = () => {
+            treeObject.Update();
+            EditorGUILayout.PropertyField(blackboardProperty);
+            treeObject.ApplyModifiedProperties();
+        };
+
 
         // Configuration des callbacks
         treeView.m_OnNodeSelected = OnNodeSelectionChanged;
@@ -89,7 +100,7 @@ public class BehaviourTreeEditor : EditorWindow
         if (selectedObject != null)
         {
             SerializedObject serializedObject = new SerializedObject(selectedObject);
-            inspectorView.UpdateWithSerializedObject(serializedObject);
+           // inspectorView.UpdateWithSerializedObject(serializedObject);
         }
         BehaviourTree tree = Selection.activeObject as BehaviourTree;
         // Ajoutez des vérifications de null pour éviter la NullReferenceException.
@@ -109,6 +120,8 @@ public class BehaviourTreeEditor : EditorWindow
             {
                 treeView?.PopulateView(tree); // Utilisation de l'opérateur conditionnel '?'
             }
+            treeObject = new SerializedObject(tree);
+            blackboardProperty = treeObject.FindProperty("blackboard");
         }
     }
 
