@@ -1,9 +1,14 @@
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private Camera m_camera;
+    [SerializeField] private CinemachineVirtualCamera m_Vcamera;
+    [SerializeField] private float m_MaxZoom = 18f;
+    [SerializeField] private float m_MinZoom = 8f;
     [SerializeField] private Animator[] m_TrackAnimator = new Animator[2];
     private PlayerInputs m_inputs;
     private Rigidbody2D m_rb;
@@ -69,6 +74,18 @@ public class PlayerControls : MonoBehaviour
         m_inputs.Player.Fire.performed += ctx =>
         {
             m_gun.Fire();
+        };
+
+        // ZOOM
+
+        m_inputs.Player.Zoom.performed += ctx =>
+        {
+            if (ctx.ReadValue<Vector2>().normalized.y < 0f && m_Vcamera.m_Lens.OrthographicSize <= m_MinZoom || ctx.ReadValue<Vector2>().normalized.y > 0f && m_Vcamera.m_Lens.OrthographicSize >= m_MaxZoom)
+            {
+                return;
+            }
+
+            m_Vcamera.m_Lens.OrthographicSize += ctx.ReadValue<Vector2>().normalized.y;
         };
 
         #endregion
