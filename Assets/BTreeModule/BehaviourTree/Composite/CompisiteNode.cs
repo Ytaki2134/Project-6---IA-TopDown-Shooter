@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using static Unity.VisualScripting.Metadata;
+
 // Classe CompositeNode
 // Cette classe abstraite est une extension de la classe Node et représente un nœud composite dans un arbre comportemental.
 // Un nœud composite peut avoir plusieurs nœuds enfants et est utilisé pour construire des structures de contrôle complexes dans l'arbre.
@@ -35,3 +37,4 @@ public abstract class CompisiteNode : Node
         return node;
     }
 }
+#endif

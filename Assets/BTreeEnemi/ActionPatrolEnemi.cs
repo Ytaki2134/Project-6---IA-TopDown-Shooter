@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+#if UNITY_EDITOR
 public class ActionPatrolEnemi : ActionNode
 {
 
@@ -67,3 +67,4 @@ public class ActionPatrolEnemi : ActionNode
         return state;
     }
 }
+#endif

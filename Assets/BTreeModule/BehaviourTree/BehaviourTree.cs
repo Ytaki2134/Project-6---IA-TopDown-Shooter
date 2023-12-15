@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 using UnityEngine.InputSystem.HID;
 // Classe BehaviourTree
 // Cette classe représente un arbre comportemental dans un système d'IA. 
@@ -179,3 +179,4 @@ public class BehaviourTree : ScriptableObject
     }
 
 }
+#endif

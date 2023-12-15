@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+#if UNITY_EDITOR
 public class RandomPosition : ActionNode
 {
     public Vector2 min = Vector2.one * -10;
@@ -20,3 +20,4 @@ public class RandomPosition : ActionNode
         return State.Success;
     }
 }
+#endif

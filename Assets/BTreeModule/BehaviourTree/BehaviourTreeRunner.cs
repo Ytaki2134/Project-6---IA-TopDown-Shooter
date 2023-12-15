@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
 public class BehaviourTreeRunner : MonoBehaviour
 {
     public BehaviourTree tree;
@@ -34,3 +34,4 @@ public class BehaviourTreeRunner : MonoBehaviour
 
     }
 }
+#endif

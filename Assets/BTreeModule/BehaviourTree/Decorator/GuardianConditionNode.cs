@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
 public class GuardConditionNode : DecoratorNode
 {
     
@@ -34,3 +34,4 @@ public class GuardConditionNode : DecoratorNode
         return child.Update();
     }
 }
+#endif

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
 // Classe DecoratorNode
 // Cette classe abstraite sert de base pour les nœuds décorateurs dans un arbre comportemental.
 // Un nœud décorateur modifie le comportement de son nœud enfant, soit en changeant son résultat, soit en répétant son exécution, etc.
@@ -29,3 +29,4 @@ public abstract class DecoratorNode : Node
 
     // Les méthodes abstraites OnStart, OnStop et OnUpdate doivent être implémentées dans les sous-classes.
 }
+#endif

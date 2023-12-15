@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 
 
-/*#if UNITY_EDITOR*/
+#if UNITY_EDITOR
 
 [RequireComponent(typeof(CompositeCollider2D))]
 public class ShadowCaster2DCreator : MonoBehaviour
@@ -94,4 +94,4 @@ public class ShadowCaster2DTileMapEditor : Editor
 
 }
 
-/*#endif*/
+#endif

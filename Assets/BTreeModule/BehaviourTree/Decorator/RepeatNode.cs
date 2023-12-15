@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
 // Classe RepeatNode
 // Cette classe est une spécialisation de DecoratorNode et représente un nœud décorateur qui répète continuellement l'exécution de son nœud enfant.
 // Le nœud RepeatNode continue de renvoyer l'état Running, ce qui entraîne une répétition constante du comportement de l'enfant.
@@ -30,3 +30,4 @@ public class RepeatNode : DecoratorNode
         return State.Running;
     }
 }
+#endif

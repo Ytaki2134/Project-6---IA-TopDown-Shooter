@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 // Classe SequencerNode
 // Cette classe est une spécialisation de CompisiteNode et représente un nœud séquenceur dans un arbre comportemental.
 // Un SequencerNode exécute ses nœuds enfants séquentiellement jusqu'à ce que l'un d'eux échoue ou que tous réussissent.
@@ -47,3 +48,4 @@ public class SequencerNode : CompisiteNode
     public List<Node> GetChildren() { return children; }
 }
 
+#endif

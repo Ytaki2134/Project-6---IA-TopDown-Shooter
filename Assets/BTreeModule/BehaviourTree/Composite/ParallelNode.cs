@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using static Unity.VisualScripting.Metadata;
 
 public class ParallelNode : CompisiteNode
@@ -61,3 +62,4 @@ public class ParallelNode : CompisiteNode
         return State.Running;
     }
 }
+#endif
