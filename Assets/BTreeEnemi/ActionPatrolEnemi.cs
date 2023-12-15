@@ -57,9 +57,16 @@ public class ActionPatrolEnemi : ActionNode
             else
             {
                 _targetGameObject.GetComponent<Transform>().position  = Vector2.MoveTowards(_targetGameObject.GetComponent<Transform>().position, wp.position, _speed * Time.deltaTime);
-                Vector2 direction = (wp.position - _targetGameObject.GetComponent<Transform>().position).normalized;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                _targetGameObject.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle);
+
+
+                Transform transform = _targetGameObject.GetComponent<Transform>();
+
+                Vector2 direction = (wp.GetComponent<Transform>().position - _targetGameObject.GetComponent<Transform>().position).normalized;
+                if (direction != Vector2.zero)
+                {
+                    Quaternion toRot = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, toRot, Time.deltaTime * 100);
+                }
 
             }
         }

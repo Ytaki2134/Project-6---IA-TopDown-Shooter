@@ -13,6 +13,8 @@ public class BehaviourTreeRunner : MonoBehaviour
     private float _speed;
     [SerializeField]
     private GameObject[] _waypoints;
+  
+    private Movement _movement;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard._waypoints = _waypoints;
         tree.blackboard._speed = _speed;
         tree.blackboard._targetToMove = _targetEnemi;
-
+        tree.blackboard._movement = GetComponent<Movement>(); 
     }
 
     // Update is called once per frame

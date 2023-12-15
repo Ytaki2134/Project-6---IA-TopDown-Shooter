@@ -12,5 +12,6 @@ public class Blackboard
     [SerializeField]
     public GameObject[] _waypoints;
     public GameObject _targetToMove;
+    public  Movement _movement;
 
 }
