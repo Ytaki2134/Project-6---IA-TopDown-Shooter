@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: RootNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   guid: 6613166cfeba9904eacfbe216d27ea93
   position: {x: 253, y: -69.44}
   blackboard:
