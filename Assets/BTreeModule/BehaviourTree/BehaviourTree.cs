@@ -65,9 +65,16 @@ public class BehaviourTree : ScriptableObject
     // Ajoute un nœud enfant à un nœud parent spécifié dans l'arbre.
     public void AddChild(Node parent, Node child)
     {
+
+        if (parent == null || child == null)
+        {
+            UnityEngine.Debug.LogError("AddChild appelé avec un parent ou un enfant null.");
+            return;
+        }
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator)
         {
+         
             Undo.RecordObject(decorator, "Behaviour Tree (AddChild)");
             decorator.m_child = (child);
             EditorUtility.SetDirty(decorator);
@@ -77,6 +84,7 @@ public class BehaviourTree : ScriptableObject
         RootNode rootNode = parent as RootNode;
         if (rootNode)
         {
+
             Undo.RecordObject(rootNode, "Behaviour Tree (AddChild)");
 
             rootNode.m_child = (child);
@@ -87,6 +95,7 @@ public class BehaviourTree : ScriptableObject
         CompisiteNode composite = parent as CompisiteNode;
         if (composite)
         {
+
             Undo.RecordObject(composite, "Behaviour Tree (AddChild)");
 
             composite.AddChildren(child);

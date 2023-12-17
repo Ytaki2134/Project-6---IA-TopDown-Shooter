@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4470993829907165784
+--- !u!114 &-6785460217183913450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,131 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 59cf6c0fbd4607b46bbdfdbc96fefe0a
-  position: {x: -1.4500434, y: 426.20004}
-  blackboard:
-    _targetGameObject: {fileID: 0}
-    _speed: 0
-    _waypoints: []
-    _targetToMove: {fileID: 0}
+  guid: ce0d4261d2e8c694db61e991761ead7b
+  position: {x: -125, y: 287}
   _targetGameObject: {fileID: 0}
---- !u!114 &-3169720336995216573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ae766dde401ba45ab4e71dfc2c9b56, type: 3}
-  m_Name: ParallelNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: d2b8fbf3e36356f47aed0774d7311063
-  position: {x: 168, y: 289}
-  blackboard:
-    _targetGameObject: {fileID: 0}
-    _speed: 0
-    _waypoints: []
-    _targetToMove: {fileID: 0}
-  children:
-  - {fileID: -4470993829907165784}
-  - {fileID: 2096640720026569915}
---- !u!114 &-1268442147812825445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af6f32edf71ea647bd56aee7dcfe462, type: 3}
-  m_Name: RepeatNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 067b4164c4894dd4dbf8d199a6798ebf
-  position: {x: 184, y: 38}
-  blackboard:
-    _targetGameObject: {fileID: 0}
-    _speed: 0
-    _waypoints: []
-    _targetToMove: {fileID: 0}
-  child: {fileID: 1539337430143078448}
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
-  m_Name: New Behaviour Tree
-  m_EditorClassIdentifier: 
-  rootNode: {fileID: 8306435351777797439}
-  treeState: 0
-  nodes:
-  - {fileID: 8306435351777797439}
-  - {fileID: -1268442147812825445}
-  - {fileID: -3169720336995216573}
-  - {fileID: 1539337430143078448}
-  - {fileID: 2096640720026569915}
-  - {fileID: -4470993829907165784}
-  blackboard:
-    _targetGameObject: {fileID: 0}
-    _speed: 0
-    _waypoints: []
-    _targetToMove: {fileID: 0}
---- !u!114 &1539337430143078448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f652902957a87542a43637c6f85fc69, type: 3}
-  m_Name: Selector
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 302253ea44740d84b8cafcbae0a51d13
-  position: {x: 207, y: 177}
-  blackboard:
-    _targetGameObject: {fileID: 0}
-    _speed: 0
-    _waypoints: []
-    _targetToMove: {fileID: 0}
-  children:
-  - {fileID: -3169720336995216573}
---- !u!114 &2096640720026569915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc6809d9059dca47ae5ee5b91ec2a70, type: 3}
-  m_Name: ActionChase
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 1106cc18bb61de34ab81499f28bf5c14
-  position: {x: 287.1, y: 424.00006}
-  blackboard:
-    _targetGameObject: {fileID: 0}
-    _speed: 0
-    _waypoints: []
-    _targetToMove: {fileID: 0}
---- !u!114 &8306435351777797439
+--- !u!114 &-5695005995516348906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,10 +31,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 6613166cfeba9904eacfbe216d27ea93
-  position: {x: 262.15002, y: -58.699993}
-  blackboard:
-    _targetGameObject: {fileID: 0}
-    _speed: 0
-    _waypoints: []
-    _targetToMove: {fileID: 0}
+  guid: ab1149bc1356bbf4dbef2a0a9afcf813
+  position: {x: 136, y: -92.799995}
+--- !u!114 &-585191675598779919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae766dde401ba45ab4e71dfc2c9b56, type: 3}
+  m_Name: ParallelNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: f9d13f0ecf6f8db42ba547bdc2717be5
+  position: {x: 8, y: 165}
+  children:
+  - {fileID: -6785460217183913450}
+  - {fileID: 5947524997226305891}
+  - {fileID: 1567612920923851120}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
+  m_Name: New Behaviour Tree
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: -5695005995516348906}
+  treeState: 0
+  nodes:
+  - {fileID: -5695005995516348906}
+  - {fileID: -585191675598779919}
+  - {fileID: 5947524997226305891}
+  - {fileID: 1567612920923851120}
+  - {fileID: -6785460217183913450}
+--- !u!114 &1567612920923851120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd77dd8f54d75d419e762eb6dc85433, type: 3}
+  m_Name: ActionFireBullet
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 61fa5bb46e31f744ba1b09348e3f356f
+  position: {x: 206, y: 340.99997}
+  _bulletPrefab: {fileID: 0}
+  bulletSpeed: 10
+--- !u!114 &5947524997226305891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82df8f3d9109e424786d63bf18a2aabf, type: 3}
+  m_Name: ActionRotationCanon
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 46ea286b7d7b484468e700ec07ea0e4b
+  position: {x: 32, y: 302}

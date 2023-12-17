@@ -89,36 +89,44 @@ public class BehaviouTreeView : GraphView
 
     private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
     {
-        if(graphViewChange.elementsToRemove != null)
+        // Lors de la suppression d'éléments
+        if (graphViewChange.elementsToRemove != null)
         {
-            graphViewChange.elementsToRemove.ForEach(elem =>
+            foreach (var elem in graphViewChange.elementsToRemove)
             {
                 NodeView nodeView = elem as NodeView;
-                if (nodeView != null)
-                {
-                    tree.DeleteNode(nodeView.node);
-                }
+
+
+                tree.DeleteNode(nodeView.node);
 
                 Edge edge = elem as Edge;
-                if (edge != null)
-                {
-                    NodeView parentView = edge.output.node as NodeView;
-                    NodeView childView = edge.input.node as NodeView;
-                    tree.RemoveChild(parentView.node, childView.node);
-                }
-            });
+    
+
+                NodeView parentView = edge.output.node as NodeView;
+                NodeView childView = edge.input.node as NodeView;
+      
+
+                tree.RemoveChild(parentView.node, childView.node);
+            }
         }
 
         if (graphViewChange.edgesToCreate != null)
         {
-            graphViewChange.edgesToCreate.ForEach(edge =>
+            foreach (var edge in graphViewChange.edgesToCreate)
             {
                 NodeView parentView = edge.output.node as NodeView;
                 NodeView childView = edge.input.node as NodeView;
+
+                if (parentView == null || childView == null)
+                {
+                    UnityEngine.Debug.LogError("Tentative de création d'une arête avec un parent ou un enfant null.");
+                    continue;
+                }
+
                 tree.AddChild(parentView.node, childView.node);
-            });
+            }
         }
-        if(graphViewChange.movedElements != null)
+        if (graphViewChange.movedElements != null)
         {
             nodes.ForEach(node =>
             {

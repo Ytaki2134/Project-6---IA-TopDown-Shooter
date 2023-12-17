@@ -54,9 +54,9 @@ public class BehaviourTreeEditor : EditorWindow
         blackboardView.onGUIHandler = () => {
             if (treeObject != null && treeObject.targetObject != null)
             {
-                treeObject.Update();
-                EditorGUILayout.PropertyField(blackboardProperty);
-                treeObject.ApplyModifiedProperties();
+               //treeObject.Update();
+               //EditorGUILayout.PropertyField(blackboardProperty);
+               //treeObject.ApplyModifiedProperties();
             }
         };
 
