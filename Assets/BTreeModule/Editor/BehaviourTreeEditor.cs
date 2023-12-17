@@ -51,14 +51,14 @@ public class BehaviourTreeEditor : EditorWindow
         treeView = root.Q<BehaviouTreeView>();
         inspectorView = root.Q<InspectorView>();
         blackboardView = root.Q<IMGUIContainer>();
-        blackboardView.onGUIHandler = () => {
-            if (treeObject != null && treeObject.targetObject != null)
-            {
-                treeObject.Update();
-                EditorGUILayout.PropertyField(blackboardProperty);
-                treeObject.ApplyModifiedProperties();
-            }
-        };
+       // blackboardView.onGUIHandler = () => {
+       //     if (treeObject != null && treeObject.targetObject != null)
+       //     {
+       //         treeObject.Update();
+       //         EditorGUILayout.PropertyField(blackboardProperty);
+       //         treeObject.ApplyModifiedProperties();
+       //     }
+       // };
 
 
         // Configuration des callbacks
