@@ -47,8 +47,8 @@ public class ActionRotateAndTarget : ActionNode
             // Suivre la cible du regard quand elle est à portée
             _movement.RotateCanonTowardsTarget(canonTransform,_targetToMove.transform.position, blackboard, _alignmentThreshold);
             blackboard.Set("readyToMove", true);
-            return State.Running;
         }
+            return State.Running;
     }
 
 }

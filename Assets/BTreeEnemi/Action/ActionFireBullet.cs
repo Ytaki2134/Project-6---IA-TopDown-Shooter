@@ -41,7 +41,7 @@ public class ActionFireBullet : ActionNode
             return State.Running;
         }
 
-        return State.Failure;
+        return State.Running;
     }
 
 

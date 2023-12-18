@@ -61,9 +61,11 @@ public class ActionPatrolEnemi : ActionNode
         {
             // Gère le mouvement vers le waypoint actuel
             HandleMovement(_transform);
+            //return Node.State.Success;
+
         }
 
-        
+
         return Node.State.Running;
      
         

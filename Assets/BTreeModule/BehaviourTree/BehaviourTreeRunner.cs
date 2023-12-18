@@ -15,14 +15,22 @@ public class BehaviourTreeRunner : MonoBehaviour
     private GameObject[] _waypoints;
     [SerializeField]
     private GameObject _bulletPrefab;
+    [SerializeField]
+    private GameObject _minePrefab;
 
     private Movement  _movement;
+    Shield shield;
+
     // Start is called before the first frame update
     void Start()
     {
+        TankStatistics tankStatistics = GetComponent<TankStatistics>();
         _movement = GetComponent<Movement>();
         _movement.SetSpeed(_speed);
         _movement.SetRotationSpeed(_speed);
+        shield = GetComponent<Shield>();
+        shield.ShieldValue = 50;
+
 
         tree = tree.Clone();
         tree.blackboard.Set("targetGameObject", _targetGameObject);
@@ -33,7 +41,17 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("movement", _movement);
         tree.blackboard.Set("bulletPrefab", _bulletPrefab);
         tree.blackboard.Set("readyToMove", false);
+        tree.blackboard.Set("readyToShoot", false);
         tree.blackboard.Set("IsInDistance", false);
+        tree.blackboard.Set("health", tankStatistics.Health);
+        tree.blackboard.Set("canUsePatternOne", true);
+        tree.blackboard.Set("minePrefab", _minePrefab);
+        tree.blackboard.Set("shield", shield);
+
+
+
+
+
 
     }
 
