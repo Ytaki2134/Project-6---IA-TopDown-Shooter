@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4470993829907165784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e740e06467d5641b9c63481eb4f426, type: 3}
+  m_Name: ActionPatrolEnemi
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 59cf6c0fbd4607b46bbdfdbc96fefe0a
+  position: {x: 224, y: 435}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
+  _targetGameObject: {fileID: 0}
+--- !u!114 &-3169720336995216573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae766dde401ba45ab4e71dfc2c9b56, type: 3}
+  m_Name: ParallelNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d2b8fbf3e36356f47aed0774d7311063
+  position: {x: 168, y: 289}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
+  children:
+  - {fileID: 2096640720026569915}
+  - {fileID: -4470993829907165784}
+--- !u!114 &-1268442147812825445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af6f32edf71ea647bd56aee7dcfe462, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 067b4164c4894dd4dbf8d199a6798ebf
+  position: {x: 260, y: 44}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
+  child: {fileID: 1539337430143078448}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
+  m_Name: New Behaviour Tree
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 8306435351777797439}
+  treeState: 0
+  nodes:
+  - {fileID: 8306435351777797439}
+  - {fileID: -1268442147812825445}
+  - {fileID: -3169720336995216573}
+  - {fileID: 1539337430143078448}
+  - {fileID: 2096640720026569915}
+  - {fileID: -4470993829907165784}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
+--- !u!114 &1539337430143078448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f652902957a87542a43637c6f85fc69, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 302253ea44740d84b8cafcbae0a51d13
+  position: {x: 207, y: 177}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
+  children:
+  - {fileID: -3169720336995216573}
+--- !u!114 &2096640720026569915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc6809d9059dca47ae5ee5b91ec2a70, type: 3}
+  m_Name: ActionChase
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 1106cc18bb61de34ab81499f28bf5c14
+  position: {x: -8, y: 433}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
+--- !u!114 &8306435351777797439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66724ee97b1079244bda0609082442f5, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 1
+  guid: 6613166cfeba9904eacfbe216d27ea93
+  position: {x: 253, y: -69.44}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}

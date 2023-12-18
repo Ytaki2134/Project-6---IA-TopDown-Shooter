@@ -283,6 +283,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7368401181109211917, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
+      propertyPath: m_camera
+      value: 
+      objectReference: {fileID: 59239106}
     - target: {fileID: 7760592605917230738, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -354,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efcc002108f3b04594ab620a3a6cf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 2b683e0df79aba642946cca296a4f08b, type: 2}
+  tree: {fileID: 11400000, guid: 7357504285007e748810537580434af8, type: 2}
   _targetGameObject: {fileID: 673682479}
   _targetEnemi: {fileID: 257280068}
   _speed: 2
