@@ -667,14 +667,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 7368401181109211917, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
-      propertyPath: m_MaxZoom
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7368401181109211917, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
-      propertyPath: m_MinZoom
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7368401181109211917, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: m_Vcamera
       value: 
       objectReference: {fileID: 674185347}

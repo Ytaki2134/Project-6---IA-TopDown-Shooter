@@ -4,6 +4,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform m_pivot;
     [SerializeField] private Transform m_gunEnd;
+    [SerializeField] private Animator m_gunAnimator;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
@@ -24,6 +25,7 @@ public class Gun : MonoBehaviour
         GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
         temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
         temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+        m_gunAnimator.SetBool("Shoot", true);
     }
 
     private void FollowTargetPosition()
