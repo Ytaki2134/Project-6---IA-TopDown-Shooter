@@ -1,72 +1,77 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class NPCSimplePatrol : MonoBehaviour
+public class NPCSimplePatrol2D : MonoBehaviour
 {
-    //dicates wheter the agent wait on each node
     [SerializeField] bool _patrolWaiting;
-
-    //the patrol time we wait at each node
     [SerializeField] float _totalWaitTime = 3f;
+    [SerializeField] List<Transform> _patrolPoints;
 
-    //the list of switching direcion
-    [SerializeField] float _switchProbability = 0.2f;
-
-    //the list of patrol nods to visit
-    [SerializeField] List<Waypoint> _patrolPoints;
-
-    //private variables for bas behavior
-    NavMeshAgent _navMeshAgent;
     int _currentPatrolIndex;
     bool _traveling;
     bool _waiting;
-    bool _patrolForward;
     float _waitTimer;
+
+    private Movement m_movement;
+
+    void Awake()
+    {
+        m_movement = GetComponentInChildren<Movement>();
+
+        m_movement.SetSpeed(3f);
+        m_movement.SetRotationSpeed(2f);
+        m_movement.SetBrakeSpeed(1f);
+        m_movement.SetBrakeRotationSpeed(1f);
+    }
 
     public void Start()
     {
-        _navMeshAgent = this.GetComponent<NavMeshAgent>();
-
-        if (_navMeshAgent ==  null)
+        if (_patrolPoints != null && _patrolPoints.Count >= 2)
         {
-            Debug.Log("The av mesh agent component is ot attached to " + gameObject.name);
+            _currentPatrolIndex = 0;
+            SetDestination();
         }
         else
         {
-            if (_patrolPoints !=  null && _patrolPoints.Count >= 2)
-            {
-                _currentPatrolIndex = 0;
-                SetDestination();
-            }
-            else
-            {
-                Debug.Log("Insufficient patrol points for basic patrolling behavior");
-            }
+            Debug.Log("Insufficient patrol points for basic patrolling behavior");
+        }
+
+        if (m_movement == null)
+        {
+            Debug.LogError("Movement component not found!");
         }
     }
 
     public void Update()
     {
-        //check if we're close to the destination
-        if (_traveling && _navMeshAgent.remainingDistance <= 1.0f)
+        if (_traveling)
         {
-            _traveling = false;
-
-            //if we're going to wait, then wait
-            if (_patrolWaiting)
+            float distance = Vector2.Distance(transform.position, _patrolPoints[_currentPatrolIndex].position);
+            if (distance <= 0.1f)
             {
-                _waiting = true;
-                _waitTimer = 0f;
+                _traveling = false;
+
+                if (_patrolWaiting)
+                {
+                    _waiting = true;
+                    _waitTimer = 0f;
+                }
+                else
+                {
+                    ChangePatrolPoint();
+                    SetDestination();
+                }
             }
             else
             {
-                ChangePatrolPoint();
-                SetDestination();
+                if (m_movement != null)
+                {
+                    m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].position - (Vector2)transform.position).normalized);
+                    m_movement.Move();
+                }
             }
         }
 
-        //instead if we're waiting
         if (_waiting)
         {
             _waitTimer += Time.deltaTime;
@@ -74,7 +79,7 @@ public class NPCSimplePatrol : MonoBehaviour
             {
                 _waiting = false;
 
-                ChangePatrolPoint() ;
+                ChangePatrolPoint();
                 SetDestination();
             }
         }
@@ -84,36 +89,17 @@ public class NPCSimplePatrol : MonoBehaviour
     {
         if (_patrolPoints != null)
         {
-            Vector3 targetVector = _patrolPoints[_currentPatrolIndex].transform.position;
-            _navMeshAgent.SetDestination(targetVector);
             _traveling = true;
         }
     }
 
-    //select a new patrol point in the available list, but also with a small probability allows for us to move forward or backwards
     private void ChangePatrolPoint()
     {
-        if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
+        _currentPatrolIndex++;
+        
+        if (_currentPatrolIndex >= _patrolPoints.Count)
         {
-            _patrolForward = !_patrolForward;
-        }
-
-        if (_patrolForward)
-        {
-            _currentPatrolIndex++;
-
-            if (_currentPatrolIndex >= _patrolPoints.Count)
-            {
-                _currentPatrolIndex = 0;
-            }
-            //_currentPatrolIndex = (_currentPatrolIndex + 1) % _patrolPoints.Count;
-        }
-        else
-        {
-            if (--_currentPatrolIndex < 0)
-            {
-                _currentPatrolIndex = _patrolPoints.Count - 1;
-            }
+            _currentPatrolIndex = 0;
         }
     }
 }
