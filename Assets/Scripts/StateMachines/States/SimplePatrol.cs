@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCSimplePatrol2D : MonoBehaviour
+public class SimplePatrol2D : MonoBehaviour
 {
     [SerializeField] bool _patrolWaiting;
     [SerializeField] float _totalWaitTime = 3f;
