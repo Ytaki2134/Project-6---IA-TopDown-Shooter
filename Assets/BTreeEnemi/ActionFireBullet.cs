@@ -48,7 +48,7 @@ public class ActionFireBullet : ActionNode
     void FireBullet()
     {
         // Créer et lancer la balle
-        GameObject bullet = GameObject.Instantiate(_bulletPrefab, _me.GetComponent<Transform>().GetChild(0).GetComponent<Transform>().GetChild(1).GetComponent<Transform>().position, Quaternion.identity);
+        GameObject bullet = Instantiate(_bulletPrefab, _me.GetComponent<Transform>().GetChild(0).GetComponent<Transform>().GetChild(0).GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position, Quaternion.identity);
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
         if (bulletRb != null)
@@ -56,15 +56,10 @@ public class ActionFireBullet : ActionNode
             Vector2 direction = (_targetToMove.transform.position - _me.transform.position).normalized;
             bulletRb.velocity = direction * bulletSpeed;
 
-            Transform transformBullet = bullet.GetComponent<Transform>();
-
-           // Vector2 direction = (_targetToMove.GetComponent<Transform>().position - _me.GetComponent<Transform>().GetChild(0).GetComponent<Transform>().position).normalized;
-            if (direction != Vector2.zero)
-            {
-                Quaternion toRot = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
-                transformBullet.rotation = Quaternion.Lerp(transformBullet.rotation, toRot, Time.deltaTime * 100);
-            }
-
+            // Calculer la rotation pour que la balle regarde la cible dès le départ
+            Quaternion toRot = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
+            bullet.transform.rotation = toRot;
         }
     }
+
 }
