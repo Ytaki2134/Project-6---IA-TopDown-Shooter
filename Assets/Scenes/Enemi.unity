@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 673682479}
-  Speed: 7
+  Speed: 4
   BrakeSpeedMod: 0.9
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5

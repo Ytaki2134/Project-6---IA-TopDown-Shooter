@@ -27,9 +27,24 @@ public class Condition
             case ConditionType.IsInDistance:
                 {
                     float dist = Vector2.Distance((blackboard.Get("targetGameObject") as GameObject).transform.position, (blackboard.Get("targetEnemi") as GameObject).transform.position);
+                    bool hasAggro = (bool)blackboard.Get("hasAggro");
+                    float aggroStartDistance = (float)blackboard.Get("aggroStartDistance");
+                    float aggroEndDistance = (float)blackboard.Get("aggroEndDistance");
+                    
+                    if (!hasAggro && dist <= aggroStartDistance)
+                    {
+                        blackboard.Set("hasAggro", true); // Prendre l'aggro
+                        return true == expectedValue;
+                    }
+                    else if ((hasAggro && dist >= aggroEndDistance) || (!hasAggro && dist >= aggroEndDistance))
+                    {
+                        blackboard.Set("hasAggro", false); // Perdre l'aggro
+                        return false == expectedValue;
+                    }
 
-                    return dist < threshold == expectedValue;
+                    return hasAggro == expectedValue; // Maintenir l'état actuel de l'aggro
                 }
+
             case ConditionType.HealthCheck:
                 float health = (float)blackboard.Get("health");
                 return health > this.threshold == this.expectedValue; // Use the instance's properties

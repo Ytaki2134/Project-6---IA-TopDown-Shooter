@@ -37,7 +37,10 @@ MonoBehaviour:
   started: 0
   guid: 2e5d165f275636b46afeeff45fb8cb85
   position: {x: 48.71196, y: 323.49548}
-  children: []
+  children:
+  - {fileID: -7508699645741066747}
+  - {fileID: 221313266588666481}
+  - {fileID: 6258578684720421218}
 --- !u!114 &-7508699645741066747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +56,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3773f6dbb20888e4fb01d14ba551123c
-  position: {x: -21.288067, y: 465.49554}
+  position: {x: -43.25747, y: 474}
 --- !u!114 &-6052591224042062127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +133,27 @@ MonoBehaviour:
   position: {x: 356.19147, y: -479.44788}
   children:
   - {fileID: -5258070313511809740}
-  - {fileID: -8825413164901326946}
+--- !u!114 &-2704625019770367155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: da3ed3192ec6ba848b64fe7b6c92b3ef
+  position: {x: -514.00006, y: 155.00003}
+  child: {fileID: 6630653939143741796}
+  condition:
+    conditionType: 0
+    expectedValue: 0
+    threshold: 0
 --- !u!114 &-2008298683894607741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +193,6 @@ MonoBehaviour:
   - {fileID: 6556517363166737331}
   - {fileID: -8825413164901326946}
   - {fileID: -2008298683894607741}
-  - {fileID: 1649005462502526636}
-  - {fileID: 4175652654187306655}
   - {fileID: 7587355105072143710}
   - {fileID: 5577915020144664532}
   - {fileID: 221313266588666481}
@@ -184,6 +205,29 @@ MonoBehaviour:
   - {fileID: -4944813529836547088}
   - {fileID: 6258578684720421218}
   - {fileID: -8243795725627372111}
+  - {fileID: -2704625019770367155}
+  - {fileID: 209706596733381150}
+--- !u!114 &209706596733381150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 09750a0bdbafeed4994df905895a283c
+  position: {x: 0, y: 0}
+  child: {fileID: 0}
+  condition:
+    conditionType: 0
+    expectedValue: 0
+    threshold: 0
 --- !u!114 &221313266588666481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +243,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8cdc861e57cdfcb4085ed8e791f3bcac
-  position: {x: 172.71188, y: 458.4955}
+  position: {x: 132.00002, y: 464.99997}
 --- !u!114 &844466637960081465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,27 +295,6 @@ MonoBehaviour:
   position: {x: 1131.2207, y: 79.123245}
   children:
   - {fileID: -6052591224042062127}
---- !u!114 &1649005462502526636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
-  m_Name: GuardConditionNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 2418d3551517514498ecd48ecedc6c33
-  position: {x: -530.1057, y: 195.36493}
-  child: {fileID: 6630653939143741796}
-  condition:
-    conditionType: 4
-    expectedValue: 0
-    threshold: 10
 --- !u!114 &3374903389994889900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,27 +312,6 @@ MonoBehaviour:
   guid: 101ec58b187d5c149be483ae7f0d242f
   position: {x: 1112.2208, y: -52.876705}
   child: {fileID: 1007484900098241847}
---- !u!114 &4175652654187306655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
-  m_Name: GuardConditionNode
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: 7a8615ca69089eb45aa73990d478a355
-  position: {x: -28.288097, y: 206.49553}
-  child: {fileID: 0}
-  condition:
-    conditionType: 4
-    expectedValue: 1
-    threshold: 10
 --- !u!114 &5577915020144664532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,8 +329,7 @@ MonoBehaviour:
   guid: 0b163d3ec86375148934d52f5f2bc398
   position: {x: -232.55025, y: 61.4227}
   children:
-  - {fileID: 1649005462502526636}
-  - {fileID: 4175652654187306655}
+  - {fileID: -2704625019770367155}
 --- !u!114 &5594829296215730519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 44cb7639f051c2648bdc4ba37fdd02ec
-  position: {x: 373.71185, y: 466.49548}
+  position: {x: 315.30008, y: 482}
   _bulletPrefab: {fileID: 0}
   bulletSpeed: 10
 --- !u!114 &6556517363166737331

@@ -51,7 +51,9 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("minePrefab", _minePrefab);
         tree.blackboard.Set("angleOffset", 0f);
         tree.blackboard.Set("rotSpeed", 30f);
-
+        tree.blackboard.Set("hasAggro", false);
+        tree.blackboard.Set("aggroStartDistance", 10f);
+        tree.blackboard.Set("aggroEndDistance", 20f);
 
     }
 

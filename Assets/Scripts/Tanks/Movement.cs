@@ -71,6 +71,14 @@ public class Movement : MonoBehaviour
 
     }
 
+    public void RotateAndMoveTowards(Transform agentTransform, Transform waypointTransform)
+    {
+        Vector2 direction = (waypointTransform.position - agentTransform.position).normalized;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
+
+        agentTransform.rotation = Quaternion.Lerp(agentTransform.rotation, targetRotation, Time.deltaTime * m_rotationSpeed);
+        agentTransform.position = Vector2.MoveTowards(agentTransform.position, waypointTransform.position, m_speed * Time.deltaTime);
+    }
     #region Setters
 
     public void SetCurrentMovement(Vector2 currentMovement)
