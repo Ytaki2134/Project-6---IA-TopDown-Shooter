@@ -45,23 +45,26 @@ public class ActionPatrolEnemi : ActionNode
         // Distance actuelle entre l'Agent et l'Ennemi
         float currentDistance = Vector2.Distance(enemyPosition2D, agentPosition2D);
 
-            if (_isRotating)
-            {
-                // Effectue la rotation vers le waypoint ciblé
-                RotateTowardsWaypoint(_transform);
-            }
-            else if (_waiting)
-            {
-                // Gère l'attente sur le waypoint actuel
-                HandleWaiting(_transform);
-            }
-            else
-            {
-                // Gère le mouvement vers le waypoint actuel
-                HandleMovement(_transform);
-            }
+     
 
-            return Node.State.Running;
+        if (_isRotating)
+        {
+            // Effectue la rotation vers le waypoint ciblé
+            RotateTowardsWaypoint(_transform);
+        }
+        else if (_waiting)
+        {
+            // Gère l'attente sur le waypoint actuel
+            HandleWaiting(_transform);
+        }
+        else
+        {
+            // Gère le mouvement vers le waypoint actuel
+            HandleMovement(_transform);
+        }
+
+        
+        return Node.State.Running;
      
         
     }
@@ -88,7 +91,7 @@ public class ActionPatrolEnemi : ActionNode
         else
         {
             // Effectue la rotation progressivement vers le waypoint
-            transform.rotation = Quaternion.Lerp(transform.rotation, _toRot, Time.deltaTime * 2f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, _toRot, Time.deltaTime * _speed);
         }
     }
 

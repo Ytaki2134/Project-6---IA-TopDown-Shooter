@@ -16,11 +16,15 @@ public class BehaviourTreeRunner : MonoBehaviour
     [SerializeField]
     private GameObject _bulletPrefab;
 
-    private Movement _movement;
+    private Movement  _movement;
     // Start is called before the first frame update
     void Start()
     {
-       tree = tree.Clone();
+        _movement = GetComponent<Movement>();
+        _movement.SetSpeed(_speed);
+        _movement.SetRotationSpeed(_speed);
+
+        tree = tree.Clone();
         tree.blackboard.Set("targetGameObject", _targetGameObject);
         tree.blackboard.Set("waypoints", _waypoints);
 
@@ -28,7 +32,8 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("targetEnemi", _targetEnemi);
         tree.blackboard.Set("movement", _movement);
         tree.blackboard.Set("bulletPrefab", _bulletPrefab);
-     
+        tree.blackboard.Set("readyToMove", false);
+        tree.blackboard.Set("IsInDistance", false);
 
     }
 

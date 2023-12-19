@@ -9,6 +9,7 @@ public class ActionChase : ActionNode
     private float _speed;
     private GameObject _targetToMove;
     private GameObject _me;
+    private Movement _movement;
 
 
     protected override void OnStart()
@@ -17,6 +18,8 @@ public class ActionChase : ActionNode
         _me = base.blackboard.Get("targetGameObject") as GameObject;
         _dist = 5;
         _speed = (float)blackboard.Get("speed");
+        _movement = blackboard.Get("movement") as Movement;
+
     }
 
     protected override void OnStop()
@@ -28,19 +31,10 @@ public class ActionChase : ActionNode
     {
 
 
-        if (Vector2.Distance(_targetToMove.GetComponent<Transform>().position, _me.transform.position) < _dist) {
-
-            _me.GetComponent<Transform>().position = Vector2.MoveTowards(_me.GetComponent<Transform>().position, _targetToMove.GetComponent<Transform>().position
-                ,_speed * Time.deltaTime);
-            Vector2 direction = (_targetToMove.GetComponent<Transform>().position - _me.GetComponent<Transform>().position).normalized;
-            
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            _me.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle);
+       
+            blackboard.Set("speed",0.5f);
             return State.Running;
-        }
-        else
-        {
-            return State.Failure;
-        }
+
+       
     }
 }
