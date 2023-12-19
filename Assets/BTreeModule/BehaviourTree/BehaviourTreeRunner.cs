@@ -35,10 +35,6 @@ public class BehaviourTreeRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
         tree.Update();
-
     }
 }

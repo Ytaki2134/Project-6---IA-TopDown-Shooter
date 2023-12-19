@@ -107,7 +107,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8a81244dc65108147b2e62dee33a8912
-  position: {x: 186.99994, y: 90.12724}
+  position: {x: 186, y: 89}
   child: {fileID: -7944730761015178008}
 --- !u!114 &6947873239338587208
 MonoBehaviour:
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: RootNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   guid: 001ebd3546358314895e4ac5b29cdd77
-  position: {x: 254, y: -32.08}
+  position: {x: 185.32, y: -45.95996}
+  child: {fileID: 5725137832881907312}

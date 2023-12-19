@@ -6,7 +6,8 @@ using UnityEngine;
 // Le nœud racine est le point de départ de l'exécution de l'arbre comportemental.
 public class RootNode : Node
 {
-    private Node child;  // Le nœud enfant du nœud racine
+    [SerializeField]
+    protected Node child;  // Le nœud enfant du nœud racine
 
     // Propriété m_child
     // Permet d'accéder et de modifier le nœud enfant du nœud racine.
