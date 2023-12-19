@@ -746,6 +746,7 @@ MonoBehaviour:
   m_transformList:
   - {fileID: 570672341128253340}
   - {fileID: 2119177166419826634}
+  m_DeathClip: {fileID: 8300000, guid: 229d54a6861491f4fb3b7dc128cd1e90, type: 3}
 --- !u!61 &7450163294200336142
 BoxCollider2D:
   m_ObjectHideFlags: 0
