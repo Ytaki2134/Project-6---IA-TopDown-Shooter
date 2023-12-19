@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8825413164901326946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: aa5aab0535010b84c98b5f1553407eba
+  position: {x: 512.16, y: -166.93256}
+  child: {fileID: -2008298683894607741}
+  condition:
+    conditionType: 0
+    expectedValue: 0
+    threshold: 10
+--- !u!114 &-5628841278012535486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f2aa6fcf6e8c644b80e78f584da6dc, type: 3}
+  m_Name: ActionRotateAndTarget
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 49340abefbe1ec44891d80772c67e8f2
+  position: {x: 59.355, y: 381.9025}
+--- !u!114 &-5258070313511809740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 00a3c16af2e7a484cb9ff8e3be23f0db
+  position: {x: 195.77133, y: -135.90341}
+  child: {fileID: 5594829296215730519}
+  condition:
+    conditionType: 1
+    expectedValue: 1
+    threshold: 10
+--- !u!114 &-2872941753425433529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f652902957a87542a43637c6f85fc69, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 4e4781607fded7d43b317c16a531fc1e
+  position: {x: 370.77136, y: -304.9034}
+  children:
+  - {fileID: -5258070313511809740}
+  - {fileID: -8825413164901326946}
+--- !u!114 &-2008298683894607741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30750d042a9a461438131e2a205b7dd1, type: 3}
+  m_Name: DeployMinesNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 2c55c1f49b8009d4db925dbd0a2f9a86
+  position: {x: 532.239, y: -43.577488}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
+  m_Name: bb
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 5791007741913572796}
+  treeState: 0
+  nodes:
+  - {fileID: 5791007741913572796}
+  - {fileID: -5258070313511809740}
+  - {fileID: -2872941753425433529}
+  - {fileID: 5594829296215730519}
+  - {fileID: 6630653939143741796}
+  - {fileID: 6556517363166737331}
+  - {fileID: -5628841278012535486}
+  - {fileID: -8825413164901326946}
+  - {fileID: -2008298683894607741}
+--- !u!114 &5594829296215730519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af6f32edf71ea647bd56aee7dcfe462, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c1b6da96fc543ee4c80fbf6051b6c7ab
+  position: {x: 202.70772, y: -0.7713977}
+  child: {fileID: 6630653939143741796}
+--- !u!114 &5791007741913572796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66724ee97b1079244bda0609082442f5, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 721c46cef6df4824f98fa2e8ab5df492
+  position: {x: 381.77136, y: -438.90338}
+--- !u!114 &6556517363166737331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e740e06467d5641b9c63481eb4f426, type: 3}
+  m_Name: ActionPatrolEnemi
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: f909a18cf86e7dc408fec1ac02dcf487
+  position: {x: 289, y: 386}
+  _targetGameObject: {fileID: 0}
+--- !u!114 &6630653939143741796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae766dde401ba45ab4e71dfc2c9b56, type: 3}
+  m_Name: ParallelNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c96d3d81b88ff8745a1fef61e03fb367
+  position: {x: 199.63023, y: 156.07242}
+  children:
+  - {fileID: -5628841278012535486}
+  - {fileID: 6556517363166737331}

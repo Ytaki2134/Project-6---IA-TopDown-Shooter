@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionChase : ActionNode
+public class ChargeEnemyNode : ActionNode
 {
-
     private GameObject _enemy;
     private GameObject _tank;
-    private float _chaseDistance = 10f;
     private float _speed;
 
     protected override void OnStart()
@@ -15,11 +11,12 @@ public class ActionChase : ActionNode
         _enemy = blackboard.Get("targetEnemi") as GameObject;
         _tank = blackboard.Get("targetGameObject") as GameObject;
         _speed = (float)blackboard.Get("speed");
-
+        _speed *= 2; // Doubler la vitesse pour la charge
     }
 
     protected override void OnStop()
     {
+        _speed /= 2; // Remettre la vitesse à la normale
     }
 
     protected override State OnUpdate()
@@ -29,18 +26,9 @@ public class ActionChase : ActionNode
             return State.Failure;
         }
 
-        float distanceToEnemy = Vector2.Distance(_tank.transform.position, _enemy.transform.position);
-        if (distanceToEnemy <= _chaseDistance)
-        {
-            // Assez proche de l'ennemi
-            return State.Success;
-        }
-
-        // Se rapprocher de l'ennemi
+        // Se diriger directement vers l'ennemi
         Vector2 direction = (_enemy.transform.position - _tank.transform.position).normalized;
         _tank.transform.position += (Vector3)direction * _speed * Time.deltaTime;
         return State.Running;
-
-
     }
 }
