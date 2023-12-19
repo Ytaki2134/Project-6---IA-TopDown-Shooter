@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using static Unity.VisualScripting.Metadata;
+#endif
 
 public class ParallelNode : CompisiteNode
 {
