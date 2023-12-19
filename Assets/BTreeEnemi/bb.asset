@@ -222,11 +222,11 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 09750a0bdbafeed4994df905895a283c
-  position: {x: 0, y: 0}
-  child: {fileID: 0}
+  position: {x: -17.999916, y: 206}
+  child: {fileID: -8243795725627372111}
   condition:
     conditionType: 0
-    expectedValue: 0
+    expectedValue: 1
     threshold: 0
 --- !u!114 &221313266588666481
 MonoBehaviour:
@@ -330,6 +330,7 @@ MonoBehaviour:
   position: {x: -232.55025, y: 61.4227}
   children:
   - {fileID: -2704625019770367155}
+  - {fileID: 209706596733381150}
 --- !u!114 &5594829296215730519
 MonoBehaviour:
   m_ObjectHideFlags: 0
