@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private Camera m_camera;
-    [SerializeField] private CinemachineVirtualCamera m_Vcamera;
-    [SerializeField] private float m_MaxZoom = 18f;
-    [SerializeField] private float m_MinZoom = 8f;
-    [SerializeField] private Animator[] m_TrackAnimator = new Animator[2];
+    [SerializeField] private CinemachineVirtualCamera m_vCamera;
+    [SerializeField] private float m_maxZoom = 18f;
+    [SerializeField] private float m_minZoom = 8f;
+    [SerializeField] private AudioSource m_trackAudioSource;
+    [SerializeField] private Animator[] m_trackAnimator = new Animator[2];
     private PlayerInputs m_inputs;
     private Rigidbody2D m_rb;
-    private TankStatistics m_TankStatistics;
+    private TankStatistics m_tankStatistics;
     private Movement m_movement;
     private Gun m_gun;
 
@@ -20,7 +21,7 @@ public class PlayerControls : MonoBehaviour
     {
         m_inputs = new PlayerInputs();
         m_rb = GetComponent<Rigidbody2D>();
-        m_TankStatistics = GetComponent<TankStatistics>();
+        m_tankStatistics = GetComponent<TankStatistics>();
         m_movement = GetComponentInChildren<Movement>();
         m_gun = GetComponentInChildren<Gun>();
 
@@ -37,28 +38,36 @@ public class PlayerControls : MonoBehaviour
 
         m_inputs.Player.Move.performed += ctx =>
         {
-            m_movement.SetSpeed(m_TankStatistics.Speed);
-            m_movement.SetRotationSpeed(m_TankStatistics.RotationSpeed);
+            m_movement.SetSpeed(m_tankStatistics.Speed);
+            m_movement.SetRotationSpeed(m_tankStatistics.RotationSpeed);
             m_movement.SetCurrentMovement(ctx.ReadValue<Vector2>());
 
-            m_TrackAnimator[0].SetBool("Enable", true);
-            m_TrackAnimator[1].SetBool("Enable", true);
+            m_movement.SetMovementVolume(0.6f);
+            m_trackAudioSource.Play();
 
+            //will be moved to movement script
+            m_trackAnimator[0].SetBool("Enable", true);
+            m_trackAnimator[1].SetBool("Enable", true);
         };
         m_inputs.Player.Move.canceled += ctx =>
         {
             m_movement.SetSpeed(0f);
             m_movement.SetRotationSpeed(0f);
-            m_TrackAnimator[0].SetBool("Enable", false);
-            m_TrackAnimator[1].SetBool("Enable", false);
+
+            m_movement.SetMovementVolume(0.4f);
+            m_trackAudioSource.Stop();
+
+            //will be moved to movement script
+            m_trackAnimator[0].SetBool("Enable", false);
+            m_trackAnimator[1].SetBool("Enable", false);
         };
 
         // BRAKE
 
         m_inputs.Player.Brake.performed += ctx =>
         {
-            m_movement.SetBrakeSpeed(m_TankStatistics.BrakeSpeedMod);
-            m_movement.SetBrakeRotationSpeed(m_TankStatistics.BrakeRotationSpeedMod);
+            m_movement.SetBrakeSpeed(m_tankStatistics.BrakeSpeedMod);
+            m_movement.SetBrakeRotationSpeed(m_tankStatistics.BrakeRotationSpeedMod);
             m_rb.drag = 5f;
         };
 
@@ -80,12 +89,12 @@ public class PlayerControls : MonoBehaviour
 
         m_inputs.Player.Zoom.performed += ctx =>
         {
-            if (ctx.ReadValue<Vector2>().normalized.y < 0f && m_Vcamera.m_Lens.OrthographicSize <= m_MinZoom || ctx.ReadValue<Vector2>().normalized.y > 0f && m_Vcamera.m_Lens.OrthographicSize >= m_MaxZoom)
+            if (ctx.ReadValue<Vector2>().normalized.y < 0f && m_vCamera.m_Lens.OrthographicSize <= m_minZoom || ctx.ReadValue<Vector2>().normalized.y > 0f && m_vCamera.m_Lens.OrthographicSize >= m_maxZoom)
             {
                 return;
             }
 
-            m_Vcamera.m_Lens.OrthographicSize += ctx.ReadValue<Vector2>().normalized.y;
+            m_vCamera.m_Lens.OrthographicSize += ctx.ReadValue<Vector2>().normalized.y;
         };
 
         #endregion

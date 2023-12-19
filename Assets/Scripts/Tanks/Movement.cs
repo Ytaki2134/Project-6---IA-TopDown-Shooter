@@ -3,6 +3,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private GameObject m_Player;
+    private AudioSource m_audioSource;
 
     private Vector2 m_currentMovement;
     private Quaternion m_targetRotation;
@@ -13,6 +14,11 @@ public class Movement : MonoBehaviour
     private float m_rotationSpeed;
     private float m_brakeRotationSpeedMod;
 
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+    }
+
     public void Move()
     {
         //Rotate Sprite
@@ -21,6 +27,11 @@ public class Movement : MonoBehaviour
 
         //Move Player (forward only)
         m_Player.GetComponent<Rigidbody2D>().AddForce(transform.up * m_speed * m_brakeSpeedMod);
+    }
+
+    public void SetMovementVolume(float volume)
+    {
+        m_audioSource.volume = volume;
     }
 
     #region Setters

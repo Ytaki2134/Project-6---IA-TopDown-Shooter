@@ -5,6 +5,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform m_pivot;
     [SerializeField] private Transform m_gunEnd;
     [SerializeField] private Animator m_gunAnimator;
+    private AudioSource m_audioSource;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
@@ -12,6 +13,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
+        m_audioSource = GetComponent<AudioSource>();
         m_stats = GetComponent<GunStatistics>();
     }
 
@@ -26,6 +28,7 @@ public class Gun : MonoBehaviour
         temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
         temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
         m_gunAnimator.SetBool("Shoot", true);
+        m_audioSource.Play();
     }
 
     private void FollowTargetPosition()
