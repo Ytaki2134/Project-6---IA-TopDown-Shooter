@@ -119,4 +119,9 @@ public class PlayerControls : MonoBehaviour
     {
         m_inputs.Disable();
     }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 }
