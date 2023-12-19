@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BehaviourTreeRunner : MonoBehaviour
@@ -48,6 +49,8 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("shield", shieldComponent);
         tree.blackboard.Set("health", _tankStat.Health);
         tree.blackboard.Set("minePrefab", _minePrefab);
+        tree.blackboard.Set("angleOffset", 0f);
+        tree.blackboard.Set("rotSpeed", 30f);
 
 
     }

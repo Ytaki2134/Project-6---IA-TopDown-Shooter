@@ -29,12 +29,12 @@ public class ActionChase : ActionNode
             return State.Failure;
         }
 
-        float distanceToEnemy = Vector2.Distance(_tank.transform.position, _enemy.transform.position);
-        if (distanceToEnemy <= _chaseDistance)
-        {
-            // Assez proche de l'ennemi
-            return State.Success;
-        }
+       //float distanceToEnemy = Vector2.Distance(_tank.transform.position, _enemy.transform.position);
+       //if (distanceToEnemy <= _chaseDistance)
+       //{
+       //    // Assez proche de l'ennemi
+       //    return State.Success;
+       //}
 
         // Se rapprocher de l'ennemi
         Vector2 direction = (_enemy.transform.position - _tank.transform.position).normalized;

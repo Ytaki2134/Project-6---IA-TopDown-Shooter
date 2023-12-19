@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
     public void ResetCanonPosition(Transform canonTransform, GameObject me)
     {
         canonTransform.rotation = Quaternion.Lerp(canonTransform.rotation, me.GetComponent<Transform>().rotation, Time.deltaTime * m_rotationSpeed);
+
     }
 
     public void RotateCanonTowardsTarget(Transform canonTransform, Vector3 targetPosition, Blackboard blackboard, float alignmentThreshold)
@@ -44,6 +45,7 @@ public class Movement : MonoBehaviour
         {
             Quaternion toRot = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
             canonTransform.rotation = Quaternion.Lerp(canonTransform.rotation, toRot, Time.deltaTime * m_rotationSpeed);
+
 
             float angleDiff = Quaternion.Angle(canonTransform.rotation, toRot);
             blackboard.Set("readyToShoot", angleDiff <= alignmentThreshold);
@@ -55,6 +57,7 @@ public class Movement : MonoBehaviour
     {
         // Mise à jour de l'angle d'oscillation
         angleOffset += rotSpeed * Time.deltaTime;
+
         if (angleOffset > oscillationAngle || angleOffset < -oscillationAngle)
         {
             rotSpeed = -rotSpeed; // Inverser la direction de l'oscillation
