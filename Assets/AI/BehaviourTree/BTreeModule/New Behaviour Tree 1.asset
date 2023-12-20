@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
+  m_Name: New Behaviour Tree 1
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 7649808156399943847}
+  treeState: 0
+  nodes:
+  - {fileID: 7649808156399943847}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}
+--- !u!114 &7649808156399943847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66724ee97b1079244bda0609082442f5, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8086bcdbc63053e45b95d0bdd83da677
+  position: {x: 471.92, y: 60.120003}
+  blackboard:
+    _targetGameObject: {fileID: 0}
+    _speed: 0
+    _waypoints: []
+    _targetToMove: {fileID: 0}

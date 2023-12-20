@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8200861923066468489}
   - component: {fileID: 1359978590039252131}
   - component: {fileID: -8755456110837060607}
+  - component: {fileID: -5565951936614201055}
   m_Layer: 0
   m_Name: Small Bullet
   m_TagString: Untagged
@@ -30,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.45, z: 0.6}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.59999996, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,3 +172,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38712454, y: 0.33}
   m_EdgeRadius: 0
+--- !u!95 &-5565951936614201055
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3275306726565939084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2b37aa125fefd24db47e7e1fc8f92ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
