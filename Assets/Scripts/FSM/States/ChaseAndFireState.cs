@@ -31,7 +31,7 @@ namespace Assets.Scripts.FSM.States
             {
                 Debug.Log("ENTERED CHASE FIRE STATE");
 
-                if (_canFire == true || _distance <= 1.5f)
+                if (_canFire == false || _distance <= 1.5f)
                 {
                     Debug.Log("ChaseFireState: failed");
                     CheckWeapon();
