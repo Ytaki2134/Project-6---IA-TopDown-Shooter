@@ -1,5 +1,7 @@
 
+using JetBrains.Annotations;
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -10,7 +12,8 @@ public enum ConditionType
     CanUsePatternOne,
     ShieldGreaterThanZero,
     IsInDistanceAndView,
-    HasBeenHit
+    HasBeenHit,
+    IsNearObstacle
 }
 
 
@@ -20,14 +23,17 @@ public class Condition
     public ConditionType conditionType;
     public bool expectedValue; // La valeur attendue pour que la condition soit considérée comme vraie
     public float threshold;
+
     public bool Evaluate(Blackboard blackboard)
     {
+        GameObject _tank = (blackboard.Get("targetGameObject") as GameObject);
+        GameObject _enemi = (blackboard.Get("targetEnemi") as GameObject);
         // Vérifiez la condition en utilisant le type et la valeur du blackboard
         switch (conditionType)
         {
             case ConditionType.IsInDistance:
                 {
-                    float dist = Vector2.Distance((blackboard.Get("targetGameObject") as GameObject).transform.position, (blackboard.Get("targetEnemi") as GameObject).transform.position);
+                    float dist = Vector2.Distance(_tank.transform.position, _enemi.transform.position);
                     bool hasAggro = (bool)blackboard.Get("hasAggro");
                     float aggroStartDistance = (float)blackboard.Get("aggroStartDistance");
                     float aggroEndDistance = (float)blackboard.Get("aggroEndDistance");
@@ -71,6 +77,30 @@ public class Condition
                 bool hasBeenHit = (bool)blackboard.Get("hasBeenHit");
                 return hasBeenHit == expectedValue;
 
+            case ConditionType.IsNearObstacle:
+                {
+                    Vector2 backwardDirection = -_tank.transform.up.normalized;
+                    float raycastDistance = 10f;
+                    float raycastStartOffset = 1.5f; // Un petit décalage pour éviter de détecter son propre collider
+
+                    // Point de départ du raycast, décalé légèrement vers l'arrière pour éviter le collider du tank
+                    Vector2 raycastStartPoint = _tank.transform.position + (Vector3)(backwardDirection * raycastStartOffset);
+
+                    RaycastHit2D hit = Physics2D.Raycast(raycastStartPoint, backwardDirection, raycastDistance);
+
+
+                    if (hit.collider != null)
+                    {
+                        blackboard.Set("isNearObstacle", true);
+                        Debug.Log("Trouvé");
+                    }
+                    else
+                    {
+                        blackboard.Set("isNearObstacle", false);
+                    }
+                    bool isNearObstacle = (bool)blackboard.Get("isNearObstacle");
+                    return isNearObstacle == expectedValue;
+                }
 
             default:
                 throw new ArgumentOutOfRangeException();
@@ -78,4 +108,7 @@ public class Condition
         }
    
     }
+
+   
+
 }

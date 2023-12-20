@@ -2,75 +2,83 @@ using UnityEngine;
 
 public class ActionFeignedRetreat : ActionNode
 {
-    private GameObject _enemy;
     private GameObject _tank;
-
     private float retreatSpeed;
     private float retreatDuration;
     private float timer;
-    private Vector2 startRetreatPosition;
-    private float retreatMaxDistance;
+    private bool isRetreating = true;
+    private bool hasCheckedSides = false;
+    private float rotationDuration = 2f; // Durée de la rotation
+    private float rotationTimer = 0f;
+
     protected override void OnStart()
     {
-        _enemy = blackboard.Get<GameObject>("targetEnemi");
         _tank = blackboard.Get<GameObject>("targetGameObject");
-        retreatSpeed = blackboard.Get<float>("speed") *2;
-        retreatDuration = 20f;
-
+        retreatSpeed = blackboard.Get<float>("speed") * 2;
+        retreatDuration = 3f;
         timer = 0f;
+        rotationTimer = 0f;
     }
+
     protected override void OnStop()
     {
-
     }
+
     protected override State OnUpdate()
     {
-        if (IsRetreatTimeOver())
+        // Gestion de la retraite
+        if (timer < retreatDuration && isRetreating)
         {
-            return State.Success; // Retraite terminée, se préparer à attaquer
+            Vector2 retreatDirection = -(_tank.transform.up).normalized;
+            _tank.transform.position += (Vector3)retreatDirection * retreatSpeed * Time.deltaTime;
+
+            // Détecter les obstacles
+            if (!hasCheckedSides && CheckForObstacle())
+            {
+                isRetreating = false;
+                hasCheckedSides = true;
+            }
         }
-
-        Vector2 direction = CalculateRetreatDirection();
-        UpdateTankPosition(direction);
-
-        if (IsMaxRetreatDistanceReached())
+        else if (hasCheckedSides && rotationTimer < rotationDuration)
         {
-            return State.Success; // Distance maximale atteinte, arrêter la retraite
+            // Effectuer la rotation
+            RotateTank();
+            rotationTimer += Time.deltaTime;
+        }
+        else
+        {
+            // Réinitialisation pour la prochaine activation
+            ResetNodeState();
+            return State.Success;
         }
 
         timer += Time.deltaTime;
         return State.Running;
     }
 
-    private bool IsRetreatTimeOver()
+    private bool CheckForObstacle()
     {
-        return timer >= retreatDuration;
+        Vector2 backwardDirection = -_tank.transform.up.normalized;
+        float raycastDistance = 5f;
+        RaycastHit2D hit = Physics2D.Raycast(_tank.transform.position, backwardDirection, raycastDistance);
+
+        return hit.collider != null;
     }
 
-    private Vector2 CalculateRetreatDirection()
+    private void RotateTank()
     {
-        Vector2 currentPos = _tank.transform.position;
-        Vector2 enemyPos = _enemy.transform.position;
-        Vector2 direction = (currentPos - enemyPos).normalized;
-
-        if (Physics2D.Raycast(currentPos, direction, 1.0f).collider != null)
-        {
-            float turnAngle = Random.value > 0.5f ? 90 : -90;
-            direction = Quaternion.Euler(0, 0, turnAngle) * direction;
-        }
-
-        return direction;
+        // Rotation fixe vers la droite de 90 degrés
+        float rotationAngle = 90f;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, _tank.transform.eulerAngles.z + rotationAngle);
+        _tank.transform.rotation = Quaternion.Lerp(_tank.transform.rotation, targetRotation, Time.deltaTime);
     }
 
-    private void UpdateTankPosition(Vector2 direction)
+    private void ResetNodeState()
     {
-        Vector2 currentPos = _tank.transform.position;
-        _tank.transform.position = currentPos + direction * retreatSpeed * Time.deltaTime;
+        isRetreating = true;
+        hasCheckedSides = false;
+        timer = 0f;
+        rotationTimer = 0f;
+        // Réinitialiser d'autres états si nécessaire
     }
-
-    private bool IsMaxRetreatDistanceReached()
-    {
-        return Vector2.Distance(startRetreatPosition, _tank.transform.position) > retreatMaxDistance;
-    }
-
 }
