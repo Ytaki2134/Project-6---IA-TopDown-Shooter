@@ -1,3 +1,5 @@
+using Assets.Scripts.NPCCode;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Assets.Scripts.FSM.States
@@ -8,32 +10,43 @@ namespace Assets.Scripts.FSM.States
         bool _canFire;
         float _distance;
         private Gun m_gun;
+        private quaternion m_target;
+
 
         public override void OnEnable()
         {
             base.OnEnable();
             _canFire = false;
-            _distance = Vector2.Distance(_npc.transform.position, .transform.position);
             StateType = FSMStateType.CHASE_AND_FIRE;
         }
 
-        public override bool EnterState()
+
+        public override bool EnterState(FiniteStateMachine context)
         {
-            EnteredState = false;   
-            if (base.EnterState())
+            if (context.Player != null)
+            {
+                _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
+            }
+
+            EnteredState = false;
+            if (base.EnterState(context))
             {
                 Debug.Log("ENTERED CHASE FIRE STATE");
 
-                if (_canFire == true || _distance <=1.5f)
+                if (_canFire == true || _distance <= 1.5f)
                 {
                     Debug.Log("ChaseFireState: failed");
                     CheckWeapon();
                 }
+                else
+                {
+                    EnteredState = true;
+                }
             }
-            return base.EnterState();
+            return EnteredState;
         }
 
-        public override void UpdateState()
+        public override void UpdateState(FiniteStateMachine context)
         {
             if (EnteredState)
             {
@@ -43,7 +56,7 @@ namespace Assets.Scripts.FSM.States
 
                     if (_distance <= 1.5f)
                     {
-                        m_gun.SetTargetPosition();
+                        m_gun.SetTargetPosition(context.Player.transform.position);
                         m_gun.FollowTargetPosition();
                         m_gun.Fire();
                     }
@@ -53,10 +66,10 @@ namespace Assets.Scripts.FSM.States
 
         public void CheckWeapon()
         {
-            if(m_gun != null)
+            if (m_gun != null)
             {
                 _canFire = true;
             }
-        } 
+        }
     }
 }

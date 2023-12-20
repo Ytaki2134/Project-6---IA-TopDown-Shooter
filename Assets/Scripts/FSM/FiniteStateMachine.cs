@@ -23,6 +23,7 @@ namespace Assets.Scripts.FSM
             _fsmStates = new Dictionary<FSMStateType, AbstractFSMState>();
 
             NPC npc = this.GetComponent<NPC>();
+            player = npc.GetPlayer();
 
             foreach (AbstractFSMState state in _validStates)
             {
