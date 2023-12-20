@@ -39,7 +39,7 @@ MonoBehaviour:
   position: {x: -160.4277, y: 319.4348}
   children:
   - {fileID: -7508699645741066747}
-  - {fileID: 221313266588666481}
+  - {fileID: -2955354521886314152}
   - {fileID: 6258578684720421218}
 --- !u!114 &-7508699645741066747
 MonoBehaviour:
@@ -56,7 +56,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3773f6dbb20888e4fb01d14ba551123c
-  position: {x: -252.42778, y: 470.4348}
+  position: {x: -564.068, y: 455.00006}
 --- !u!114 &-6804005190992445993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +204,27 @@ MonoBehaviour:
   position: {x: 696.04767, y: 833.1556}
   _bulletPrefab: {fileID: 0}
   bulletSpeed: 10
+--- !u!114 &-2955354521886314152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 28d8fb5665469aa43ae372aa81b6ecac
+  position: {x: -39.74246, y: 484.0325}
+  child: {fileID: -2520060902603383311}
+  condition:
+    conditionType: 0
+    expectedValue: 1
+    threshold: 20
 --- !u!114 &-2872941753425433529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +244,22 @@ MonoBehaviour:
   children:
   - {fileID: -5258070313511809740}
   - {fileID: -8825413164901326946}
+--- !u!114 &-2520060902603383311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc6809d9059dca47ae5ee5b91ec2a70, type: 3}
+  m_Name: ActionChase
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e9b9fc66d7acd7c468104ed77cad1658
+  position: {x: -41.791252, y: 619.3956}
 --- !u!114 &-2008298683894607741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +337,10 @@ MonoBehaviour:
   - {fileID: -6804005190992445993}
   - {fileID: 4436425571605636286}
   - {fileID: -1182013637966858637}
+  - {fileID: 1173408760634413246}
+  - {fileID: 250295609186696515}
+  - {fileID: -2955354521886314152}
+  - {fileID: -2520060902603383311}
 --- !u!114 &209706596733381150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +377,28 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8cdc861e57cdfcb4085ed8e791f3bcac
-  position: {x: -77.42772, y: 461.43478}
+  position: {x: -272.41547, y: 613.2704}
+--- !u!114 &250295609186696515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: b425da8ee52ec034892ec1c06e074f75
+  position: {x: -242, y: 476}
+  child: {fileID: 221313266588666481}
+  condition:
+    conditionType: 7
+    expectedValue: 0
+    threshold: 20
 --- !u!114 &844466637960081465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +474,23 @@ MonoBehaviour:
   position: {x: 1131.2207, y: 79.123245}
   children:
   - {fileID: 7826546732425768762}
+--- !u!114 &1173408760634413246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f652902957a87542a43637c6f85fc69, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8c3d1b156da9cc649817a3a37cfcc026
+  position: {x: 0, y: 0}
+  children: []
 --- !u!114 &2098491222730285251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,7 +652,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 44cb7639f051c2648bdc4ba37fdd02ec
-  position: {x: 105.5722, y: 478.4348}
+  position: {x: 160.87675, y: 464.04175}
   _bulletPrefab: {fileID: 0}
   bulletSpeed: 10
 --- !u!114 &7826546732425768762

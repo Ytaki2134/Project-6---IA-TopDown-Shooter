@@ -1,6 +1,7 @@
 
 using JetBrains.Annotations;
 using System;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -13,7 +14,8 @@ public enum ConditionType
     ShieldGreaterThanZero,
     IsInDistanceAndView,
     HasBeenHit,
-    IsNearObstacle
+    IsNearObstacle,
+    TooNearFromBoss,
 }
 
 
@@ -36,7 +38,7 @@ public class Condition
                     float dist = Vector2.Distance(_tank.transform.position, _enemi.transform.position);
                     bool hasAggro = (bool)blackboard.Get("hasAggro");
                     float aggroStartDistance = (float)blackboard.Get("aggroStartDistance");
-                    float aggroEndDistance = (float)blackboard.Get("aggroEndDistance");
+                   // float aggroEndDistance = (float)blackboard.Get("aggroEndDistance");
                     
                     if (!hasAggro && dist <= aggroStartDistance)
                     {
@@ -51,7 +53,15 @@ public class Condition
 
                     return hasAggro == expectedValue; // Maintenir l'état actuel de l'aggro
                 }
+            case ConditionType.TooNearFromBoss:
+                {
+                    float dist = Vector2.Distance(_tank.transform.position, _enemi.transform.position);
+                    Debug.Log(dist + " " + (dist < threshold).ToString() +" "  + expectedValue+" "+ (dist < threshold == expectedValue).ToString());
+              
+                    blackboard.Set("tooNearFromBoss", dist < threshold == expectedValue);
 
+                    return dist < threshold == expectedValue;
+                }
             case ConditionType.HealthCheck:
                 float health = (float)blackboard.Get("health");
                 return health > this.threshold == this.expectedValue; // Use the instance's properties
