@@ -61,7 +61,7 @@ namespace Assets.Scripts.FSM
             {
                 if (_traveling)
                 {
-                    //Debug.Log("UPDATING IDLE STATE");
+                    //Debug.Log("UPDATING PATROL STATE");
                     float distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
                     if (distance <= 1.5f)
                     {
