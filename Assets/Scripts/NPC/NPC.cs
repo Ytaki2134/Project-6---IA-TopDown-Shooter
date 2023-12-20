@@ -34,5 +34,10 @@ namespace Assets.Scripts.NPCCode
                 return _patrolPoints;
             }
         }
+
+        public GameObject GetPlayer()
+        {
+            return _player;
+        }
     }
 }
