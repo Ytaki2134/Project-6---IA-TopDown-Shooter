@@ -93,7 +93,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e4cecfda1a29f2c47bb21c929f074f1a
-  position: {x: 1257, y: 460}
+  position: {x: 1212, y: 477.12524}
   child: {fileID: -4944813529836547088}
   condition:
     conditionType: 5
@@ -416,7 +416,6 @@ MonoBehaviour:
   guid: 26dee1da7cfc85a4694c7799d4ad53cb
   position: {x: 989.00006, y: 339.00003}
   children:
-  - {fileID: -5338848750333538548}
   - {fileID: 926909781816725132}
 --- !u!114 &3374903389994889900
 MonoBehaviour:
