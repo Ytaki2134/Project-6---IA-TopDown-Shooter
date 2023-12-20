@@ -10,6 +10,7 @@ public class ActionFeignedRetreat : ActionNode
     private bool hasCheckedSides = false;
     private float rotationDuration = 2f; // Durée de la rotation
     private float rotationTimer = 0f;
+    private bool isRotating = false; // Nouvelle variable pour suivre l'état de la rotation
 
     protected override void OnStart()
     {
@@ -18,6 +19,7 @@ public class ActionFeignedRetreat : ActionNode
         retreatDuration = 3f;
         timer = 0f;
         rotationTimer = 0f;
+        isRotating = false;
     }
 
     protected override void OnStop()
@@ -39,18 +41,25 @@ public class ActionFeignedRetreat : ActionNode
                 hasCheckedSides = true;
             }
         }
-        else if (hasCheckedSides && rotationTimer < rotationDuration)
+        else if (hasCheckedSides && !isRotating)
         {
-            // Effectuer la rotation
+            // Démarrer la rotation
+            isRotating = true;
+            rotationTimer = 0f;
+        }
+        else if (isRotating && rotationTimer < rotationDuration)
+        {
+            // Continuer la rotation
             RotateTank();
             rotationTimer += Time.deltaTime;
         }
-        else
+        else if (isRotating)
         {
-            // Réinitialisation pour la prochaine activation
-            ResetNodeState();
-            return State.Success;
+            // Fin de la rotation
+            isRotating = false;
+            isRetreating = true; // Permettre au tank de reprendre la retraite
         }
+
 
         timer += Time.deltaTime;
         return State.Running;
@@ -73,12 +82,5 @@ public class ActionFeignedRetreat : ActionNode
         _tank.transform.rotation = Quaternion.Lerp(_tank.transform.rotation, targetRotation, Time.deltaTime);
     }
 
-    private void ResetNodeState()
-    {
-        isRetreating = true;
-        hasCheckedSides = false;
-        timer = 0f;
-        rotationTimer = 0f;
-        // Réinitialiser d'autres états si nécessaire
-    }
+
 }

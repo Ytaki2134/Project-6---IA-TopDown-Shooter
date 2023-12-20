@@ -32,10 +32,15 @@ public class ActionChase : ActionNode
 
 
 
+        //Debug.Log(Vector2.Distance(_enemy.transform.position, _tank.transform.position));
         if(Vector2.Distance(_enemy.transform.position, _tank.transform.position)> blackboard.Get<float>("aggroStartDistance")/2f){
-
-            _movement.RotateAndMoveTowards(_tank.transform, _enemy.transform);
+            _movement.RotateAndMoveTowards(_tank.transform, _enemy.transform, 1.5f,7f, blackboard);
             return State.Running;
+        }
+        else
+        {
+            blackboard.Set("hasChosenAvoidanceDirection", false);
+
         }
         return State.Running;
       

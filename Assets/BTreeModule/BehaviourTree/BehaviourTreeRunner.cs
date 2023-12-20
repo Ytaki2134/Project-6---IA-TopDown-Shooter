@@ -52,10 +52,14 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("angleOffset", 0f);
         tree.blackboard.Set("rotSpeed", 30f);
         tree.blackboard.Set("hasAggro", false);
-        tree.blackboard.Set("aggroStartDistance", 100f);
+        tree.blackboard.Set("aggroStartDistance", 40f);
         tree.blackboard.Set("aggroEndDistance", 200f);
-        tree.blackboard.Set("hasBeenHit", true);
+        tree.blackboard.Set("hasBeenHit", false);
         tree.blackboard.Set("isNearObstacle", false);
+        tree.blackboard.Set("hasChosenAvoidanceDirection", false);
+        tree.blackboard.Set("isObstacleDetected", false);
+        tree.blackboard.Set("lastAvoidanceTime", 0f);
+
 
 
     }

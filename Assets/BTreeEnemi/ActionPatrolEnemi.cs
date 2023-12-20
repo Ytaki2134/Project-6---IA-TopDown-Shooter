@@ -36,7 +36,7 @@ public class ActionPatrolEnemi : ActionNode
         Transform waypointTransform = _waypoints[_currentWaypointIndex].GetComponent<Transform>();
 
         // Effectuer la rotation et le mouvement simultanément
-        _movement.RotateAndMoveTowards(agentTransform, waypointTransform);
+        _movement.RotateAndMoveTowards(agentTransform, waypointTransform, 1.5f,7f, blackboard);
 
         // Vérifie si le tank est proche du waypoint
         if (Vector2.Distance(agentTransform.position, waypointTransform.position) < 0.01f)

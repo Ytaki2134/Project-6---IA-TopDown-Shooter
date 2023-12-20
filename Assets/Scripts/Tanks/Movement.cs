@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -70,15 +71,56 @@ public class Movement : MonoBehaviour
         blackboard.Set("rotSpeed", rotSpeed);
 
     }
+    private Vector2 avoidanceDirection;
+    private float avoidanceCooldown = 1f; // Temps en secondes avant de pouvoir changer à nouveau la direction d'évitement
 
-    public void RotateAndMoveTowards(Transform agentTransform, Transform waypointTransform)
+    public void RotateAndMoveTowards(Transform agentTransform, Transform waypointTransform, float raycastOffset, float raycastDistance, Blackboard blackboard)
     {
+        float lastAvoidanceTime = blackboard.Get<float>("lastAvoidanceTime");
         Vector2 direction = (waypointTransform.position - agentTransform.position).normalized;
         Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
 
-        agentTransform.rotation = Quaternion.Lerp(agentTransform.rotation, targetRotation, Time.deltaTime * m_rotationSpeed);
-        agentTransform.position = Vector2.MoveTowards(agentTransform.position, waypointTransform.position, m_speed * Time.deltaTime);
+        Vector2 raycastStartPoint = agentTransform.position + (Vector3)(direction * raycastOffset);
+        RaycastHit2D hit = Physics2D.Raycast(raycastStartPoint, direction, raycastDistance);
+
+        bool isObstacleDetected = hit.collider != null && hit.collider.gameObject != agentTransform.gameObject;
+        blackboard.Set("isObstacleDetected", isObstacleDetected);
+
+        if (isObstacleDetected && Time.time - lastAvoidanceTime > avoidanceCooldown)
+        {
+            Debug.Log("Obstable");
+            if (!blackboard.Get<bool>("hasChosenAvoidanceDirection"))
+            {
+                Debug.Log("Direcs");
+
+                bool isObstacleOnRight = Vector3.Cross(direction, hit.point - (Vector2)agentTransform.position).z < 0;
+                float avoidanceAngle = isObstacleOnRight ? -90 : 90;
+                avoidanceDirection = Quaternion.Euler(0, 0, avoidanceAngle) * direction;
+                blackboard.Set("hasChosenAvoidanceDirection", true);
+
+                lastAvoidanceTime = Time.time;
+                blackboard.Set("lastAvoidanceTime", lastAvoidanceTime);
+
+                // Appliquer directement la rotation cible pour un changement rapide de direction
+                targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-avoidanceDirection.x, avoidanceDirection.y) * Mathf.Rad2Deg);
+                agentTransform.rotation = targetRotation;
+            }
+        }
+        else if (blackboard.Get<bool>("hasChosenAvoidanceDirection") && !blackboard.Get<bool>("isObstacleDetected"))
+        {
+            blackboard.Set("hasChosenAvoidanceDirection", false);
+        }
+        else
+        {
+            // Appliquer une rotation progressive vers la direction cible
+            agentTransform.rotation = Quaternion.Lerp(agentTransform.rotation, targetRotation, Time.deltaTime * m_rotationSpeed);
+        }
+
+        agentTransform.position = Vector2.MoveTowards(agentTransform.position, (Vector2)agentTransform.position + direction, m_speed * Time.deltaTime);
     }
+
+
+
     #region Setters
 
     public void SetCurrentMovement(Vector2 currentMovement)

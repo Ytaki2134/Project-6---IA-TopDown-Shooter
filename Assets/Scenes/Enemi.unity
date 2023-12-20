@@ -455,7 +455,7 @@ MonoBehaviour:
   BrakeSpeedMod: 0.9
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5
-  Health: 7
+  Health: 20
 --- !u!61 &673682487
 BoxCollider2D:
   m_ObjectHideFlags: 0

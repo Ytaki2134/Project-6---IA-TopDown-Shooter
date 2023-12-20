@@ -72,7 +72,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0f4d72dcc54a4964892a0dc3bea36a9b
-  position: {x: 1280.5503, y: 711.7001}
+  position: {x: 1362.4583, y: 859.9204}
 --- !u!114 &-6052591224042062127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 191638640058f034a834c4c9bb8abdbd
-  position: {x: 1614.4153, y: 67.804825}
+  position: {x: 1758.4707, y: -296.40283}
   child: {fileID: 844466637960081465}
   condition:
     conditionType: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e4cecfda1a29f2c47bb21c929f074f1a
-  position: {x: 989, y: 434}
+  position: {x: 1109.7369, y: 771.6377}
   child: {fileID: -4944813529836547088}
   condition:
     conditionType: 5
@@ -151,7 +151,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 17e8f8d9fd02bf8488aadcf35aadb82f
-  position: {x: 967.7331, y: 293.58762}
+  position: {x: 1075.7369, y: 647.6377}
   children:
   - {fileID: -5338848750333538548}
 --- !u!114 &-4944813529836547088
@@ -169,7 +169,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6fa05cdf15552de4f9182017e7b345e1
-  position: {x: 986, y: 594.32}
+  position: {x: 1099.7372, y: 893.6377}
 --- !u!114 &-4907590980937814569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 33083643ac0c9ae489159a1ac7da9c48
-  position: {x: 450, y: 643}
+  position: {x: 374.04767, y: 817.1555}
 --- !u!114 &-3102847990474412881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6f59f8d441e1ce34e85fc530c7424340
-  position: {x: 772, y: 659}
+  position: {x: 696.04767, y: 833.1556}
   _bulletPrefab: {fileID: 0}
   bulletSpeed: 10
 --- !u!114 &-2872941753425433529
@@ -239,6 +239,22 @@ MonoBehaviour:
   started: 0
   guid: 2c55c1f49b8009d4db925dbd0a2f9a86
   position: {x: 1597, y: 588}
+--- !u!114 &-1182013637966858637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c025da5c2d1cded4a99a137d43bb323b, type: 3}
+  m_Name: EnableShieldNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d1400fdbc81a4c9448a62a4536ef4f9b
+  position: {x: 278.7371, y: 649.26953}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +298,8 @@ MonoBehaviour:
   - {fileID: -5164928560319918731}
   - {fileID: 4588843815471522431}
   - {fileID: -6804005190992445993}
+  - {fileID: 4436425571605636286}
+  - {fileID: -1182013637966858637}
 --- !u!114 &209706596733381150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +315,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 09750a0bdbafeed4994df905895a283c
-  position: {x: -227.42783, y: 202.43472}
+  position: {x: -196.26292, y: 187.26288}
   child: {fileID: -8243795725627372111}
   condition:
     conditionType: 0
@@ -334,7 +352,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e5fbc3a7392a371428d0bea96870386d
-  position: {x: 1653.4153, y: 198.80482}
+  position: {x: 1797.4706, y: -165.4028}
 --- !u!114 &895799602966596057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +368,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a900e5655f53a4b4aac9a3cffe4e1387
-  position: {x: 616, y: 520.50006}
+  position: {x: 540.0477, y: 695.1555}
   children:
   - {fileID: -4907590980937814569}
   - {fileID: 2098491222730285251}
@@ -370,7 +388,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d4b273baefe430a498e1eafd692515ca
-  position: {x: 697.0001, y: 417}
+  position: {x: 621.0477, y: 591.1555}
   child: {fileID: 895799602966596057}
   condition:
     conditionType: 5
@@ -409,7 +427,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: fef5545a6ce15b841930fdee2084553a
-  position: {x: 608, y: 651}
+  position: {x: 532.04767, y: 825.1556}
 --- !u!114 &2401133032313590111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,10 +443,10 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 26dee1da7cfc85a4694c7799d4ad53cb
-  position: {x: 918.35614, y: -23.08971}
+  position: {x: 721.04767, y: 426.15558}
   children:
+  - {fileID: 4436425571605636286}
   - {fileID: 926909781816725132}
-  - {fileID: -5164928560319918731}
 --- !u!114 &3374903389994889900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +464,27 @@ MonoBehaviour:
   guid: 101ec58b187d5c149be483ae7f0d242f
   position: {x: 1112.2208, y: -52.876705}
   child: {fileID: 1007484900098241847}
+--- !u!114 &4436425571605636286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: a1da0af50ba90fc4cacfc1d7eae5fe20
+  position: {x: 360.749, y: 525.251}
+  child: {fileID: -1182013637966858637}
+  condition:
+    conditionType: 3
+    expectedValue: 1
+    threshold: 0
 --- !u!114 &4588843815471522431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,7 +500,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 43b516d816569f74a99fa0180bb4da4d
-  position: {x: 1275.5502, y: 589.7001}
+  position: {x: 1357.4583, y: 737.9205}
   child: {fileID: -6804005190992445993}
   condition:
     conditionType: 6
