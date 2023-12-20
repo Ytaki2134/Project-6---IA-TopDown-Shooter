@@ -10,8 +10,6 @@ namespace Assets.Scripts.FSM.States
         bool _canFire;
         float _distance;
         private Gun m_gun;
-        private quaternion m_target;
-
 
         public override void OnEnable()
         {
