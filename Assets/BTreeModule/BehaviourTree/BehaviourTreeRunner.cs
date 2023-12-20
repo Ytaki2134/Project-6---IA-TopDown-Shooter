@@ -11,8 +11,6 @@ public class BehaviourTreeRunner : MonoBehaviour
     [SerializeReference]
     public GameObject _targetEnemi;
     [SerializeField]
-    private float _speed;
-    [SerializeField]
     private GameObject[] _waypoints;
     [SerializeField]
     private GameObject _bulletPrefab;
@@ -60,15 +58,12 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("checkObstacleCooldown", 20f);
 
 
+
+
+
+
         tree.blackboard.Set("aggroEndDistance", 200f);
         tree.blackboard.Set("hasBeenHit", false);
-
-
-
-
-
-
-
         tree.blackboard.Set("isNearObstacle", false);
         tree.blackboard.Set("hasChosenAvoidanceDirection", false);
         tree.blackboard.Set("isObstacleDetected", false);

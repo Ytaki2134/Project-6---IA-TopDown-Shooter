@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
-  m_Name: bb
+  m_Name: Alpha
   m_EditorClassIdentifier: 
   rootNode: {fileID: 5791007741913572796}
   treeState: 0
