@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Gun : MonoBehaviour
 {
@@ -24,9 +26,27 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
-        GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
-        temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
-        temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+        GameObject temp;
+        switch (m_stats.BulletType.name)
+        {
+            case "SpreadShot Bullet":
+                float AngleDif = 120f;
+                for (int i = 0; i < 5; i++)
+                {
+                    temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, AngleDif));
+                    temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                    AngleDif -= 15f;
+                }
+                break;
+
+            case "Homing Bullet":
+                break;
+
+            default:
+                temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
+                temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                break;
+        }
         m_gunAnimator.SetBool("Shoot", true);
         m_audioSource.Play();
     }
