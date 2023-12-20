@@ -9,7 +9,8 @@ public enum ConditionType
     HealthCheck,
     CanUsePatternOne,
     ShieldGreaterThanZero,
-    IsInDistanceAndView, 
+    IsInDistanceAndView,
+    HasBeenHit
 }
 
 
@@ -66,24 +67,10 @@ public class Condition
                         return false;
                     }
                 }
-            case ConditionType.IsInDistanceAndView:
-                {
-                    GameObject targetGameObject = blackboard.Get<GameObject>("targetGameObject");
-                    GameObject targetEnemi = blackboard.Get<GameObject>("targetEnemi");
-                    float angleOffset = blackboard.Get<float>("angleOffset");
+            case ConditionType.HasBeenHit:
+                bool hasBeenHit = (bool)blackboard.Get("hasBeenHit");
+                return hasBeenHit == expectedValue;
 
-                    Vector2 directionToEnemy = (targetEnemi.transform.position - targetGameObject.transform.position).normalized;
-                    Vector2 tankForward = targetGameObject.transform.up; // ou .right selon l'orientation du tank
-                    float angleToEnemy = Vector2.Angle(tankForward, directionToEnemy);
-
-                    // Vérifiez si l'ennemi est à portée et dans l'angle de vue
-                    float dist = Vector2.Distance(targetGameObject.transform.position, targetEnemi.transform.position);
-                    bool isInDistance = dist < threshold;
-                    bool isInView = angleToEnemy <= angleOffset;
-
-                    return (isInDistance && isInView) == expectedValue;
-                }
-                
 
             default:
                 throw new ArgumentOutOfRangeException();

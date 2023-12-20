@@ -54,6 +54,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("hasAggro", false);
         tree.blackboard.Set("aggroStartDistance", 10f);
         tree.blackboard.Set("aggroEndDistance", 20f);
+        tree.blackboard.Set("hasBeenHit", false);
 
     }
 

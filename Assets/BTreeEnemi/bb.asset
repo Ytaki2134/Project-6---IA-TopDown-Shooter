@@ -73,11 +73,32 @@ MonoBehaviour:
   started: 0
   guid: 191638640058f034a834c4c9bb8abdbd
   position: {x: 1535.2206, y: 202.12328}
-  child: {fileID: 0}
+  child: {fileID: 844466637960081465}
   condition:
     conditionType: 1
     expectedValue: 0
     threshold: 5
+--- !u!114 &-5338848750333538548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e4cecfda1a29f2c47bb21c929f074f1a
+  position: {x: 1257, y: 460}
+  child: {fileID: -4944813529836547088}
+  condition:
+    conditionType: 5
+    expectedValue: 1
+    threshold: 0
 --- !u!114 &-5258070313511809740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +135,41 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6fa05cdf15552de4f9182017e7b345e1
-  position: {x: 852.27716, y: 398.29517}
+  position: {x: 1291, y: 620}
+--- !u!114 &-4907590980937814569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc6809d9059dca47ae5ee5b91ec2a70, type: 3}
+  m_Name: ActionChase
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 33083643ac0c9ae489159a1ac7da9c48
+  position: {x: 450, y: 643}
+--- !u!114 &-3102847990474412881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd77dd8f54d75d419e762eb6dc85433, type: 3}
+  m_Name: ActionFireBullet
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 6f59f8d441e1ce34e85fc530c7424340
+  position: {x: 772, y: 659}
+  _bulletPrefab: {fileID: 0}
+  bulletSpeed: 10
 --- !u!114 &-2872941753425433529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +188,7 @@ MonoBehaviour:
   position: {x: 356.19147, y: -479.44788}
   children:
   - {fileID: -5258070313511809740}
+  - {fileID: -8825413164901326946}
 --- !u!114 &-2704625019770367155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +225,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2c55c1f49b8009d4db925dbd0a2f9a86
-  position: {x: 1026.2775, y: 364.2952}
+  position: {x: 1099, y: 620}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +263,13 @@ MonoBehaviour:
   - {fileID: -8243795725627372111}
   - {fileID: -2704625019770367155}
   - {fileID: 209706596733381150}
+  - {fileID: -5338848750333538548}
+  - {fileID: 7826546732425768762}
+  - {fileID: -4907590980937814569}
+  - {fileID: 2098491222730285251}
+  - {fileID: -3102847990474412881}
+  - {fileID: 926909781816725132}
+  - {fileID: 2401133032313590111}
 --- !u!114 &209706596733381150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,8 +338,32 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a900e5655f53a4b4aac9a3cffe4e1387
-  position: {x: 955.2773, y: 215.29512}
-  children: []
+  position: {x: 616, y: 520.50006}
+  children:
+  - {fileID: -4907590980937814569}
+  - {fileID: 2098491222730285251}
+  - {fileID: -3102847990474412881}
+--- !u!114 &926909781816725132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d4b273baefe430a498e1eafd692515ca
+  position: {x: 697.0001, y: 417}
+  child: {fileID: 895799602966596057}
+  condition:
+    conditionType: 5
+    expectedValue: 0
+    threshold: 0
 --- !u!114 &1007484900098241847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +381,43 @@ MonoBehaviour:
   guid: 68b4acabb46e2ca43be468c4331d4893
   position: {x: 1131.2207, y: 79.123245}
   children:
+  - {fileID: 7826546732425768762}
   - {fileID: -6052591224042062127}
+--- !u!114 &2098491222730285251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be424c3dba2dd4042b95a3dc4e462e09, type: 3}
+  m_Name: ActionSightFollowTarget
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: fef5545a6ce15b841930fdee2084553a
+  position: {x: 608, y: 651}
+--- !u!114 &2401133032313590111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f652902957a87542a43637c6f85fc69, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 26dee1da7cfc85a4694c7799d4ad53cb
+  position: {x: 989.00006, y: 339.00003}
+  children:
+  - {fileID: -5338848750333538548}
+  - {fileID: 926909781816725132}
 --- !u!114 &3374903389994889900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,3 +558,24 @@ MonoBehaviour:
   started: 0
   guid: b0a5799b84451e6459d7633df6ba12f1
   position: {x: -647.10565, y: 485.36496}
+--- !u!114 &7826546732425768762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 8e1bc55f55839a644bd1c4daa5853d32
+  position: {x: 1054.0002, y: 199.00006}
+  child: {fileID: 2401133032313590111}
+  condition:
+    conditionType: 0
+    expectedValue: 1
+    threshold: 0

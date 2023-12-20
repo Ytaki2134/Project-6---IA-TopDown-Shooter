@@ -455,7 +455,7 @@ MonoBehaviour:
   BrakeSpeedMod: 0.9
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5
-  Health: 20
+  Health: 7
 --- !u!1 &1172310221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4063172905539717732, guid: 3512fa34ec271b54987da43474fc591d, type: 3}

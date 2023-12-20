@@ -2,18 +2,21 @@ using UnityEngine;
 
 public class ActionFeignedRetreat : ActionNode
 {
-    private Transform bossTransform;
-    private Transform playerTransform;
+    private GameObject _enemy;
+    private GameObject _tank;
+
     private float retreatSpeed;
     private float retreatDuration;
     private float timer;
-
+    private Vector2 startRetreatPosition;
+    private float retreatMaxDistance;
     protected override void OnStart()
     {
-        bossTransform = blackboard.Get<Transform>("bossTransform");
-        playerTransform = blackboard.Get<Transform>("playerTransform");
-        retreatSpeed = blackboard.Get<float>("retreatSpeed");
-        retreatDuration = blackboard.Get<float>("retreatDuration");
+        _enemy = blackboard.Get<GameObject>("targetEnemi");
+        _tank = blackboard.Get<GameObject>("targetGameObject");
+        retreatSpeed = blackboard.Get<float>("speed") *2;
+        retreatDuration = 20f;
+
         timer = 0f;
     }
     protected override void OnStop()
@@ -22,19 +25,52 @@ public class ActionFeignedRetreat : ActionNode
     }
     protected override State OnUpdate()
     {
-        if (timer < retreatDuration)
+        if (IsRetreatTimeOver())
         {
-            // Recule du joueur
-            Vector2 direction = (bossTransform.position - playerTransform.position).normalized;
-            bossTransform.position += (Vector3)direction * retreatSpeed * Time.deltaTime;
-            timer += Time.deltaTime;
-            return State.Running;
+            return State.Success; // Retraite terminée, se préparer à attaquer
         }
-        else
+
+        Vector2 direction = CalculateRetreatDirection();
+        UpdateTankPosition(direction);
+
+        if (IsMaxRetreatDistanceReached())
         {
-            // Après la durée, se retourne pour attaquer ou mettre en place une embuscade
-            // Ici, vous pouvez déclencher une animation ou un changement d'état pour l'attaque
-            return State.Success;
+            return State.Success; // Distance maximale atteinte, arrêter la retraite
         }
+
+        timer += Time.deltaTime;
+        return State.Running;
     }
+
+    private bool IsRetreatTimeOver()
+    {
+        return timer >= retreatDuration;
+    }
+
+    private Vector2 CalculateRetreatDirection()
+    {
+        Vector2 currentPos = _tank.transform.position;
+        Vector2 enemyPos = _enemy.transform.position;
+        Vector2 direction = (currentPos - enemyPos).normalized;
+
+        if (Physics2D.Raycast(currentPos, direction, 1.0f).collider != null)
+        {
+            float turnAngle = Random.value > 0.5f ? 90 : -90;
+            direction = Quaternion.Euler(0, 0, turnAngle) * direction;
+        }
+
+        return direction;
+    }
+
+    private void UpdateTankPosition(Vector2 direction)
+    {
+        Vector2 currentPos = _tank.transform.position;
+        _tank.transform.position = currentPos + direction * retreatSpeed * Time.deltaTime;
+    }
+
+    private bool IsMaxRetreatDistanceReached()
+    {
+        return Vector2.Distance(startRetreatPosition, _tank.transform.position) > retreatMaxDistance;
+    }
+
 }
