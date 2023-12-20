@@ -1,20 +1,18 @@
 using Assets.Scripts.FSM;
 using UnityEngine;
-using UnityEngine.AI;
 
-namespace Assets.Scripts.NPC
+namespace Assets.Scripts.NPCCode
 {
-    [RequireComponent(typeof(NavMeshAgent), typeof(FiniteStateMachine))]
+    //[RequireComponent(typeof(NavMeshAgent), typeof(FiniteStateMachine))]
+
     public class NPC : MonoBehaviour
     {
-        //[SerializeField] NPCPatrolPoints _patrolPoints;
+        [SerializeField] PatrolPoints[] _patrolPoints;
 
-        NavMeshAgent _navMeshAgent;
         FiniteStateMachine _finiteStateMachine;
 
         public void Awake()
         {
-            _navMeshAgent = this.GetComponent<NavMeshAgent>();
             _finiteStateMachine = this.GetComponent<FiniteStateMachine>();
         }
 
@@ -28,12 +26,12 @@ namespace Assets.Scripts.NPC
 
         }
 
-        /*public NPCPatrolPoint[] PatrolPoints
+        public PatrolPoints[] PatrolPoints
         {
             get
             {
                 return _patrolPoints;
             }
-        }*/
+        }
     }
 }

@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class SimplePatrol2D : MonoBehaviour
 {
-    [SerializeField] bool _patrolWaiting;
-    [SerializeField] float _totalWaitTime = 3f;
+    //[SerializeField] bool _patrolWaiting;
+    //[SerializeField] float _totalWaitTime = 3f;
     [SerializeField] List<Transform> _patrolPoints;
 
     int _currentPatrolIndex;
     bool _traveling;
-    bool _waiting;
-    float _waitTimer;
+    //bool _waiting;
+    //float _waitTimer;
 
     private Movement m_movement;
 
@@ -51,16 +51,16 @@ public class SimplePatrol2D : MonoBehaviour
             {
                 _traveling = false;
 
-                if (_patrolWaiting)
+                /*if (_patrolWaiting)
                 {
                     _waiting = true;
                     _waitTimer = 0f;
                 }
                 else
-                {
+                {*/
                     ChangePatrolPoint();
                     SetDestination();
-                }
+                //}
             }
             else
             {
@@ -72,17 +72,17 @@ public class SimplePatrol2D : MonoBehaviour
             }
         }
 
-        if (_waiting)
+        /*if (_waiting)
         {
             _waitTimer += Time.deltaTime;
             if (_waitTimer >= _totalWaitTime)
             {
                 _waiting = false;
-
+        
                 ChangePatrolPoint();
                 SetDestination();
             }
-        }
+        }*/
     }
 
     private void SetDestination()
