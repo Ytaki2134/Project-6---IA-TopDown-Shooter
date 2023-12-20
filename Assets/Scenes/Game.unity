@@ -621,6 +621,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDrawRadius: 1
+--- !u!1 &722732123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7760592605917230738, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
+  m_PrefabInstance: {fileID: 5189533124364328917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &894326382 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8979797374847315014, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
@@ -984,6 +989,7 @@ MonoBehaviour:
   - {fileID: 680792127}
   - {fileID: 1180227170}
   - {fileID: 1457325922}
+  _player: {fileID: 722732123}
 --- !u!114 &1959451189
 MonoBehaviour:
   m_ObjectHideFlags: 0
