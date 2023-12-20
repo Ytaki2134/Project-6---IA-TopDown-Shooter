@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.FSM.States
 {
-    [CreateAssetMenu(fileName = "ChaseAndFire", menuName = "Unity-FSM/States/ChaseAndFire", order = 5)]
-    public class ChaseAndFireState : AbstractFSMState
+    [CreateAssetMenu(fileName = "FleeAndFire", menuName = "Unity-FSM/States/FleeAndFire", order = 6)]
+    public class FleeAndFireState : AbstractFSMState
     {
         private Movement m_movement;
         private float _fireRange;
@@ -15,7 +15,7 @@ namespace Assets.Scripts.FSM.States
         {
             base.OnEnable();
             _canFire = false;
-            StateType = FSMStateType.CHASE_AND_FIRE;
+            StateType = FSMStateType.FLEE_AND_FIRE;
         }
 
 
@@ -24,11 +24,11 @@ namespace Assets.Scripts.FSM.States
             EnteredState = false;
             if (base.EnterState(context))
             {
-                Debug.Log("ENTERED CHASE FIRE STATE");
+                Debug.Log("ENTERED FLEE FIRE STATE");
 
                 if (context.Player == null)
                 {
-                    Debug.Log("ChaseFireState: failed");
+                    Debug.Log("FleeFireState: failed");
                 }
                 else
                 {
@@ -45,11 +45,11 @@ namespace Assets.Scripts.FSM.States
             {
                 if (_canFire)
                 {
-                    Debug.Log("UPDATING CHASE STATE");
+                    Debug.Log("UPDATING FLEE STATE");
                     _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
                     if (_fireRange > 1.5f)
                     {
-                        _fsm.EnterState(FSMStateType.CHASE);
+                        _fsm.EnterState(FSMStateType.FLEE);
                     }
                     else
                     {
@@ -59,7 +59,7 @@ namespace Assets.Scripts.FSM.States
 
                         if (m_movement != null)
                         {
-                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
+                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
                             m_movement.Move();
                         }
                     }
