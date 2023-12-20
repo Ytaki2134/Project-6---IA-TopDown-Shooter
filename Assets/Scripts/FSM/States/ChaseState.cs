@@ -1,18 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.NPCCode;
 using UnityEngine;
 
-public class ChaseState : MonoBehaviour
+namespace Assets.Scripts.FSM
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(fileName = "ChaseState", menuName = "Unity-FSM/States/Chase", order = 3)]
+    public class ChaseState : AbstractFSMState
     {
-        
-    }
+        private Movement m_movement;
+        private float _fireRange;
+        //private GameObject player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            StateType = FSMStateType.CHASE;
+        }
+
+        public override bool EnterState(FiniteStateMachine context)
+        {
+            EnteredState = false;
+            if (base.EnterState(context))
+            {
+                Debug.Log("ENTERED CHASE STATE");
+
+                if (context.Player == null)
+                {
+                    Debug.Log("ChaseState: failed to grab player");
+                }
+                else
+                {
+                    EnteredState = true;
+                }
+            }
+
+            return EnteredState;
+        }
+
+        public override void UpdateState(FiniteStateMachine context)
+        {
+            if (EnteredState)
+            {
+                //Debug.Log("UPDATING CHASE STATE");
+                _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
+                if (_fireRange <= 1.5f)
+                {
+                    _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                }
+                else if (_fireRange >= 5f)
+                {
+                    _fsm.EnterState(FSMStateType.IDLE);
+                }
+                else
+                {
+                    if (m_movement != null)
+                    {
+                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
+                        m_movement.Move();
+                    }
+                }
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ public abstract class AbstractFSMState : ScriptableObject
         ExecutionState = ExecutionState.NONE;
     }
 
-    public virtual bool EnterState()
+    public virtual bool EnterState(FiniteStateMachine context)
     {
         bool successNPC = true;
         ExecutionState = ExecutionState.ACTIVE;
@@ -27,9 +27,9 @@ public abstract class AbstractFSMState : ScriptableObject
         return successNPC;
     }
 
-    public abstract void UpdateState();
+    public abstract void UpdateState(FiniteStateMachine context);
 
-    public virtual bool ExitState()
+    public virtual bool ExitState(FiniteStateMachine context)
     {
         ExecutionState = ExecutionState.COMPLETED;
         return true;
