@@ -28,17 +28,18 @@ public class EnableShieldNode : ActionNode
 
     protected override State OnUpdate()
     {
-        // Vérification si le bouclier est toujours actif
-        if (_shieldComponent != null && _shieldComponent.IsShieldActive)
-        {
-            return State.Running; // Le bouclier est toujours actif
-        }
-        if(_shieldComponent.ShieldValue <= 0)
-        {
-            _shieldComponent.DeactivateShield();
-            return State.Failure;
-        }
 
-       return State.Running;
+         // Vérification si le bouclier est toujours actif
+         if (_shieldComponent != null && _shieldComponent.IsShieldActive)
+         {
+             return State.Running; // Le bouclier est toujours actif
+         }
+         if(_shieldComponent.ShieldValue <= 0)
+         {
+             _shieldComponent.DeactivateShield();
+             return State.Failure;
+         }
+
+        return State.Running;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ActionFireBullet : ActionNode
 {
-    private float _fireDistance = 15; // Distance à laquelle le tir est effectué
+    private float _fireDistance; // Distance à laquelle le tir est effectué
     private GameObject _targetToMove;
     private GameObject _me;
     public GameObject _bulletPrefab; // Préfabriqué de la balle
@@ -13,6 +13,7 @@ public class ActionFireBullet : ActionNode
         _targetToMove = blackboard.Get("targetEnemi") as GameObject;
         _me = blackboard.Get("targetGameObject") as GameObject;
         _bulletPrefab = blackboard.Get("bulletPrefab") as GameObject;
+        _fireDistance = blackboard.Get<float>("distanceMax") ;
     }
 
     protected override void OnStop()

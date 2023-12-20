@@ -20,7 +20,7 @@ public class BehaviourTreeRunner : MonoBehaviour
     private GameObject _minePrefab;
     [SerializeField]
     private GameObject _bullet2Prefab;
-
+    Shield shieldComponent;
 
     private Movement  _movement;
     private TankStatistics  _tankStat;
@@ -34,8 +34,8 @@ public class BehaviourTreeRunner : MonoBehaviour
         _movement = GetComponent<Movement>();
         _movement.SetSpeed(_tankStat.Speed);
         _movement.SetRotationSpeed(_tankStat.RotationSpeed);
-        Shield shieldComponent = GetComponent<Shield>();
-
+        shieldComponent = GetComponent<Shield>();
+        shieldComponent.ShieldValue = 20f;
         tree = tree.Clone();
         tree.blackboard.Set("targetGameObject", _targetGameObject);
         tree.blackboard.Set("waypoints", _waypoints);
@@ -53,7 +53,12 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("rotSpeed", 30f);
         tree.blackboard.Set("hasAggro", false);
         tree.blackboard.Set("aggroStartDistance", 40f);
-        tree.blackboard.Set("tooNearFromBoss", false);
+        tree.blackboard.Set("distanceMax", 20f);
+        tree.blackboard.Set("distanceMin", 10f);
+        tree.blackboard.Set("retreat", false);
+        tree.blackboard.Set("retreatDistance", 10f);
+        tree.blackboard.Set("checkObstacleCooldown", 20f);
+
 
         tree.blackboard.Set("aggroEndDistance", 200f);
         tree.blackboard.Set("hasBeenHit", false);
@@ -76,6 +81,7 @@ public class BehaviourTreeRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(shieldComponent.IsShieldActive);
         tree.Update();
     }
 }

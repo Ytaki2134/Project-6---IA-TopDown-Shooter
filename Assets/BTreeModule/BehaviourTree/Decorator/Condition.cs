@@ -15,7 +15,8 @@ public enum ConditionType
     IsInDistanceAndView,
     HasBeenHit,
     IsNearObstacle,
-    TooNearFromBoss,
+    Retreat,
+
 }
 
 
@@ -53,15 +54,11 @@ public class Condition
 
                     return hasAggro == expectedValue; // Maintenir l'état actuel de l'aggro
                 }
-            case ConditionType.TooNearFromBoss:
-                {
-                    float dist = Vector2.Distance(_tank.transform.position, _enemi.transform.position);
-                    Debug.Log(dist + " " + (dist < threshold).ToString() +" "  + expectedValue+" "+ (dist < threshold == expectedValue).ToString());
-              
-                    blackboard.Set("tooNearFromBoss", dist < threshold == expectedValue);
+            case ConditionType.Retreat:
+                bool retreat = blackboard.Get<bool>("retreat");
 
-                    return dist < threshold == expectedValue;
-                }
+                return retreat == this.expectedValue; // Use the instance's properties
+
             case ConditionType.HealthCheck:
                 float health = (float)blackboard.Get("health");
                 return health > this.threshold == this.expectedValue; // Use the instance's properties
@@ -85,6 +82,11 @@ public class Condition
                 }
             case ConditionType.HasBeenHit:
                 bool hasBeenHit = (bool)blackboard.Get("hasBeenHit");
+                if (hasBeenHit)
+                {
+                    blackboard.Set("retreat", true);
+
+                }
                 return hasBeenHit == expectedValue;
 
             case ConditionType.IsNearObstacle:

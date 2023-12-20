@@ -1,86 +1,91 @@
 using UnityEngine;
 
-public class ActionFeignedRetreat : ActionNode
+public class ActionRetreatFromObstacle : ActionNode
 {
     private GameObject _tank;
     private float retreatSpeed;
-    private float retreatDuration;
-    private float timer;
-    private bool isRetreating = true;
-    private bool hasCheckedSides = false;
-    private float rotationDuration = 2f; // Durée de la rotation
-    private float rotationTimer = 0f;
-    private bool isRotating = false; // Nouvelle variable pour suivre l'état de la rotation
+    private float checkObstacleCooldown;
+    private float lastCheckTime = 0f;
+    private float rotationSpeed;
+    private bool obstacleDetected = false;
+    private float retreatDistance;
+    private Vector2 startPosition;
 
     protected override void OnStart()
     {
         _tank = blackboard.Get<GameObject>("targetGameObject");
-        retreatSpeed = blackboard.Get<float>("speed") * 2;
-        retreatDuration = 3f;
-        timer = 0f;
-        rotationTimer = 0f;
-        isRotating = false;
+        retreatSpeed = blackboard.Get<float>("speed");
+        rotationSpeed = blackboard.Get<float>("rotSpeed");
+        checkObstacleCooldown = 3f; // Cooldown between obstacle checks
+        retreatDistance = blackboard.Get<float>("retreatDistance"); // The distance to retreat before stopping
+        startPosition = _tank.transform.position; // Starting position to measure retreat distance
     }
 
     protected override void OnStop()
     {
+        // Reset obstacle detection on stop
+        obstacleDetected = false;
     }
 
     protected override State OnUpdate()
     {
-        // Gestion de la retraite
-        if (timer < retreatDuration && isRetreating)
-        {
-            Vector2 retreatDirection = -(_tank.transform.up).normalized;
-            _tank.transform.position += (Vector3)retreatDirection * retreatSpeed * Time.deltaTime;
+        // Measure the distance retreated
+        float distanceRetreated = Vector2.Distance(startPosition, _tank.transform.position);
 
-            // Détecter les obstacles
-            if (!hasCheckedSides && CheckForObstacle())
+        // Check if the tank has retreated the required distance and there's no obstacle
+        if (distanceRetreated >= retreatDistance && !obstacleDetected)
+        {
+            // Stop retreating and return success
+            return State.Success;
+        }
+
+        // If an obstacle has been detected, rotate to avoid it
+        if (obstacleDetected)
+        {
+            RotateTankToRight();
+            if (Time.time - lastCheckTime > checkObstacleCooldown)
             {
-                isRetreating = false;
-                hasCheckedSides = true;
+                // After cooldown, check for obstacles again
+                obstacleDetected = CheckForObstacle();
+                lastCheckTime = Time.time;
             }
         }
-        else if (hasCheckedSides && !isRotating)
+        else
         {
-            // Démarrer la rotation
-            isRotating = true;
-            rotationTimer = 0f;
-        }
-        else if (isRotating && rotationTimer < rotationDuration)
-        {
-            // Continuer la rotation
-            RotateTank();
-            rotationTimer += Time.deltaTime;
-        }
-        else if (isRotating)
-        {
-            // Fin de la rotation
-            isRotating = false;
-            isRetreating = true; // Permettre au tank de reprendre la retraite
+            // No obstacle detected, continue retreating
+            Retreat();
+            if (Time.time - lastCheckTime > checkObstacleCooldown)
+            {
+                // After cooldown, check for obstacles
+                obstacleDetected = CheckForObstacle();
+                lastCheckTime = Time.time;
+            }
         }
 
-
-        timer += Time.deltaTime;
         return State.Running;
+    }
+
+    private void Retreat()
+    {
+        // Move the tank backwards
+        Vector2 retreatDirection = -_tank.transform.up.normalized;
+        _tank.transform.position += (Vector3)retreatDirection * retreatSpeed * Time.deltaTime;
     }
 
     private bool CheckForObstacle()
     {
+        // Cast a ray backwards to check for obstacles
         Vector2 backwardDirection = -_tank.transform.up.normalized;
-        float raycastDistance = 5f;
+        float raycastDistance = 5f; // or any other appropriate distance
         RaycastHit2D hit = Physics2D.Raycast(_tank.transform.position, backwardDirection, raycastDistance);
 
+        // Return true if an obstacle is detected
         return hit.collider != null;
     }
 
-    private void RotateTank()
+    private void RotateTankToRight()
     {
-        // Rotation fixe vers la droite de 90 degrés
-        float rotationAngle = 90f;
-        Quaternion targetRotation = Quaternion.Euler(0, 0, _tank.transform.eulerAngles.z + rotationAngle);
-        _tank.transform.rotation = Quaternion.Lerp(_tank.transform.rotation, targetRotation, Time.deltaTime);
+        // Rotate the tank to the right by a fixed amount
+        _tank.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
-
-
 }

@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class DeployMinesNode : ActionNode
 {
+
+    protected override void OnStop()
+    {
+        // Rien de spécial à faire à l'arrêt
+    }
     private GameObject _minePrefab;
     private GameObject _tankGameObject;
     private float _mineSpacing = 2f; // Espace entre chaque mine
@@ -15,11 +20,6 @@ public class DeployMinesNode : ActionNode
     {
         _minePrefab = blackboard.Get("minePrefab") as GameObject;
         _tankGameObject = blackboard.Get("targetGameObject") as GameObject;
-    }
-
-    protected override void OnStop()
-    {
-        // Rien de spécial à faire à l'arrêt
     }
 
     protected override State OnUpdate()
