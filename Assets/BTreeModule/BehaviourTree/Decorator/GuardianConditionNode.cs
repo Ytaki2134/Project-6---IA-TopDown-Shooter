@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-public class GuardConditionNode : ActionNode
+public class GuardConditionNode : DecoratorNode
 {
     public Condition condition;
 
@@ -16,11 +16,10 @@ public class GuardConditionNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (condition.Evaluate(blackboard))
+        if (!condition.Evaluate(blackboard))
         {
-            return State.Running;
-        }
-        else 
             return State.Failure;
+        } 
+            return m_child.Update();
     }
 }

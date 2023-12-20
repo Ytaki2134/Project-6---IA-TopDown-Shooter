@@ -1,26 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionChase : ActionNode
+public class ChargeEnemyNode : ActionNode
 {
-
     private GameObject _enemy;
     private GameObject _tank;
-
-    private Movement _movement;
-
+    private float _speed;
 
     protected override void OnStart()
     {
         _enemy = blackboard.Get("targetEnemi") as GameObject;
         _tank = blackboard.Get("targetGameObject") as GameObject;
-        _movement = blackboard.Get("movement") as Movement;
-
+        _speed = (float)blackboard.Get("speed");
+        _speed *= 2; // Doubler la vitesse pour la charge
     }
 
     protected override void OnStop()
     {
+        _speed /= 2; // Remettre la vitesse à la normale
     }
 
     protected override State OnUpdate()
@@ -30,16 +26,9 @@ public class ActionChase : ActionNode
             return State.Failure;
         }
 
-
-
-        if(Vector2.Distance(_enemy.transform.position, _tank.transform.position)> 5){
-
-            _movement.RotateAndMoveTowards(_tank.transform, _enemy.transform);
-            return State.Running;
-        }
+        // Se diriger directement vers l'ennemi
+        Vector2 direction = (_enemy.transform.position - _tank.transform.position).normalized;
+        _tank.transform.position += (Vector3)direction * _speed * Time.deltaTime;
         return State.Running;
-      
-
-
     }
 }

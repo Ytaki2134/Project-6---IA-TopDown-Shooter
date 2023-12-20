@@ -328,6 +328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6029557120383368668, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
+      propertyPath: RotationSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7368401181109211917, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -346,7 +350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.58
+      value: 17.96
       objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -410,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efcc002108f3b04594ab620a3a6cf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 11400000, guid: 09b49c92a84819941a777e22fb60a9cb, type: 2}
+  tree: {fileID: 11400000, guid: 164a0504f0451a84c8679cc39e477155, type: 2}
   _targetGameObject: {fileID: 673682479}
   _targetEnemi: {fileID: 257280068}
   _speed: 2
@@ -419,6 +423,8 @@ MonoBehaviour:
   - {fileID: 107405208}
   - {fileID: 2055635698}
   _bulletPrefab: {fileID: 8384666743012348179, guid: 91e2d6d61acc07442a7d8e565bc1f3f8, type: 3}
+  _minePrefab: {fileID: 2385014407767734437, guid: fe136593345b8ee48b6e6b3223a8912a, type: 3}
+  _bullet2Prefab: {fileID: 0}
 --- !u!114 &673682485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,11 +451,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 673682479}
-  Speed: 15
+  Speed: 4
   BrakeSpeedMod: 0.9
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5
-  Health: 20
+  Health: 7
 --- !u!1 &1172310221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4063172905539717732, guid: 3512fa34ec271b54987da43474fc591d, type: 3}
