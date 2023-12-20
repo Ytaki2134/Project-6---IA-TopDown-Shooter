@@ -72,12 +72,12 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 191638640058f034a834c4c9bb8abdbd
-  position: {x: 1535.2206, y: 202.12328}
+  position: {x: 1551.0001, y: 207}
   child: {fileID: 844466637960081465}
   condition:
     conditionType: 1
     expectedValue: 0
-    threshold: 5
+    threshold: 10
 --- !u!114 &-5338848750333538548
 MonoBehaviour:
   m_ObjectHideFlags: 0

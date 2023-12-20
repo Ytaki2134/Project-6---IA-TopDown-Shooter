@@ -41,7 +41,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("waypoints", _waypoints);
 
         tree.blackboard.Set("speed", _tankStat.Speed);
-        tree.blackboard.Set("targetEnemi", _targetEnemi);
+        tree.blackboard.Set("targetEnemi", gameObject);
         tree.blackboard.Set("movement", _movement);
         tree.blackboard.Set("bulletPrefab", _bulletPrefab);
         tree.blackboard.Set("readyToMove", false);
