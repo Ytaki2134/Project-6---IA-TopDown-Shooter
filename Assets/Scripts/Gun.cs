@@ -21,18 +21,51 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
+<<<<<<< Updated upstream:Assets/Scripts/Gun.cs
         GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
         temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
         temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+=======
+        GameObject temp;
+        switch (m_stats.BulletType.name)
+        {
+            case "SpreadShot Bullet":
+                float angleDif = 120f;
+                for (int i = 0; i < 5; i++)
+                {
+                    temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, angleDif));
+                    temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                    angleDif -= 15f;
+                }
+                break;
+
+            case "Homing Bullet":
+                break;
+
+            default:
+                temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
+                temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                break;
+        }
+
+
+        //Gun Animation
+        m_gunAnimator.SetBool("Shoot", true);
+        m_audioSource.Play();
+>>>>>>> Stashed changes:Assets/Scripts/Tanks/Gun.cs
     }
 
     private void FollowTargetPosition()
     {
         //Rotate Sprite
+<<<<<<< Updated upstream:Assets/Scripts/Gun.cs
 
         Debug.Log("m_targetPosition : " + m_targetPosition + " ;  transform.position : " + transform.position);
 
         var dir = (Vector3) m_targetPosition - transform.position;
+=======
+        var dir = (Vector3)m_targetPosition - transform.position;
+>>>>>>> Stashed changes:Assets/Scripts/Tanks/Gun.cs
 
         Debug.Log("Direction Vector : " + dir.x + " " + dir.y);
         Debug.Log("Atan2 : " + Mathf.Atan2(dir.y, dir.x));
