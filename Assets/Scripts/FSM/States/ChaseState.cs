@@ -29,6 +29,13 @@ namespace Assets.Scripts.FSM
                 }
                 else
                 {
+                    m_movement = context.Movement;
+
+                    m_movement.SetSpeed(3f);
+                    m_movement.SetRotationSpeed(2f);
+                    m_movement.SetBrakeSpeed(1f);
+                    m_movement.SetBrakeRotationSpeed(1f);
+
                     EnteredState = true;
                 }
             }
@@ -40,13 +47,13 @@ namespace Assets.Scripts.FSM
         {
             if (EnteredState)
             {
-                //Debug.Log("UPDATING CHASE STATE");
+                Debug.Log("UPDATING CHASE STATE");
                 _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
-                if (_fireRange <= 1.5f)
+                if (_fireRange <= 25f)
                 {
                     _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
                 }
-                else if (_fireRange >= 5f)
+                else if (_fireRange >= 100f)
                 {
                     _fsm.EnterState(FSMStateType.IDLE);
                 }

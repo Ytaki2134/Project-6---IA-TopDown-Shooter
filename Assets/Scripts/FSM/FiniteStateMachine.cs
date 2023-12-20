@@ -12,8 +12,10 @@ namespace Assets.Scripts.FSM
 
         Dictionary<FSMStateType, AbstractFSMState> _fsmStates;
 
-        private GameObject player;
+        private Movement movement;
+        public Movement Movement { get => movement; set => movement = value; }
 
+        private GameObject player;
         public GameObject Player { get => player; set => player = value; }
 
         public void Awake()
@@ -24,6 +26,8 @@ namespace Assets.Scripts.FSM
 
             NPC npc = this.GetComponent<NPC>();
             player = npc.GetPlayer();
+
+            movement = GetComponentInChildren<Movement>();
 
             foreach (AbstractFSMState state in _validStates)
             {

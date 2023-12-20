@@ -32,6 +32,13 @@ namespace Assets.Scripts.FSM.States
                 }
                 else
                 {
+                    m_movement = context.Movement;
+
+                    m_movement.SetSpeed(3f);
+                    m_movement.SetRotationSpeed(2f);
+                    m_movement.SetBrakeSpeed(1f);
+                    m_movement.SetBrakeRotationSpeed(1f);
+
                     CheckWeapon();
                     EnteredState = true;
                 }

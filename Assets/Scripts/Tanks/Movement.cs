@@ -55,5 +55,11 @@ public class Movement : MonoBehaviour
         m_brakeRotationSpeedMod = brakeRotationSpeed;
     }
 
+    public Movement GetMovementComponent()
+    {
+        return GetComponentInChildren<Movement>();
+    }
+
+
     #endregion
 }
