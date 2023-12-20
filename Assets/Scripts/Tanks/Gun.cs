@@ -26,7 +26,7 @@ public class Gun : MonoBehaviour
         temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
     }
 
-    private void FollowTargetPosition()
+    public void FollowTargetPosition()
     {
         //Rotate Sprite
         var dir = (Vector3) m_targetPosition - transform.position;
