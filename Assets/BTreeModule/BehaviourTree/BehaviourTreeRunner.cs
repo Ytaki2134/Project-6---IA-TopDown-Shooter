@@ -67,7 +67,14 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("isNearObstacle", false);
         tree.blackboard.Set("hasChosenAvoidanceDirection", false);
         tree.blackboard.Set("isObstacleDetected", false);
+
+
         tree.blackboard.Set("lastAvoidanceTime", 0f);
+        tree.blackboard.Set("avoidanceDirection", new Vector2());
+        tree.blackboard.Set("isAvoidingObstacle", false);
+        tree.blackboard.Set("avoidanceCooldown", 1f);
+        tree.blackboard.Set("reevaluationDelay", 0.1f);
+
 
 
 
@@ -76,7 +83,6 @@ public class BehaviourTreeRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(shieldComponent.IsShieldActive);
         tree.Update();
     }
 }

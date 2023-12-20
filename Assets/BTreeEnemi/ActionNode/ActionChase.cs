@@ -37,7 +37,7 @@ public class ActionChase : ActionNode
         if (currentDistance > maxDistance)
         {
 
-            _movement.RotateAndMoveTowards(_tank.transform, _enemy.transform);
+            _movement.RotateAndMoveTowards(_tank.transform, _enemy.transform, 1.5f ,5f ,blackboard);
 
         }
         else if(currentDistance < minDistance)

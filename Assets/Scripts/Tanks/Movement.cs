@@ -14,9 +14,10 @@ public class Movement : MonoBehaviour
 
     private float m_rotationSpeed;
     private float m_brakeRotationSpeedMod;
+    private Rigidbody2D tankRigidbody;
     private void Start()
     {
-       
+        tankRigidbody = GetComponent<Rigidbody2D>();
     }
     public void Move()
     {
@@ -71,53 +72,70 @@ public class Movement : MonoBehaviour
         blackboard.Set("rotSpeed", rotSpeed);
 
     }
-    private Vector2 avoidanceDirection;
-    private float avoidanceCooldown = 1f; // Temps en secondes avant de pouvoir changer à nouveau la direction d'évitement
 
-   // public void RotateAndMoveTowards(Transform agentTransform, Transform waypointTransform, float raycastOffset, float raycastDistance, Blackboard blackboard)
-   // {
-   //     float lastAvoidanceTime = blackboard.Get<float>("lastAvoidanceTime");
-   //     Vector2 direction = (waypointTransform.position - agentTransform.position).normalized;
-   //     Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
-   //
-   //     Vector2 raycastStartPoint = agentTransform.position + (Vector3)(direction * raycastOffset);
-   //     RaycastHit2D hit = Physics2D.Raycast(raycastStartPoint, direction, raycastDistance);
-   //
-   //     bool isObstacleDetected = hit.collider != null && hit.collider.gameObject != agentTransform.gameObject;
-   //     blackboard.Set("isObstacleDetected", isObstacleDetected);
-   //
-   //     if (isObstacleDetected && Time.time - lastAvoidanceTime > avoidanceCooldown)
-   //     {
-   //         Debug.Log("Obstable");
-   //         if (!blackboard.Get<bool>("hasChosenAvoidanceDirection"))
-   //         {
-   //             Debug.Log("Direcs");
-   //
-   //             bool isObstacleOnRight = Vector3.Cross(direction, hit.point - (Vector2)agentTransform.position).z < 0;
-   //             float avoidanceAngle = isObstacleOnRight ? -90 : 90;
-   //             avoidanceDirection = Quaternion.Euler(0, 0, avoidanceAngle) * direction;
-   //             blackboard.Set("hasChosenAvoidanceDirection", true);
-   //
-   //             lastAvoidanceTime = Time.time;
-   //             blackboard.Set("lastAvoidanceTime", lastAvoidanceTime);
-   //
-   //             // Appliquer directement la rotation cible pour un changement rapide de direction
-   //             targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-avoidanceDirection.x, avoidanceDirection.y) * Mathf.Rad2Deg);
-   //             agentTransform.rotation = targetRotation;
-   //         }
-   //     }
-   //     else if (blackboard.Get<bool>("hasChosenAvoidanceDirection") && !blackboard.Get<bool>("isObstacleDetected"))
-   //     {
-   //         blackboard.Set("hasChosenAvoidanceDirection", false);
-   //     }
-   //     else
-   //     {
-   //         // Appliquer une rotation progressive vers la direction cible
-   //         agentTransform.rotation = Quaternion.Lerp(agentTransform.rotation, targetRotation, Time.deltaTime * m_rotationSpeed);
-   //     }
-   //
-   //     agentTransform.position = Vector2.MoveTowards(agentTransform.position, (Vector2)agentTransform.position + direction, m_speed * Time.deltaTime);
-   // }
+    public void RotateAndMoveTowards(Transform agentTransform, Transform waypointTransform, float raycastOffset, float raycastDistance, Blackboard blackboard)
+    {
+        Vector2 directionToTarget = (waypointTransform.position - agentTransform.position).normalized;
+        bool isAvoidingObstacle = blackboard.Get<bool>("isAvoidingObstacle");
+        Vector2 avoidanceDirection = blackboard.Get<Vector2>("avoidanceDirection");
+
+        // Vérifier s'il y a un obstacle
+        if (CheckForObstacle(agentTransform, directionToTarget, raycastOffset, raycastDistance, blackboard))
+        {
+            if (!isAvoidingObstacle)
+            {
+                // S'arrêter et choisir une direction d'évitement
+                avoidanceDirection = DetermineAvoidanceDirection(agentTransform, directionToTarget);
+                blackboard.Set("avoidanceDirection", avoidanceDirection);
+                blackboard.Set("isAvoidingObstacle", true);
+            }
+
+            // Effectuer la rotation pour éviter l'obstacle
+            RotateTowards( avoidanceDirection);
+
+            // Avancer dans la direction d'évitement
+            agentTransform.position += (Vector3)avoidanceDirection * m_speed * Time.deltaTime;
+        }
+        else
+        {
+            if (isAvoidingObstacle)
+            {
+                // L'obstacle a été évité, reprendre la trajectoire vers l'ennemi
+                blackboard.Set("isAvoidingObstacle", false);
+            }
+
+            // S'orienter et avancer vers l'ennemi
+            RotateTowards( directionToTarget);
+            agentTransform.position += (Vector3)directionToTarget * m_speed * Time.deltaTime;
+        }
+    }
+
+    private bool CheckForObstacle(Transform agentTransform, Vector2 direction, float raycastOffset, float raycastDistance, Blackboard blackboard)
+    {
+        Vector2 raycastStartPoint = agentTransform.position + (Vector3)(direction * raycastOffset);
+        RaycastHit2D hit = Physics2D.Raycast(raycastStartPoint, direction, raycastDistance);
+
+        Debug.DrawLine(raycastStartPoint, raycastStartPoint + direction * raycastDistance, hit.collider != null ? Color.red : Color.green, 0.1f);
+
+        return hit.collider != null;
+    }
+
+    private Vector2 DetermineAvoidanceDirection(Transform agentTransform, Vector2 directionToTarget)
+    {
+        return Vector3.Cross(directionToTarget, Vector3.forward).normalized;
+    }
+    private void RotateTowards(Vector2 direction)
+    {
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        float currentAngle = tankRigidbody.rotation;
+
+        // S'assurer que l'angle est correctement interpolé
+        float smoothAngle = Mathf.LerpAngle(currentAngle, targetAngle, m_rotationSpeed * Time.fixedDeltaTime);
+
+        tankRigidbody.MoveRotation(smoothAngle);
+    }
+
+
 
     public void RotateAndMoveTowards(Transform agentTransform, Transform waypointTransform)
     {
