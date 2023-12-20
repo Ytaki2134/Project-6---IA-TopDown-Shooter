@@ -12,6 +12,10 @@ namespace Assets.Scripts.FSM
 
         Dictionary<FSMStateType, AbstractFSMState> _fsmStates;
 
+        private GameObject player;
+
+        public GameObject Player { get => player; set => player = value; }
+
         public void Awake()
         {
             _currentState = null;
@@ -37,7 +41,7 @@ namespace Assets.Scripts.FSM
         {
             if( _currentState != null)
             {
-                _currentState.UpdateState();
+                _currentState.UpdateState(this);
             }
         }
 
@@ -52,11 +56,11 @@ namespace Assets.Scripts.FSM
 
             if (_currentState != null)
             {
-                _currentState.ExitState();
+                _currentState.ExitState(this);
             }
             
             _currentState = nextState;
-            _currentState.EnterState();
+            _currentState.EnterState(this);
         }
 
         public void EnterState(FSMStateType stateType)

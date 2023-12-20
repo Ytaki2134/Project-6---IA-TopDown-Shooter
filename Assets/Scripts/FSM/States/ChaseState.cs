@@ -1,15 +1,14 @@
 using Assets.Scripts.NPCCode;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
-
 
 namespace Assets.Scripts.FSM
 {
     [CreateAssetMenu(fileName = "ChaseState", menuName = "Unity-FSM/States/Chase", order = 3)]
     public class ChaseState : AbstractFSMState
     {
-
         private Movement m_movement;
+        private float _fireRange;
+        //private GameObject player;
 
         public override void OnEnable()
         {
@@ -17,17 +16,16 @@ namespace Assets.Scripts.FSM
             StateType = FSMStateType.CHASE;
         }
 
-        public override bool EnterState()
+        public override bool EnterState(FiniteStateMachine context)
         {
             EnteredState = false;
-            if (base.EnterState())
+            if (base.EnterState(context))
             {
                 Debug.Log("ENTERED CHASE STATE");
 
-
-                if ( == 0)
+                if (context.Player == null)
                 {
-                    Debug.Log("ChaseState: failed to grab ??? from the npc");
+                    Debug.Log("ChaseState: failed to grab player");
                 }
                 else
                 {
@@ -38,26 +36,25 @@ namespace Assets.Scripts.FSM
             return EnteredState;
         }
 
-
-        public override void UpdateState()
+        public override void UpdateState(FiniteStateMachine context)
         {
             if (EnteredState)
             {
                 //Debug.Log("UPDATING CHASE STATE");
-                float distance = Vector2.Distance(_npc.transform.position, /* position du player */.transform.position);
-                if (distance <= 1.5f)
+                _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
+                if (_fireRange <= 1.5f)
                 {
                     _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
                 }
-                else if (distance >= 5f)
+                else if (_fireRange >= 5f)
                 {
-                    _fsm.EnterState(FSMStateType.PATROL);
+                    _fsm.EnterState(FSMStateType.IDLE);
                 }
                 else
                 {
                     if (m_movement != null)
                     {
-                        m_movement.SetCurrentMovement(((Vector2)/* position du player */.transform.position - (Vector2)_npc.transform.position).normalized);
+                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
                         m_movement.Move();
                     }
                 }

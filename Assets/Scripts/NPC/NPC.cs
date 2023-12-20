@@ -8,6 +8,7 @@ namespace Assets.Scripts.NPCCode
     public class NPC : MonoBehaviour
     {
         [SerializeField] PatrolPoints[] _patrolPoints;
+        [SerializeField] public GameObject _player;
 
         FiniteStateMachine _finiteStateMachine;
 

@@ -8,8 +8,7 @@ namespace Assets.Scripts.FSM
     {
         PatrolPoints[] _patrolPoints;
 
-        int _currentPatrolIndex;
-        bool _traveling;
+        private int _currentPatrolIndex;
 
         private Movement m_movement;
 
@@ -20,10 +19,10 @@ namespace Assets.Scripts.FSM
             _currentPatrolIndex = -1;
         }
 
-        public override bool EnterState()
+        public override bool EnterState(FiniteStateMachine context)
         {
             EnteredState = false;
-            if (base.EnterState())
+            if (base.EnterState(context))
             {
                 Debug.Log("ENTERED PATROL STATE");
 
@@ -46,7 +45,6 @@ namespace Assets.Scripts.FSM
                     }
 
                     ChangePatrolPoint();
-                    SetDestination();
                     EnteredState = true;
                 }
             }
@@ -55,36 +53,24 @@ namespace Assets.Scripts.FSM
         }
 
 
-        public override void UpdateState()
+        public override void UpdateState(FiniteStateMachine context)
         {
             if (EnteredState)
             {
-                if (_traveling)
+                //Debug.Log("UPDATING PATROL STATE");
+                float distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
+                if (distance <= 1.5f)
                 {
-                    //Debug.Log("UPDATING PATROL STATE");
-                    float distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
-                    if (distance <= 1.5f)
+                    _fsm.EnterState(FSMStateType.IDLE);
+                }
+                else
+                {
+                    if (m_movement != null)
                     {
-                        _traveling = false;
-                        _fsm.EnterState(FSMStateType.IDLE);
-                    }
-                    else
-                    {
-                        if (m_movement != null)
-                        {
-                            m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
-                            m_movement.Move();
-                        }
+                        m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
+                        m_movement.Move();
                     }
                 }
-            }
-        }
-
-        private void SetDestination()
-        {
-            if (_patrolPoints != null)
-            {
-                _traveling = true;
             }
         }
 
