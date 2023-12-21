@@ -41,6 +41,7 @@ MonoBehaviour:
   - {fileID: -7508699645741066747}
   - {fileID: 221313266588666481}
   - {fileID: 6258578684720421218}
+  successPolicy: 0
 --- !u!114 &-7508699645741066747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e4cecfda1a29f2c47bb21c929f074f1a
-  position: {x: 1212, y: 477.12524}
+  position: {x: 1220, y: 485.99994}
   child: {fileID: 4042628621420782231}
   condition:
     conditionType: 5
@@ -135,7 +136,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6fa05cdf15552de4f9182017e7b345e1
-  position: {x: 1408.9999, y: 729}
+  position: {x: 1344.5502, y: 756.0001}
 --- !u!114 &-4907590980937814569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +225,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2c55c1f49b8009d4db925dbd0a2f9a86
-  position: {x: 1044.7, y: 748.0442}
+  position: {x: 1120.8501, y: 751.4002}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +345,7 @@ MonoBehaviour:
   - {fileID: -4907590980937814569}
   - {fileID: 2098491222730285251}
   - {fileID: -3102847990474412881}
+  successPolicy: 0
 --- !u!114 &926909781816725132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +457,7 @@ MonoBehaviour:
   children:
   - {fileID: -2008298683894607741}
   - {fileID: -4944813529836547088}
+  successPolicy: 0
 --- !u!114 &5577915020144664532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +580,7 @@ MonoBehaviour:
   children:
   - {fileID: 7587355105072143710}
   - {fileID: 6556517363166737331}
+  successPolicy: 0
 --- !u!114 &7587355105072143710
 MonoBehaviour:
   m_ObjectHideFlags: 0

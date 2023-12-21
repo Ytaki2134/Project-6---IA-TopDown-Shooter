@@ -37,11 +37,11 @@ public class Condition
                         blackboard.Set("hasAggro", true); // Prendre l'aggro
                         return true == expectedValue;
                     }
-                    else if ((hasAggro && dist >= aggroEndDistance) || (!hasAggro && dist >= aggroEndDistance))
-                    {
-                        blackboard.Set("hasAggro", false); // Perdre l'aggro
-                        return false == expectedValue;
-                    }
+                   //else if ((hasAggro && dist >= aggroEndDistance) || (!hasAggro && dist >= aggroEndDistance))
+                   //{
+                   //    blackboard.Set("hasAggro", false); // Perdre l'aggro
+                   //    return false == expectedValue;
+                   //}
 
                     return hasAggro == expectedValue; // Maintenir l'état actuel de l'aggro
                 }
