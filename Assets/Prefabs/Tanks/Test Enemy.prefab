@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6264558509646903384}
   - component: {fileID: 3272373427744824046}
   - component: {fileID: 2149746214985386141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
+  duration: 0
+  m_shootAnimator: {fileID: 0}
 --- !u!114 &2149746214985386141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5972739479624454072}
   - component: {fileID: 2801555615581934149}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Track_1_A L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +202,7 @@ SpriteRenderer:
   m_Size: {x: 0.42, y: 2.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5838497136433425801
@@ -212,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2119177166419826634}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4845898277217722430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,6 +428,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353d763bf826a91478395e1897789c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_transformList:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_DeathClip: {fileID: 0}
 --- !u!1 &7760592605917230738
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,9 +441,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8920954497795880858}
+  - component: {fileID: -3777037934882687655}
   - component: {fileID: 1892042885323986271}
   - component: {fileID: 6029557120383368668}
-  m_Layer: 0
+  - component: {fileID: -1029693301587181619}
+  m_Layer: 7
   m_Name: Test Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,6 +468,20 @@ Transform:
   - {fileID: 5676789233512348038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3777037934882687655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760592605917230738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee0911c3053c5a46aa769ad26e87910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _patrolPoints: []
+  _player: {fileID: 0}
 --- !u!50 &1892042885323986271
 Rigidbody2D:
   serializedVersion: 4
@@ -505,6 +527,25 @@ MonoBehaviour:
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5
   Health: 20
+--- !u!114 &-1029693301587181619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760592605917230738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5672d7a3595142b4b964ac7dd38f3961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _validStates:
+  - {fileID: 11400000, guid: 222d7dc443f47514ca79b7d18b803d19, type: 2}
+  - {fileID: 11400000, guid: 1aa4d42075bad6847b31aa3b3c715b6a, type: 2}
+  - {fileID: 11400000, guid: 8f5ef66125248894ab8b7d45d099547e, type: 2}
+  - {fileID: 11400000, guid: 0c6cb577b81f7ef40aee7ffcc0a21958, type: 2}
+  - {fileID: 11400000, guid: 47ee117d75ccea0449e84de9f21d13e4, type: 2}
+  - {fileID: 11400000, guid: e7e6b5b10aa7d9e4aa2c41be35710014, type: 2}
 --- !u!1 &8394301354479254328
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570672341128253340}
   - component: {fileID: 3748584715514707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320476939767675877}
   - component: {fileID: 2353244330307718991}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Track_1_A R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,6 +712,6 @@ SpriteRenderer:
   m_Size: {x: 0.42, y: 2.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
