@@ -23,11 +23,21 @@ public class BehaviourTreeRunner : MonoBehaviour
     private Movement  _movement;
     private TankStatistics  _tankStat;
 
+    private Movement  _movement;
+    Shield shield;
+
     // Start is called before the first frame update
     void Start()
     {
         _tankStat = GetComponent<TankStatistics>();
         
+        TankStatistics tankStatistics = GetComponent<TankStatistics>();
+        _movement = GetComponent<Movement>();
+        _movement.SetSpeed(_speed);
+        _movement.SetRotationSpeed(_speed);
+        shield = GetComponent<Shield>();
+        shield.ShieldValue = 50;
+
 
         _movement = GetComponent<Movement>();
         _movement.SetSpeed(_tankStat.Speed);
@@ -43,6 +53,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("movement", _movement);
         tree.blackboard.Set("bulletPrefab", _bulletPrefab);
         tree.blackboard.Set("readyToMove", false);
+        tree.blackboard.Set("readyToShoot", false);
         tree.blackboard.Set("IsInDistance", false);
         tree.blackboard.Set("shield", shieldComponent);
         tree.blackboard.Set("health", _tankStat.Health);
@@ -58,6 +69,10 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("checkObstacleCooldown", 20f);
 
         tree.blackboard.Set("isObstacleDetected", false);
+        tree.blackboard.Set("health", tankStatistics.Health);
+        tree.blackboard.Set("canUsePatternOne", true);
+        tree.blackboard.Set("minePrefab", _minePrefab);
+        tree.blackboard.Set("shield", shield);
 
 
 

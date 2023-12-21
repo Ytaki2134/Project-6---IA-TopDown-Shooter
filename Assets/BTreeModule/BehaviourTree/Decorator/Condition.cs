@@ -25,14 +25,11 @@ public enum ConditionType
 public class Condition
 {
     public ConditionType conditionType;
-    public bool expectedValue; // La valeur attendue pour que la condition soit considérée comme vraie
-    public float threshold;
+    public bool expectedValue; // Expected value for the condition to be considered true
+    public float threshold; // Additional parameter for comparison, like health threshold
 
     public bool Evaluate(Blackboard blackboard)
     {
-        GameObject _tank = (blackboard.Get("targetGameObject") as GameObject);
-        GameObject _enemi = (blackboard.Get("targetEnemi") as GameObject);
-        // Vérifiez la condition en utilisant le type et la valeur du blackboard
         switch (conditionType)
         {
             case ConditionType.IsInDistance:
@@ -53,7 +50,7 @@ public class Condition
                    //    return false == expectedValue;
                    //}
 
-                    return hasAggro == expectedValue; // Maintenir l'état actuel de l'aggro
+                    return hasAggro == expectedValue; // Maintenir l'ï¿½tat actuel de l'aggro
                 }
             case ConditionType.IsObstacleDetected:
                 {
@@ -64,7 +61,7 @@ public class Condition
                     // Debugging visuel
                     Debug.DrawLine(raycastStartPoint, raycastStartPoint + direction * 5f, hit.collider != null ? Color.red : Color.green, 0.1f);
 
-                    // Debugging pour voir quel objet est touché
+                    // Debugging pour voir quel objet est touchï¿½
                     if (hit.collider != null)
                     {
                         Debug.Log("Hit: " + hit.collider.gameObject.name);
@@ -115,9 +112,9 @@ public class Condition
                 {
                     Vector2 backwardDirection = -_tank.transform.up.normalized;
                     float raycastDistance = 10f;
-                    float raycastStartOffset = 1.5f; // Un petit décalage pour éviter de détecter son propre collider
+                    float raycastStartOffset = 1.5f; // Un petit dï¿½calage pour ï¿½viter de dï¿½tecter son propre collider
 
-                    // Point de départ du raycast, décalé légèrement vers l'arrière pour éviter le collider du tank
+                    // Point de dï¿½part du raycast, dï¿½calï¿½ lï¿½gï¿½rement vers l'arriï¿½re pour ï¿½viter le collider du tank
                     Vector2 raycastStartPoint = _tank.transform.position + (Vector3)(backwardDirection * raycastStartOffset);
 
                     RaycastHit2D hit = Physics2D.Raycast(raycastStartPoint, backwardDirection, raycastDistance);
@@ -126,7 +123,7 @@ public class Condition
                     if (hit.collider != null)
                     {
                         blackboard.Set("isNearObstacle", true);
-                        Debug.Log("Trouvé");
+                        Debug.Log("Trouvï¿½");
                     }
                     else
                     {
@@ -138,7 +135,32 @@ public class Condition
 
             default:
                 throw new ArgumentOutOfRangeException();
+                    float dist = Vector2.Distance((blackboard.Get("targetGameObject") as GameObject).transform.position, (blackboard.Get("targetEnemi") as GameObject).transform.position);
+                    return dist < threshold == expectedValue;
+                }
 
+            case ConditionType.HealthCheck:
+                {
+                    float health = (float)blackboard.Get("health");
+                    Debug.Log(health + " > " + threshold + "==" + expectedValue);
+                    return health > threshold == expectedValue;
+                }
+
+            case ConditionType.CanUsePatternOne:
+                {
+                    bool canUsePatternOne = (bool)blackboard.Get("canUsePatternOne");
+                    return canUsePatternOne == expectedValue;
+                }
+            case ConditionType.ShieldGreaterThanZero:
+                {
+                    Shield shieldComponent = blackboard.Get("shield") as Shield;
+                    Debug.Log(shieldComponent.ShieldValue + " > " + threshold + "==" + expectedValue);
+                    return shieldComponent.ShieldValue > threshold;
+                    
+
+                }
+            default:
+                throw new ArgumentOutOfRangeException();
         }
    
     }
