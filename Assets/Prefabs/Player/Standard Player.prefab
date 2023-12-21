@@ -224,8 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
-  duration: 0
   m_shootAnimator: {fileID: 7926313954129691353}
+  duration: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,6 +959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patrolPoints: []
+  _player: {fileID: 0}
+  _index: 1
 --- !u!50 &1892042885323986271
 Rigidbody2D:
   serializedVersion: 4

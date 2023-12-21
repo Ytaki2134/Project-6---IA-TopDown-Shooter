@@ -83,18 +83,15 @@ namespace Assets.Scripts.FSM.States
                                 _fsm.EnterState(FSMStateType.CHASE);
                             }
                             break;
+                    }
+                    //context.Gun.SetTargetPosition(context.Player.transform.position);
+                    //context.Gun.FollowTargetPosition();
+                    //context.Gun.Fire();
 
-                        default:
-                            context.Gun.SetTargetPosition(context.Player.transform.position);
-                            context.Gun.FollowTargetPosition();
-                            context.Gun.Fire();
-
-                            if (m_movement != null)
-                            {
-                                m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
-                                m_movement.Move();
-                            }
-                            break;
+                    if (m_movement != null)
+                    {
+                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
+                        m_movement.Move();
                     }
                 }
             }

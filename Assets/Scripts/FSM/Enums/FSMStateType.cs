@@ -6,5 +6,6 @@ public enum FSMStateType
     FLEE,
     CHASE_AND_FIRE,
     FLEE_AND_FIRE,
-    IDLE_AND_FIRE
+    IDLE_AND_FIRE,
+    DEAD
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.NPCCode;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Assets.Scripts.FSM
 {
@@ -36,9 +37,19 @@ namespace Assets.Scripts.FSM
             NPC npc = this.GetComponent<NPC>();
             player = npc.GetPlayer();
 
+            if (player != null)
+            {
+                Debug.Log("Player found in : " + player);
+            }
+            else
+            {
+                Debug.LogWarning("Player not found in!");
+            }
+
             movement = GetComponentInChildren<Movement>();
             gun = GetComponentInChildren<Gun>();
             tankStatistics = GetComponent<TankStatistics>();
+            index = npc.GetIndex();
 
             foreach (AbstractFSMState state in _validStates)
             {

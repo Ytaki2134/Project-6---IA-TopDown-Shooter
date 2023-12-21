@@ -89,14 +89,11 @@ namespace Assets.Scripts.FSM
                             _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
                         }
                         break;
-
-                    default:
-                        if (m_movement != null)
-                        {
-                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
-                            m_movement.Move();
-                        }
-                        break;
+                }
+                if (m_movement != null)
+                {
+                    m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
+                    m_movement.Move();
                 }
             }
         }

@@ -36,8 +36,16 @@ namespace Assets.Scripts.FSM.States
                 switch (context.Index)
                 {
                     case 1: case 2: case 5:
-                        _fsm.EnterState(FSMStateType.PATROL);
-                        break;
+                        if (_distance <= 15f)
+                        {
+                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                            break;
+                        }
+                        else
+                        {
+                            _fsm.EnterState(FSMStateType.PATROL);
+                            break;
+                        }
 
                     case 3:
                         if (_distance <= 30f)

@@ -75,14 +75,11 @@ namespace Assets.Scripts.FSM
 
                     case 4:
                         break;
-
-                    default:
-                        if (m_movement != null)
-                        {
-                            m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
-                            m_movement.Move();
-                        }
-                        break;
+                }
+                if (m_movement != null)
+                {
+                    m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
+                    m_movement.Move();
                 }
             }
         }
