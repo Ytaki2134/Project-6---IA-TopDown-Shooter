@@ -16,14 +16,17 @@ public class ParallelNode : CompisiteNode
     private Policy successPolicy;
     private Policy failurePolicy;
 
-    public ParallelNode(Policy successPolicy, Policy failurePolicy)
-    {
-        this.successPolicy = successPolicy;
-        this.failurePolicy = failurePolicy;
-    }
+    /*    public ParallelNode(Policy successPolicy, Policy failurePolicy)
+        {
+            this.successPolicy = successPolicy;
+            this.failurePolicy = failurePolicy;
+        }
+    */
 
     protected override void OnStart()
     {
+        this.successPolicy = Policy.RequireAll;
+        this.failurePolicy = Policy.RequireOne;
     }
 
     protected override void OnStop()
