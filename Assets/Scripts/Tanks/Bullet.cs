@@ -51,9 +51,10 @@ public class Bullet : MonoBehaviour
 
 
         if (collision.gameObject.GetComponent<Hull>() != null)
-        {
             collision.gameObject.GetComponent<Hull>().RemoveHealth(m_gunStatistics.BulletDamage);
-        }
+
+        if (collision.gameObject.GetComponent<TankStatistics>() != null)
+            collision.gameObject.GetComponent<TankStatistics>().Health-= m_gunStatistics.BulletDamage;
 
         //Trigger Animation + animation trigger destroy
         if (gameObject.tag == "PlayerBullet")

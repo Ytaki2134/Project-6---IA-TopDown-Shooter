@@ -322,7 +322,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e5fbc3a7392a371428d0bea96870386d
-  position: {x: 1574.2207, y: 333.1233}
+  position: {x: 1559, y: 316}
 --- !u!114 &895799602966596057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d4b273baefe430a498e1eafd692515ca
-  position: {x: 697.0001, y: 417}
+  position: {x: 704.9999, y: 416.99994}
   child: {fileID: 895799602966596057}
   condition:
     conditionType: 5
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Name: GuardConditionNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   guid: 8e1bc55f55839a644bd1c4daa5853d32
   position: {x: 1054.0002, y: 199.00006}
   child: {fileID: 2401133032313590111}

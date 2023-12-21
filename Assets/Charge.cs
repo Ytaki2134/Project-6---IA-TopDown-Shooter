@@ -7,18 +7,24 @@ public class Charge : MonoBehaviour
     [SerializeField] private float _damageMake;
     [SerializeField] private float _damageGet;
 
-    public bool touch = false;
+    public int touch = 0;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (touch == true)
+        Debug.Log(collision.gameObject.name);
+        if (touch == 0)
         {
-            if (collision.gameObject.GetComponent<TankStatistics>() != null)
+            if (collision.gameObject.tag == "Player")
             {
                 collision.gameObject.GetComponent<TankStatistics>().Health -= _damageMake;
             }
             gameObject.GetComponent<TankStatistics>().Health -= _damageGet;
-            touch = false;
+
         }
+        touch++;
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        touch++;
     }
 }

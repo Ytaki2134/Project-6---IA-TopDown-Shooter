@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5666389887371749188}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2138934828045964076}
   - component: {fileID: 2880894925705891009}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 1407652212213177671}
   - component: {fileID: 6161621989370635014}
   - component: {fileID: 7534928469335450037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2452749053595961713}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WOrigin (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5689694860390925398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 6925303440382647550}
   - component: {fileID: 2353106603123559165}
   - component: {fileID: 2211286762742985202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1388580923422187730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

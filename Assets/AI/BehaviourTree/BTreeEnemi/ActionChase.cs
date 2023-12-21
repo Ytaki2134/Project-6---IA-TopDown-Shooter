@@ -35,7 +35,7 @@ public class ActionChase : ActionNode
         if(Vector2.Distance(_enemy.transform.position, _tank.transform.position)> 5){
 
             _movement.RotateAndMoveTowards(_tank.transform, _enemy.transform);
-            return State.Running;
+            //return State.Running;
         }
         return State.Running;
       
