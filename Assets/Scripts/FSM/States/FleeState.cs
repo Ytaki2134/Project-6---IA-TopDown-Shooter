@@ -61,7 +61,7 @@ namespace Assets.Scripts.FSM
                 {
                     if (m_movement != null)
                     {
-                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
+                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
                         m_movement.Move();
                     }
                 }
