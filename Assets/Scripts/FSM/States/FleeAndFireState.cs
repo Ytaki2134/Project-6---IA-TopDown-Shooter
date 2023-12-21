@@ -9,7 +9,6 @@ namespace Assets.Scripts.FSM.States
         private Movement m_movement;
         private float _fireRange;
         private bool _canFire;
-        private Gun m_gun;
 
         public override void OnEnable()
         {
@@ -39,7 +38,7 @@ namespace Assets.Scripts.FSM.States
                     m_movement.SetBrakeSpeed(1f);
                     m_movement.SetBrakeRotationSpeed(1f);
 
-                    CheckWeapon();
+                    CheckWeapon(context);
                     EnteredState = true;
                 }
             }
@@ -52,21 +51,21 @@ namespace Assets.Scripts.FSM.States
             {
                 if (_canFire)
                 {
-                    Debug.Log("UPDATING FLEE STATE");
+                    Debug.Log("UPDATING FLEE AND FIRE STATE");
                     _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
-                    if (_fireRange > 1.5f)
+                    if (_fireRange > 100f)
                     {
                         _fsm.EnterState(FSMStateType.FLEE);
                     }
                     else
                     {
-                        m_gun.SetTargetPosition(context.Player.transform.position);
-                        m_gun.FollowTargetPosition();
-                        m_gun.Fire();
+                        context.Gun.SetTargetPosition(context.Player.transform.position);
+                        context.Gun.FollowTargetPosition();
+                        context.Gun.Fire();
 
                         if (m_movement != null)
                         {
-                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
+                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
                             m_movement.Move();
                         }
                     }
@@ -74,9 +73,9 @@ namespace Assets.Scripts.FSM.States
             }
         }
 
-        public void CheckWeapon()
+        public void CheckWeapon(FiniteStateMachine context)
         {
-            if (m_gun != null)
+            if (context.Gun != null)
             {
                 _canFire = true;
             }

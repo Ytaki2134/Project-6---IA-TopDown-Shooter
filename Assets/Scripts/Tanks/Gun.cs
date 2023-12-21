@@ -10,7 +10,6 @@ public class Gun : MonoBehaviour
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
 
-
     private void Start()
     {
         m_stats = GetComponent<GunStatistics>();

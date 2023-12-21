@@ -47,13 +47,13 @@ namespace Assets.Scripts.FSM
         {
             if (EnteredState)
             {
-                //Debug.Log("UPDATING CHASE STATE");
+                Debug.Log("UPDATING FLEE STATE");
                 _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
-                if (_fireRange <= 1.5f)
+                if (_fireRange <= 25f)
                 {
                     _fsm.EnterState(FSMStateType.FLEE_AND_FIRE);
                 }
-                else if (_fireRange >= 5f)
+                else if (_fireRange >= 100f)
                 {
                     _fsm.EnterState(FSMStateType.IDLE);
                 }
@@ -61,7 +61,7 @@ namespace Assets.Scripts.FSM
                 {
                     if (m_movement != null)
                     {
-                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
+                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
                         m_movement.Move();
                     }
                 }
