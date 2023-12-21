@@ -29,7 +29,14 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_rb.AddForce(new Vector2(transform.right.x * m_gunStatistics.BulletSpeed, transform.right.y * m_gunStatistics.BulletSpeed));
+        if (gameObject.tag == "PlayerBullet")
+        {
+            m_rb.AddForce(new Vector2(transform.right.x * m_gunStatistics.BulletSpeed, transform.right.y * m_gunStatistics.BulletSpeed));
+        }
+        else
+        {
+            m_rb.AddForce(new Vector2(transform.up.x * m_gunStatistics.BulletSpeed, transform.up.y * m_gunStatistics.BulletSpeed));
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,9 +56,13 @@ public class Bullet : MonoBehaviour
         }
 
         //Trigger Animation + animation trigger destroy
-        m_animator.SetBool("Hit", true);
-        m_rb.constraints = RigidbodyConstraints2D.FreezePosition;
-        m_collider.enabled = false;
+        if (gameObject.tag == "PlayerBullet")
+        {
+            m_animator.SetBool("Hit", true);
+            m_rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            m_collider.enabled = false;
+
+        }
     }
 
     public void DestroyBullet()

@@ -126,6 +126,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2113599384270740720}
   - component: {fileID: 619378820438418913}
+  - component: {fileID: 8197537073095423722}
+  - component: {fileID: 6855258736334924975}
+  - component: {fileID: 1407652212213177671}
+  - component: {fileID: 6161621989370635014}
+  - component: {fileID: 7534928469335450037}
   m_Layer: 0
   m_Name: Enemi
   m_TagString: Untagged
@@ -202,6 +207,120 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8197537073095423722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180570504376566114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b13b1df8600fc548b08b160db588a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Parent: {fileID: 4180570504376566114}
+  Speed: 4
+  BrakeSpeedMod: 0.9
+  RotationSpeed: 2.5
+  BrakeRotationSpeedMod: 1.5
+  Health: 7
+--- !u!114 &6855258736334924975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180570504376566114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efcc002108f3b04594ab620a3a6cf6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 11400000, guid: 164a0504f0451a84c8679cc39e477155, type: 2}
+  _targetGameObject: {fileID: 4180570504376566114}
+  _targetEnemi: {fileID: 0}
+  _speed: 2
+  _waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _WeaponBullet: {fileID: 6366451253971827912}
+  _minePrefab: {fileID: 2385014407767734437, guid: fe136593345b8ee48b6e6b3223a8912a, type: 3}
+  _bullet2Prefab: {fileID: 0}
+--- !u!114 &1407652212213177671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180570504376566114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c707ee54c4f1647878f0c071513b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Player: {fileID: 0}
+--- !u!114 &6161621989370635014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180570504376566114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b9322b9949fea46a077f16c87e72db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageMake: 10
+  _damageGet: 2.5
+  touch: 0
+--- !u!61 &7534928469335450037
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180570504376566114}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: -0.020141363, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7946277, y: 2.56}
+  m_EdgeRadius: 0
 --- !u!1 &4256329480244546489
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 6326942083401500588}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.010000229, y: 1.027, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,6 +394,8 @@ GameObject:
   m_Component:
   - component: {fileID: 849372055616221463}
   - component: {fileID: 6925303440382647550}
+  - component: {fileID: 2353106603123559165}
+  - component: {fileID: 2211286762742985202}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -350,6 +471,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2353106603123559165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366451253971827912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5f3115c5a8dea4cad8e34399caa357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pivot: {fileID: 1388580923422187730}
+  m_gunEnd: {fileID: 5689694860390925398}
+--- !u!114 &2211286762742985202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366451253971827912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff5aeaa26288574fb96ad32b38192d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletDamage: 10
+  BulletSpeed: 3
+  RotationSpeed: 6
+  BrakeRotationSpeedMod: 1
+  BulletType: {fileID: 8384666743012348179, guid: 91e2d6d61acc07442a7d8e565bc1f3f8, type: 3}
+  IsPlayer: 0
 --- !u!1 &8770182848036909469
 GameObject:
   m_ObjectHideFlags: 0

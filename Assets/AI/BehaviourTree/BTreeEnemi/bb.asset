@@ -94,7 +94,7 @@ MonoBehaviour:
   started: 0
   guid: e4cecfda1a29f2c47bb21c929f074f1a
   position: {x: 1212, y: 477.12524}
-  child: {fileID: -4944813529836547088}
+  child: {fileID: 4042628621420782231}
   condition:
     conditionType: 5
     expectedValue: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6fa05cdf15552de4f9182017e7b345e1
-  position: {x: 1291, y: 620}
+  position: {x: 1408.9999, y: 729}
 --- !u!114 &-4907590980937814569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,6 @@ MonoBehaviour:
   started: 0
   guid: 6f59f8d441e1ce34e85fc530c7424340
   position: {x: 772, y: 659}
-  _bulletPrefab: {fileID: 0}
   bulletSpeed: 10
 --- !u!114 &-2872941753425433529
 MonoBehaviour:
@@ -225,7 +224,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2c55c1f49b8009d4db925dbd0a2f9a86
-  position: {x: 1099, y: 620}
+  position: {x: 1044.7, y: 748.0442}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +269,7 @@ MonoBehaviour:
   - {fileID: -3102847990474412881}
   - {fileID: 926909781816725132}
   - {fileID: 2401133032313590111}
+  - {fileID: 4042628621420782231}
 --- !u!114 &209706596733381150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +417,7 @@ MonoBehaviour:
   position: {x: 989.00006, y: 339.00003}
   children:
   - {fileID: 926909781816725132}
+  - {fileID: -5338848750333538548}
 --- !u!114 &3374903389994889900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +435,25 @@ MonoBehaviour:
   guid: 101ec58b187d5c149be483ae7f0d242f
   position: {x: 1112.2208, y: -52.876705}
   child: {fileID: 1007484900098241847}
+--- !u!114 &4042628621420782231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae766dde401ba45ab4e71dfc2c9b56, type: 3}
+  m_Name: ParallelNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: b79567191a1e2ed459b88ebbb2e73156
+  position: {x: 1212, y: 620.0002}
+  children:
+  - {fileID: -2008298683894607741}
+  - {fileID: -4944813529836547088}
 --- !u!114 &5577915020144664532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +523,6 @@ MonoBehaviour:
   started: 0
   guid: 44cb7639f051c2648bdc4ba37fdd02ec
   position: {x: 315.30008, y: 482}
-  _bulletPrefab: {fileID: 0}
   bulletSpeed: 10
 --- !u!114 &6556517363166737331
 MonoBehaviour:

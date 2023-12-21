@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Charge : MonoBehaviour
 {
-    public bool charge = false;
+    [SerializeField] private float _damageMake;
+    [SerializeField] private float _damageGet;
+
+    public bool touch = false;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Hull>() != null)
+        if (touch == true)
         {
-            collision.gameObject.GetComponent<Hull>().RemoveHealth(10f);
+            if (collision.gameObject.GetComponent<TankStatistics>() != null)
+            {
+                collision.gameObject.GetComponent<TankStatistics>().Health -= _damageMake;
+            }
+            gameObject.GetComponent<TankStatistics>().Health -= _damageGet;
+            touch = false;
         }
-        gameObject.GetComponent<TankStatistics>().Health -= (2.5f);
     }
 }

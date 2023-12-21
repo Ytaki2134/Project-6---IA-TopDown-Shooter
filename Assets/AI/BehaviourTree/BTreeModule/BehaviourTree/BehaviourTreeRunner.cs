@@ -15,7 +15,7 @@ public class BehaviourTreeRunner : MonoBehaviour
     [SerializeField]
     private GameObject[] _waypoints;
     [SerializeField]
-    private GameObject _bulletPrefab;
+    private GameObject _WeaponBullet;
     [SerializeField]
     private GameObject _minePrefab;
     [SerializeField]
@@ -37,13 +37,13 @@ public class BehaviourTreeRunner : MonoBehaviour
         Shield shieldComponent = GetComponent<Shield>();
 
         tree = tree.Clone();
-        tree.blackboard.Set("targetGameObject", _targetGameObject);
+        tree.blackboard.Set("targetGameObject", gameObject);
         tree.blackboard.Set("waypoints", _waypoints);
 
         tree.blackboard.Set("speed", _tankStat.Speed);
-        tree.blackboard.Set("targetEnemi", gameObject);
+        tree.blackboard.Set("targetEnemi", _targetEnemi);
         tree.blackboard.Set("movement", _movement);
-        tree.blackboard.Set("bulletPrefab", _bulletPrefab);
+        tree.blackboard.Set("WeaponBullet", _WeaponBullet);
         tree.blackboard.Set("readyToMove", false);
         tree.blackboard.Set("IsInDistance", false);
         tree.blackboard.Set("shield", shieldComponent);
@@ -55,7 +55,6 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("aggroStartDistance", 10f);
         tree.blackboard.Set("aggroEndDistance", 20f);
         tree.blackboard.Set("hasBeenHit", false);
-
     }
 
     // Update is called once per frame
