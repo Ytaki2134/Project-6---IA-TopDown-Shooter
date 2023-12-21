@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform m_pivot;
     [SerializeField] private Transform m_gunEnd;
-    [SerializeField] private Animator m_gunAnimator;
+    [SerializeField] private Animator m_shootAnimator;
     private AudioSource m_audioSource;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
@@ -29,6 +29,11 @@ public class Gun : MonoBehaviour
         GameObject temp;
         switch (m_stats.BulletType.name)
         {
+            default:
+                temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
+                temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                break;
+
             case "SpreadShot Bullet":
                 float AngleDif = 120f;
                 for (int i = 0; i < 5; i++)
@@ -42,12 +47,8 @@ public class Gun : MonoBehaviour
             case "Homing Bullet":
                 break;
 
-            default:
-                temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
-                temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
-                break;
         }
-        m_gunAnimator.SetBool("Shoot", true);
+        m_shootAnimator.SetBool("Shoot", true);
         m_audioSource.Play();
     }
 

@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bullet 1
+  m_Name: Impact
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c7517dbf5b370024eacab471b842f721, type: 2}
+  m_Motion: {fileID: 7400000, guid: eac9bc20d72805b4a8ce2af630565916, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -57,7 +57,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bullet
+  m_Name: Sniper Bullet
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hit

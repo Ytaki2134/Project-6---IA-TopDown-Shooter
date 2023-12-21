@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 402338b857ca8e24ab504f9105499b6a
+guid: 82c7a0fa8edf7e74f938b1286515abdf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -110,85 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gun Animation 1_0
+      name: Track_2_map_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
-        width: 94
-        height: 214
+        y: 0
+        width: 42
+        height: 246
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66e94b6c4e4a1e9458e89edb81df20a2
-      internalID: 516817539
+      spriteID: f0f10bcae90c60742a59d328af8a4690
+      internalID: 631495205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gun Animation 1_1
+      name: Track_2_map_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 48
         y: 0
-        width: 94
-        height: 215
+        width: 42
+        height: 246
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b1ea8dcef9c98b448436f690504ebcc
-      internalID: 765835568
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gun Animation 1_2
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 0
-        width: 94
-        height: 215
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 985a395b9ce98494d8320da6e629bf48
-      internalID: -1407701789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gun Animation 1_3
-      rect:
-        serializedVersion: 2
-        x: 286
-        y: 0
-        width: 94
-        height: 215
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0946b3d5da25e0a43919aae44d6c4acc
-      internalID: -596358250
+      spriteID: aa4833f5f1795ef4cb54dff832938579
+      internalID: -1656493374
       vertices: []
       indices: 
       edges: []
@@ -204,10 +162,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gun Animation 1_0: 516817539
-      Gun Animation 1_1: 765835568
-      Gun Animation 1_2: -1407701789
-      Gun Animation 1_3: -596358250
+      Track_2_map_0: 631495205
+      Track_2_map_1: -1656493374
+      Track_2_map_2: 1826245205
+      Track_2_map_3: -389879216
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

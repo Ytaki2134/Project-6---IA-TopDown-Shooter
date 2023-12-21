@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8755456110837060607}
   - component: {fileID: -5565951936614201055}
   m_Layer: 0
-  m_Name: SpreadShot Bullet
+  m_Name: Sniper Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.59999996, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1271751670, guid: 1115e22decafde34380320e6498d15fa, type: 3}
+  m_Sprite: {fileID: -116892521, guid: 1115e22decafde34380320e6498d15fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,18 +159,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.11034298, y: 0.0007970184}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.49, y: 0.49}
+    oldSize: {x: 1.03, y: 0.33}
     newSize: {x: 0.45, y: 0.33}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49, y: 0.49}
+  m_Size: {x: 0.80795217, y: 0.29014894}
   m_EdgeRadius: 0
 --- !u!95 &-5565951936614201055
 Animator:
@@ -182,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 3275306726565939084}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 231de8d3db550c549b80f11057dcfa27, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0c2c6ba2d17455e469d724d93d7ae05b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

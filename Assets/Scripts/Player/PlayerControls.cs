@@ -10,12 +10,17 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float m_maxZoom = 18f;
     [SerializeField] private float m_minZoom = 8f;
     [SerializeField] private AudioSource m_trackAudioSource;
+    [SerializeField] private Animator m_hullAnimator;
+    [SerializeField] private Animator m_gunAnimator;
+    [SerializeField] private Animator m_shootAnimator;
     [SerializeField] private Animator[] m_trackAnimator = new Animator[2];
     private PlayerInputs m_inputs;
     private Rigidbody2D m_rb;
     private TankStatistics m_tankStatistics;
     private Movement m_movement;
     private Gun m_gun;
+    //Animation Pallet Index : 1 = Standard, 2 = SpreadShot, 3 = ?, 4 = ?, 5 = ?
+    public int type = 0;
 
     void Awake()
     {
@@ -98,6 +103,15 @@ public class PlayerControls : MonoBehaviour
         };
 
         #endregion
+    }
+
+    private void Start()
+    {
+        m_hullAnimator.SetInteger("Index", type);
+        m_gunAnimator.SetInteger("Index", type);
+        m_shootAnimator.SetInteger("Index", type);
+        m_trackAnimator[0].SetInteger("Index", type);
+        m_trackAnimator[1].SetInteger("Index", type);
     }
 
     void Update()
