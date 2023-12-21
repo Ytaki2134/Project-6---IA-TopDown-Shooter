@@ -26,7 +26,6 @@ public class ParallelNode : CompisiteNode
     protected override State OnUpdate()
     {
         int successCount = 0;
-        int failureCount = 0;
 
         foreach (Node child in m_children)
         {
@@ -40,16 +39,13 @@ public class ParallelNode : CompisiteNode
                         return State.Success;
                     break;
                 case State.Failure:
-                    failureCount++;
-                    if (successPolicy == Policy.RequireOne)
-                        return State.Failure;
                     break;
             }
         }
 
         if (successPolicy == Policy.RequireAll && successCount == m_children.Count)
             return State.Success;
-        else
-            return State.Failure;
+        
+        return State.Failure;
     }
 }
