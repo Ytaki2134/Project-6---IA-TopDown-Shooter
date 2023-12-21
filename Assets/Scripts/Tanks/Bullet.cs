@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     private Collider2D m_collider;
     private Animator m_animator;
     private GunStatistics m_gunStatistics;
-
+    public GameObject hitEffectPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +63,29 @@ public class Bullet : MonoBehaviour
             m_rb.constraints = RigidbodyConstraints2D.FreezePosition;
             m_collider.enabled = false;
 
+        }
+        if (gameObject.tag == "EnemyBullet")
+        {
+        InstantiateHitEffect(collision);
+
+
+        }
+
+        DestroyBullet();
+    }
+    private void InstantiateHitEffect(Collider2D collision)
+    {
+        if (hitEffectPrefab != null)
+        {
+            // Calculer le point le plus proche sur le collider du tank
+            Vector2 closestPoint = collision.ClosestPoint(transform.position);
+
+            // Instancier l'effet à ce point
+            GameObject effect = Instantiate(hitEffectPrefab, closestPoint, Quaternion.identity);
+
+            // Ajuster le temps de destruction pour correspondre à la durée de l'animation
+            float effectDuration = 0.2f; // Remplacer par la durée réelle de l'animation
+            Destroy(effect, effectDuration);
         }
     }
 

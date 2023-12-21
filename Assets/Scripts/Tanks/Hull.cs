@@ -13,7 +13,7 @@ public class Hull : MonoBehaviour
     {
         if (m_stats.Health <= 0)
         {
-            Destroy(m_stats.Parent);
+            Destroy(m_stats.Parent, 0.2f);
         }
     }
 

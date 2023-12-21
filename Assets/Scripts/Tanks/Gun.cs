@@ -8,12 +8,13 @@ public class Gun : MonoBehaviour
     private Vector2 m_targetPosition = new(0, 0);
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
-
+    private AudioManager m_audioManager;
     [SerializeField] private float duration;
     private float time = 0;
     private void Start()
     {
         m_stats = GetComponent<GunStatistics>();
+        m_audioManager = GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -28,12 +29,14 @@ public class Gun : MonoBehaviour
         {
             time = Time.deltaTime;
             GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
-
             if (m_stats.IsPlayer)
             {
                 temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
+
             }
             temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+            m_audioManager.PlaySound();
+
         }
         else
         {

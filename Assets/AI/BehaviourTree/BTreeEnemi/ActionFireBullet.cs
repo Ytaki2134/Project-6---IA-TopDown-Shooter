@@ -6,6 +6,7 @@ public class ActionFireBullet : ActionNode
     private GameObject _targetToMove;
     private GameObject _me;
     private GameObject _canon;
+
     public float bulletSpeed = 10f; // Vitesse de la balle
 
     protected override void OnStart()
@@ -21,7 +22,7 @@ public class ActionFireBullet : ActionNode
     }
 
     private float _lastFireTime = 0f; // Dernier moment où une balle a été tirée
-    private float _fireInterval = 2f; // Intervalle entre les tirs en secondes
+    private float _fireInterval = 1f; // Intervalle entre les tirs en secondes
 
 
     protected override State OnUpdate()
@@ -36,6 +37,7 @@ public class ActionFireBullet : ActionNode
             if (Time.time - _lastFireTime >= _fireInterval)
             {
                 FireBullet();
+                //Debug.Log(_audioEnemi != null);
                 _lastFireTime = Time.time; // Mettre à jour le dernier temps de tir
             }
             return State.Running;

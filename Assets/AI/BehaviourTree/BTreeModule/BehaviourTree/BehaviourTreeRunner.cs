@@ -23,6 +23,10 @@ public class BehaviourTreeRunner : MonoBehaviour
     private GameObject[] _summonList;
     private Movement _movement;
     private TankStatistics _tankStat;
+    private AudioManager _audioManager;
+    private Animator _animatorTrack1;
+    private Animator _animatorTrack2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +38,19 @@ public class BehaviourTreeRunner : MonoBehaviour
         _movement.SetSpeed(_tankStat.Speed);
         _movement.SetRotationSpeed(_tankStat.RotationSpeed);
         shieldComponent = GetComponent<Shield>();
+        _audioManager = GetComponent<AudioManager>();
+        _animatorTrack1 = GetComponent<Transform>().GetChild(1).GetComponent<Transform>().GetChild(0).GetComponent<Animator>();
+        _animatorTrack2 = GetComponent<Transform>().GetChild(1).GetComponent<Transform>().GetChild(1).GetComponent<Animator>();
+
         shieldComponent.ShieldValue = 20f;
         tree = tree.Clone();
+        tree.blackboard.Set("animatorTrack1", _animatorTrack1);
+        tree.blackboard.Set("animatorTrack2", _animatorTrack2);
+        tree.blackboard.Set("bufferDistance", 3f);
+
         tree.blackboard.Set("targetGameObject", _targetGameObject);
         tree.blackboard.Set("waypoints", _waypoints);
-
+        tree.blackboard.Set("audioManager", _audioManager);
         tree.blackboard.Set("speed", _tankStat.Speed);
         tree.blackboard.Set("targetEnemi", _targetEnemi);
         tree.blackboard.Set("movement", _movement);
