@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,11 +14,13 @@ public class Gun : MonoBehaviour
     private GunStatistics m_stats;
     private GameObject m_bullet;
 
+    public bool m_canFire = true;
 
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
         m_stats = GetComponent<GunStatistics>();
+        //m_canFire = true;
     }
 
     private void Update()
@@ -25,8 +28,19 @@ public class Gun : MonoBehaviour
         FollowTargetPosition();
     }
 
+    private void Reload()
+    {
+        m_canFire = true;
+    }
+
     public void Fire()
     {
+        if (!m_canFire)
+            return;
+
+        m_canFire = false;
+        Invoke("Reload", m_stats.ReloadTime);
+
         switch (m_stats.BulletType.name)
         {
             default:
@@ -72,7 +86,7 @@ public class Gun : MonoBehaviour
     private void FollowTargetPosition()
     {
         //Rotate Sprite
-        var dir = (Vector3) m_targetPosition - transform.position;
+        var dir = (Vector3)m_targetPosition - transform.position;
 
         m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
         m_pivot.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_stats.RotationSpeed * m_stats.BrakeRotationSpeedMod);

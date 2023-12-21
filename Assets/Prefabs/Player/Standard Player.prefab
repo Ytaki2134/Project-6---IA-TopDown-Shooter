@@ -241,6 +241,7 @@ MonoBehaviour:
   BulletSpeed: 4
   RotationSpeed: 6
   BrakeRotationSpeedMod: 1.5
+  ReloadTime: 2
   BulletType: {fileID: 3275306726565939084, guid: 2de714b2001083b40b12deeecf16d369, type: 3}
   IsPlayer: 1
 --- !u!95 &5383473214053400043
@@ -921,7 +922,7 @@ GameObject:
   - component: {fileID: 7368401181109211917}
   - component: {fileID: 1892042885323986271}
   - component: {fileID: 6029557120383368668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Standard Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
