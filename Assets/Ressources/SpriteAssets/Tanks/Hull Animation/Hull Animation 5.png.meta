@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7e5fc66bef6ee343a1a42bac8ad2e8e
+guid: 95c71de6d0ff918459f07839a4ef9a3a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gun Animation 3_0
+      name: Hull Animation 5_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 5
         y: 0
-        width: 66
-        height: 179
+        width: 114
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 676b189d8709f0547898d04450cb6a97
-      internalID: 2061266736
+      spriteID: 975d91f5274b6de49b537c64b292c870
+      internalID: -1279017855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gun Animation 3_1
+      name: Hull Animation 5_1
       rect:
         serializedVersion: 2
-        x: 67
+        x: 124
         y: 0
-        width: 66
-        height: 179
+        width: 114
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16d4096d40e0e284194f7f38070dac3c
-      internalID: -1780529148
+      spriteID: 13716d543e522cd46987de121af41fa1
+      internalID: 82140785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gun Animation 3_2
+      name: Hull Animation 5_2
       rect:
         serializedVersion: 2
-        x: 134
+        x: 243
         y: 0
-        width: 66
-        height: 179
+        width: 114
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66a187a12019c8c4ab435917307379d4
-      internalID: -2078464051
+      spriteID: c0fc8cb3068b0014e91c5599bdc46f52
+      internalID: 1125612017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gun Animation 3_3
+      name: Hull Animation 5_3
       rect:
         serializedVersion: 2
-        x: 201
+        x: 362
         y: 0
-        width: 66
-        height: 179
+        width: 114
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49eac1c326c87a74fa5e7b4c6791d904
-      internalID: 324524795
+      spriteID: 5dc402bca2739cb46923db9d6907c188
+      internalID: 880256003
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gun Animation 3_0: 2061266736
-      Gun Animation 3_1: -1780529148
-      Gun Animation 3_2: -2078464051
-      Gun Animation 3_3: 324524795
+      Hull Animation 5_0: -1279017855
+      Hull Animation 5_1: 82140785
+      Hull Animation 5_2: 1125612017
+      Hull Animation 5_3: 880256003
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

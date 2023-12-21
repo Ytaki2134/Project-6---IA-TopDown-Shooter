@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
+    private GameObject m_bullet;
 
 
     private void Start()
@@ -26,30 +27,46 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
-        GameObject temp;
         switch (m_stats.BulletType.name)
         {
             default:
-                temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
-                temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
+                m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
                 break;
 
             case "SpreadShot Bullet":
                 float AngleDif = 120f;
                 for (int i = 0; i < 5; i++)
                 {
-                    temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, AngleDif));
-                    temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                    m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, AngleDif));
+                    m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
                     AngleDif -= 15f;
                 }
                 break;
 
-            case "Homing Bullet":
+            case "Flame Bullet":
+                m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation, transform);
+                m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
                 break;
 
         }
         m_shootAnimator.SetBool("Shoot", true);
+        m_shootAnimator.SetBool("Loop", true);
         m_audioSource.Play();
+    }
+
+    public void FireStop()
+    {
+        m_shootAnimator.SetBool("Loop", false);
+
+        switch (m_stats.BulletType.name)
+        {
+            default:
+                break;
+            case "Flame Bullet":
+                Destroy(m_bullet);
+                break;
+        }
     }
 
     private void FollowTargetPosition()
