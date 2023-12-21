@@ -225,6 +225,7 @@ MonoBehaviour:
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
   m_shootAnimator: {fileID: 7926313954129691353}
+  m_canFire: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   BulletSpeed: 4
   RotationSpeed: 6
   BrakeRotationSpeedMod: 1.5
-  ReloadTime: 2
+  ReloadTime: 1
   BulletType: {fileID: 3275306726565939084, guid: 2de714b2001083b40b12deeecf16d369, type: 3}
   IsPlayer: 1
 --- !u!95 &5383473214053400043
