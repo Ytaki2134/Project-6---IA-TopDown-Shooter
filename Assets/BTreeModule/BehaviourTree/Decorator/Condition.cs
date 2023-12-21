@@ -30,6 +30,8 @@ public class Condition
 
     public bool Evaluate(Blackboard blackboard)
     {
+        GameObject _enemi = blackboard.Get("targetEnemi") as GameObject;
+        GameObject _tank = blackboard.Get("targetGameObject") as GameObject;
         switch (conditionType)
         {
             case ConditionType.IsInDistance:
@@ -131,36 +133,15 @@ public class Condition
                     }
                     bool isNearObstacle = (bool)blackboard.Get("isNearObstacle");
                     return isNearObstacle == expectedValue;
-                }
 
+                }
             default:
-                throw new ArgumentOutOfRangeException();
+                {
+
                     float dist = Vector2.Distance((blackboard.Get("targetGameObject") as GameObject).transform.position, (blackboard.Get("targetEnemi") as GameObject).transform.position);
                     return dist < threshold == expectedValue;
                 }
 
-            case ConditionType.HealthCheck:
-                {
-                    float health = (float)blackboard.Get("health");
-                    Debug.Log(health + " > " + threshold + "==" + expectedValue);
-                    return health > threshold == expectedValue;
-                }
-
-            case ConditionType.CanUsePatternOne:
-                {
-                    bool canUsePatternOne = (bool)blackboard.Get("canUsePatternOne");
-                    return canUsePatternOne == expectedValue;
-                }
-            case ConditionType.ShieldGreaterThanZero:
-                {
-                    Shield shieldComponent = blackboard.Get("shield") as Shield;
-                    Debug.Log(shieldComponent.ShieldValue + " > " + threshold + "==" + expectedValue);
-                    return shieldComponent.ShieldValue > threshold;
-                    
-
-                }
-            default:
-                throw new ArgumentOutOfRangeException();
         }
    
     }
