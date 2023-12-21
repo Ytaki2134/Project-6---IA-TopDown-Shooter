@@ -17,14 +17,11 @@ public class DestructionBlock : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError(1);
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            Debug.LogError(2);
             Vector3 HitPosition = Vector3.zero;
             HitPosition.x = collision.gameObject.transform.position.x - marge * collision.gameObject.transform.position.normalized.x;
             HitPosition.y = collision.gameObject.transform.position.y - marge * collision.gameObject.transform.position.normalized.y;
-            Debug.LogWarning(HitPosition);
             Vector3Int Cell = destructTilemap.WorldToCell(new Vector3(HitPosition.x, HitPosition.y, HitPosition.z));
             for (int x = -1; x <1; x++)
                 for (int y = -1; y < 1; y++)
@@ -34,10 +31,8 @@ public class DestructionBlock : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.LogError(1);
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            Debug.LogError(2);
             Vector3 HitPosition = Vector3.zero;
             foreach (ContactPoint2D hit in collision.contacts)
             {
