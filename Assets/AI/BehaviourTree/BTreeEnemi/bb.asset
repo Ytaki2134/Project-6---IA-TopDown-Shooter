@@ -270,6 +270,7 @@ MonoBehaviour:
   - {fileID: 926909781816725132}
   - {fileID: 2401133032313590111}
   - {fileID: 4042628621420782231}
+  - {fileID: 5803231217103391170}
 --- !u!114 &209706596733381150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +508,22 @@ MonoBehaviour:
   guid: 721c46cef6df4824f98fa2e8ab5df492
   position: {x: 406.19138, y: -597.4479}
   child: {fileID: -2872941753425433529}
+--- !u!114 &5803231217103391170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41721a6d66f60d646aa41e34f6b94118, type: 3}
+  m_Name: Summon
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c4ed482d60029ac46bfac2e44a064d8c
+  position: {x: 0, y: 0}
 --- !u!114 &6258578684720421218
 MonoBehaviour:
   m_ObjectHideFlags: 0

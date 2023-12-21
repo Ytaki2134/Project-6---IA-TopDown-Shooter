@@ -57,7 +57,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("aggroStartDistance", 10f);
         tree.blackboard.Set("aggroEndDistance", 20f);
         tree.blackboard.Set("hasBeenHit", false);
-        tree.blackboard.Set("Summon", _summonList);
+        tree.blackboard.Set("summonList", _summonList);
     }
 
     // Update is called once per frame
