@@ -7,7 +7,7 @@ namespace Assets.Scripts.FSM.States
     public class ChaseAndFireState : AbstractFSMState
     {
         private Movement m_movement;
-        private float _fireRange;
+        private float _distance;
         private bool _canFire;
 
         public override void OnEnable()
@@ -52,22 +52,49 @@ namespace Assets.Scripts.FSM.States
                 if (_canFire)
                 {
                     Debug.Log("UPDATING CHASE AND FIRE STATE");
-                    _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
-                    if (_fireRange > 100f)
-                    {
-                        _fsm.EnterState(FSMStateType.CHASE);
-                    }
-                    else
-                    {
-                        context.Gun.SetTargetPosition(context.Player.transform.position);
-                        context.Gun.FollowTargetPosition();
-                        context.Gun.Fire();
+                    _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
-                        if (m_movement != null)
-                        {
-                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
-                            m_movement.Move();
-                        }
+                    switch (context.Index)
+                    {
+                        case 1: case 2:
+                            if (_distance >= 15f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE);
+                            }
+                            break;
+
+                        case 3:
+                            break;
+
+                        case 4:
+                            if (_distance >= 20f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE);
+                            }
+                            else if (_distance <= 15f)
+                            {
+                                _fsm.EnterState(FSMStateType.FLEE_AND_FIRE);
+                            }
+                            break;
+
+                        case 5:
+                            if (_distance >= 20f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE);
+                            }
+                            break;
+
+                        default:
+                            context.Gun.SetTargetPosition(context.Player.transform.position);
+                            context.Gun.FollowTargetPosition();
+                            context.Gun.Fire();
+
+                            if (m_movement != null)
+                            {
+                                m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
+                                m_movement.Move();
+                            }
+                            break;
                     }
                 }
             }

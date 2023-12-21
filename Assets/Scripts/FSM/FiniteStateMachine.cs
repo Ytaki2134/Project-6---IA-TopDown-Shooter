@@ -24,6 +24,9 @@ namespace Assets.Scripts.FSM
         private TankStatistics tankStatistics;
         public TankStatistics TankStatistics { get => tankStatistics; set => tankStatistics = value; }
 
+        private int index;
+        public int Index { get => index; set => index = value; }
+
         public void Awake()
         {
             _currentState = null;

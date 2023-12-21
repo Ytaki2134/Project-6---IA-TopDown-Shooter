@@ -19,7 +19,7 @@ public class PlayerControls : MonoBehaviour
     private TankStatistics m_tankStatistics;
     private Movement m_movement;
     private Gun m_gun;
-    //Animation Pallet Index : 1 = Standard, 2 = SpreadShot, 3 = ?, 4 = ?, 5 = ?
+    //Animation Pallet Index : 1 = Standard, 2 = SpreadShot, 3 = Sniper, 4 = Missile, 5 = lance-flamme?
     public int type = 0;
 
     void Awake()

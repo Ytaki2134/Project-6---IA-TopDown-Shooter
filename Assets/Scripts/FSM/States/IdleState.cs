@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.FSM.States
@@ -5,9 +7,7 @@ namespace Assets.Scripts.FSM.States
     [CreateAssetMenu(fileName ="IdleState", menuName ="Unity-FSM/States/Idle", order = 1)]
     public class IdleState : AbstractFSMState
     {
-        [SerializeField] float _idleDuration = 3f;
-
-        float _totalDuration;
+        private float _distance;
 
         public override void OnEnable()
         {
@@ -22,7 +22,6 @@ namespace Assets.Scripts.FSM.States
             if (EnteredState)
             {
                 Debug.Log("ENTERED IDLE STATE");
-                _totalDuration = 0f;
             }
             return EnteredState;
         }
@@ -31,12 +30,28 @@ namespace Assets.Scripts.FSM.States
         {
             if (EnteredState)
             {
-                _totalDuration += Time.deltaTime;
-                Debug.Log("UPDATING IDLE STATE: " + _totalDuration + " seconds");
+                Debug.Log("UPDATING IDLE STATE");
+                _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
-                if (_totalDuration >= _idleDuration)
+                switch (context.Index)
                 {
-                    _fsm.EnterState(FSMStateType.CHASE);
+                    case 1: case 2: case 5:
+                        _fsm.EnterState(FSMStateType.PATROL);
+                        break;
+
+                    case 3:
+                        if (_distance <= 30f)
+                        {
+                            _fsm.EnterState(FSMStateType.IDLE_AND_FIRE);
+                        }
+                        break;
+
+                    case 4:
+                        if (_distance <= 20f)
+                        {
+                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                        }
+                        break;
                 }
             }
         }

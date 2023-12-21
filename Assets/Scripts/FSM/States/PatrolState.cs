@@ -11,6 +11,7 @@ namespace Assets.Scripts.FSM
         private int _currentPatrolIndex;
 
         private Movement m_movement;
+        private float _distance;
 
         public override void OnEnable()
         {
@@ -57,19 +58,31 @@ namespace Assets.Scripts.FSM
         {
             if (EnteredState)
             {
-                //Debug.Log("UPDATING PATROL STATE");
-                float distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
-                if (distance <= 1.5f)
+                Debug.Log("UPDATING PATROL STATE");
+                _distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
+
+                switch (context.Index)
                 {
-                    _fsm.EnterState(FSMStateType.IDLE);
-                }
-                else
-                {
-                    if (m_movement != null)
-                    {
-                        m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
-                        m_movement.Move();
-                    }
+                    case 1: case 2: case 5:
+                        if (_distance <= 15f)
+                        {
+                            _fsm.EnterState(FSMStateType.CHASE);
+                        }
+                        break;
+
+                    case 3:
+                        break;
+
+                    case 4:
+                        break;
+
+                    default:
+                        if (m_movement != null)
+                        {
+                            m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
+                            m_movement.Move();
+                        }
+                        break;
                 }
             }
         }

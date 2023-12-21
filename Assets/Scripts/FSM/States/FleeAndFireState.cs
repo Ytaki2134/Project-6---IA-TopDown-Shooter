@@ -1,4 +1,5 @@
 using Assets.Scripts.NPCCode;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.FSM.States
@@ -7,7 +8,7 @@ namespace Assets.Scripts.FSM.States
     public class FleeAndFireState : AbstractFSMState
     {
         private Movement m_movement;
-        private float _fireRange;
+        private float _distance;
         private bool _canFire;
 
         public override void OnEnable()
@@ -52,22 +53,29 @@ namespace Assets.Scripts.FSM.States
                 if (_canFire)
                 {
                     Debug.Log("UPDATING FLEE AND FIRE STATE");
-                    _fireRange = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
-                    if (_fireRange > 100f)
-                    {
-                        _fsm.EnterState(FSMStateType.FLEE);
-                    }
-                    else
-                    {
-                        context.Gun.SetTargetPosition(context.Player.transform.position);
-                        context.Gun.FollowTargetPosition();
-                        context.Gun.Fire();
+                    _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
-                        if (m_movement != null)
-                        {
-                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
-                            m_movement.Move();
-                        }
+
+                    switch (context.Index)
+                    {
+                        case 3:
+                            if (_distance >= 15f)
+                            {
+                                _fsm.EnterState(FSMStateType.IDLE_AND_FIRE);
+                            }
+                            break;
+
+                        default:
+                            context.Gun.SetTargetPosition(context.Player.transform.position);
+                            context.Gun.FollowTargetPosition();
+                            context.Gun.Fire();
+
+                            if (m_movement != null)
+                            {
+                                m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
+                                m_movement.Move();
+                            }
+                            break;
                     }
                 }
             }
