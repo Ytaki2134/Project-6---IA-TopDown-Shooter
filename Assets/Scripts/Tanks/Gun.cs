@@ -69,7 +69,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void FollowTargetPosition()
+    public void FollowTargetPosition()
     {
         //Rotate Sprite
         var dir = (Vector3) m_targetPosition - transform.position;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4863508806457851191}
   - component: {fileID: 2918516256401154968}
   - component: {fileID: 7926313954129691353}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: ShootAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2149746214985386141}
   - component: {fileID: 5383473214053400043}
   - component: {fileID: 1697558707435873438}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 5972739479624454072}
   - component: {fileID: 2801555615581934149}
   - component: {fileID: 5428921842429080932}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Track L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119177166419826634}
   - component: {fileID: 2000728643152143983}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Tracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4845898277217722430}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 7450163294200336142}
   - component: {fileID: 3314272762012262388}
   - component: {fileID: 2139767104055695342}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,9 +921,9 @@ GameObject:
   - component: {fileID: 7368401181109211917}
   - component: {fileID: 1892042885323986271}
   - component: {fileID: 6029557120383368668}
-  m_Layer: 7
-  m_Name: Flame Player
-  m_TagString: Untagged
+  m_Layer: 6
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1023,7 +1023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570672341128253340}
   - component: {fileID: 3748584715514707}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 320476939767675877}
   - component: {fileID: 2353244330307718991}
   - component: {fileID: 5375654968379929681}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Track R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

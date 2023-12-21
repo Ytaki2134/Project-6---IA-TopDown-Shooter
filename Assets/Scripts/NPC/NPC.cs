@@ -8,7 +8,7 @@ namespace Assets.Scripts.NPCCode
     public class NPC : MonoBehaviour
     {
         [SerializeField] PatrolPoints[] _patrolPoints;
-         private GameObject _player;
+         public GameObject _player;
 
         FiniteStateMachine _finiteStateMachine;
 
@@ -16,7 +16,17 @@ namespace Assets.Scripts.NPCCode
         {
             _finiteStateMachine = this.GetComponent<FiniteStateMachine>();
             _player = GameObject.FindGameObjectWithTag("Player");
+
+            if (_player != null)
+            {
+                Debug.Log("Player found: " + _player);
+            }
+            else
+            {
+                Debug.LogWarning("Player not found!");
+            }
         }
+
 
         public void Start()
         {
