@@ -45,12 +45,11 @@ public class Bullet : MonoBehaviour
     {
         switch (m_gunStatistics.BulletType.name)
         {
-            default :
+            default:
                 m_rb.AddForce(new Vector3(transform.right.x * m_gunStatistics.BulletSpeed, transform.right.y * m_gunStatistics.BulletSpeed));
                 break;
 
-            case "Missile Bullet" :
-            Debug.Log(m_gunStatistics.BulletType.name);
+            case "Missile Bullet":
                 //Move toward player
                 m_direction = m_playerTransform.position - transform.position;
                 m_rb.AddForce(new Vector2(m_direction.normalized.x * m_gunStatistics.BulletSpeed, m_direction.normalized.y * m_gunStatistics.BulletSpeed));
@@ -59,7 +58,9 @@ public class Bullet : MonoBehaviour
                 m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(m_direction.y, m_direction.x) * Mathf.Rad2Deg);
                 transform.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * 50f);
                 break;
+
             case "Flame Bullet":
+
                 break;
         }
     }
@@ -80,10 +81,38 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<Hull>().RemoveHealth(m_gunStatistics.BulletDamage);
         }
 
-        //Trigger Animation + animation trigger destroy
-        m_animator.SetBool("Hit", true);
-        m_rb.constraints = RigidbodyConstraints2D.FreezePosition;
-        m_collider.enabled = false;
+        switch (m_gunStatistics.BulletType.name)
+        {
+            default:
+                //Trigger Animation + animation trigger destroy
+                m_animator.SetBool("Hit", true);
+                m_rb.constraints = RigidbodyConstraints2D.FreezePosition;
+                m_collider.enabled = false;
+                break;
+
+            case "Flame Bullet":
+
+                break;
+        }
+
+    }
+
+    //Should only work for flame bullets as other bullets destroy themselves before this function
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //Don't kill allies checks
+        if (gameObject.tag == "PlayerBullet" && collision.gameObject.layer == 6 || gameObject.tag == "EnemyBullet" && collision.gameObject.layer == 7)
+            return;
+
+        //Don't kill allied bullets
+        if (gameObject.tag == collision.gameObject.tag)
+            return;
+
+
+        if (collision.gameObject.GetComponent<Hull>() != null)
+        {
+            collision.gameObject.GetComponent<Hull>().RemoveHealth(m_gunStatistics.BulletDamage);
+        }
     }
 
     public void DestroyBullet()

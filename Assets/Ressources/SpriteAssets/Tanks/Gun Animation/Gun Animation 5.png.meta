@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7e5fc66bef6ee343a1a42bac8ad2e8e
+guid: 22febe6c473930c4eb9d06b28ed4ffcc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gun Animation 3_0
+      name: Gun Animation 5_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 66
+        width: 81
         height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 676b189d8709f0547898d04450cb6a97
-      internalID: 2061266736
+      spriteID: 648493103a701884596413125a6fb8b8
+      internalID: -736119287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gun Animation 3_1
+      name: Gun Animation 5_1
       rect:
         serializedVersion: 2
-        x: 67
+        x: 82
         y: 0
-        width: 66
+        width: 81
         height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16d4096d40e0e284194f7f38070dac3c
-      internalID: -1780529148
+      spriteID: 9513e6609148d52499d90b0d8838bbcb
+      internalID: 795704697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gun Animation 3_2
+      name: Gun Animation 5_2
       rect:
         serializedVersion: 2
-        x: 134
+        x: 164
         y: 0
-        width: 66
+        width: 81
         height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,19 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66a187a12019c8c4ab435917307379d4
-      internalID: -2078464051
+      spriteID: b2f2496f013e1674db53b4591bb60024
+      internalID: -1509627769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gun Animation 3_3
+      name: Gun Animation 5_3
       rect:
         serializedVersion: 2
-        x: 201
+        x: 246
         y: 0
-        width: 66
+        width: 81
         height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49eac1c326c87a74fa5e7b4c6791d904
-      internalID: 324524795
+      spriteID: 66da307a4d14a164a9091311845c78cd
+      internalID: 855862848
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gun Animation 3_0: 2061266736
-      Gun Animation 3_1: -1780529148
-      Gun Animation 3_2: -2078464051
-      Gun Animation 3_3: 324524795
+      Gun Animation 5_0: -736119287
+      Gun Animation 5_1: 795704697
+      Gun Animation 5_2: -1509627769
+      Gun Animation 5_3: 855862848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,5 @@
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
@@ -88,6 +87,11 @@ public class PlayerControls : MonoBehaviour
         m_inputs.Player.Fire.started += ctx =>
         {
             m_gun.Fire();
+        };
+
+        m_inputs.Player.Fire.canceled += ctx =>
+        {
+            m_gun.FireStop();
         };
 
         // ZOOM
