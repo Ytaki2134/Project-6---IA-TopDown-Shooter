@@ -61,7 +61,6 @@ MonoBehaviour:
   children:
   - {fileID: -7508699645741066747}
   - {fileID: 221313266588666481}
-  - {fileID: 6258578684720421218}
 --- !u!114 &-7508699645741066747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +93,7 @@ MonoBehaviour:
   started: 0
   guid: 04084e057218801419d7af1d9de93b39
   position: {x: 41.660034, y: 92.999954}
-  child: {fileID: -8243795725627372111}
+  child: {fileID: 0}
 --- !u!114 &-4255047457075654438
 MonoBehaviour:
   m_ObjectHideFlags: 0
