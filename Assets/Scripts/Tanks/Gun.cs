@@ -4,6 +4,8 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform m_pivot;
     [SerializeField] private Transform m_gunEnd;
+    [SerializeField] private float duration;
+    private float time = 0;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
@@ -17,13 +19,31 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         FollowTargetPosition();
+
+        if (time > 0)
+        {
+            time += Time.deltaTime;
+        }
+
+        if (time > duration)
+        {
+            time = 0;
+        }
     }
 
     public void Fire()
     {
-        GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
-        temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
-        temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+        if (time == 0)
+        {
+            time = Time.deltaTime;
+            GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
+            
+            if (m_stats)
+            {
+                temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
+            }
+            temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+        }
     }
 
     public void FollowTargetPosition()

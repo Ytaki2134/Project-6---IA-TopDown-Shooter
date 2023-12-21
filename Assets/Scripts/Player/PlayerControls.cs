@@ -66,7 +66,7 @@ public class PlayerControls : MonoBehaviour
 
         // FIRE
 
-        m_inputs.Player.Fire.performed += ctx =>
+        m_inputs.Player.Fire.started += ctx =>
         {
             m_gun.Fire();
         };
