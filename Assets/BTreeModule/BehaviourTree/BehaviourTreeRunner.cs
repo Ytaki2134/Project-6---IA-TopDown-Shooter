@@ -82,7 +82,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("lastAvoidanceTime", 0f);
         tree.blackboard.Set("avoidanceDirection", new Vector2());
         tree.blackboard.Set("isAvoidingObstacle", false);
-        tree.blackboard.Set("avoidanceCooldown", 1f);
+        tree.blackboard.Set("avoidanceCooldown", 3f);
         tree.blackboard.Set("reevaluationDelay", 0.1f);
 
 

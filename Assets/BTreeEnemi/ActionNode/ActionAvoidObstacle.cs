@@ -18,7 +18,8 @@ public class ActionAvoidObstacle : ActionNode
 
     private bool isObstacleDetected;
 
-
+    private float lastAvoidanceTime; // Assurez-vous d'initialiser cette variable quelque part
+    private float avoidanceCooldown = 2.0f; // Durée du cooldown en secondes
     protected override void OnStart()
     {
 
@@ -34,6 +35,8 @@ public class ActionAvoidObstacle : ActionNode
         rotationSpeed = blackboard.Get<float>("rotSpeed");
         avoidanceDirection = Vector3.Cross(_tankTransform.up, Vector3.forward).normalized; // Choix de la direction d'évitement
         isObstacleDetected = blackboard.Get<bool>("isObstacleDetected");
+        lastAvoidanceTime =  blackboard.Get<float>("lastAvoidanceTime");
+        avoidanceCooldown = blackboard.Get<float>("avoidanceCooldown");
 
 
     }
@@ -44,19 +47,33 @@ public class ActionAvoidObstacle : ActionNode
 
     protected override State OnUpdate()
     {
-        if (isObstacleDetected)
+        // Si l'obstacle est détecté et qu'aucun cooldown n'est actif, entreprendre l'évitement
+        if (isObstacleDetected && Time.time >= lastAvoidanceTime + avoidanceCooldown)
         {
             RotateTowards(avoidanceDirection);
             MoveInDirection(avoidanceDirection);
 
+            // Mise à jour de la dernière fois que l'évitement a été effectué
+            lastAvoidanceTime = Time.time;
+            blackboard.Set("lastAvoidanceTime", lastAvoidanceTime);
+
+            // L'action continue, mais peut être interrompue par d'autres comportements
+            return State.Running;
+        }
+        else if (isObstacleDetected)
+        {
+            // Si le cooldown est actif, on attend
             return State.Running;
         }
         else
         {
-            return State.Failure;
+            // Si aucun obstacle n'est détecté, l'action a réussi
+            return State.Success;
         }
-
     }
+
+
+
 
     private void RotateTowards(Vector2 direction)
     {

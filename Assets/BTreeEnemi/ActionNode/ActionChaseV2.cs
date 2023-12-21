@@ -40,10 +40,10 @@ public class ActionChaseV2 : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log(isObstacleDetected);
 
-        if (!isObstacleDetected)
+        if (isObstacleDetected)
         {
+            Debug.Log(isObstacleDetected);
             return State.Failure;
         }
         else
@@ -52,7 +52,7 @@ public class ActionChaseV2 : ActionNode
             RotateTowards(directionToPlayer);
             MoveInDirection(directionToPlayer);
 
-            return State.Running;
+            return State.Success;
         }
 
 

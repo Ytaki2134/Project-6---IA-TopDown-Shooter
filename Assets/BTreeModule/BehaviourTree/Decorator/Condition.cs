@@ -71,7 +71,7 @@ public class Condition
 
                     Debug.Log("isOb " + (hit.collider != null) + " obs " + expectedValue);
 
-                    blackboard.Set("isObstacleDetected", hit.collider != null == expectedValue);
+                    blackboard.Set("isObstacleDetected", hit.collider != null);
                     return hit.collider != null == expectedValue;
                 }
 
