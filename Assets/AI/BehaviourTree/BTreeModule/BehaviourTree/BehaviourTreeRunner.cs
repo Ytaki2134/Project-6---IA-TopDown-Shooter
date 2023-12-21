@@ -15,7 +15,7 @@ public class BehaviourTreeRunner : MonoBehaviour
 
     [SerializeField]
     private GameObject _minePrefab;
-    [SerializeField]
+
     Shield shieldComponent;
     [SerializeField]
     private GameObject _WeaponBullet;
