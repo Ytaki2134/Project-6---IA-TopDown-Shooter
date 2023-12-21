@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Gun : MonoBehaviour
 {
@@ -6,12 +8,15 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform m_gunEnd;
     [SerializeField] private float duration;
     private float time = 0;
+    [SerializeField] private Animator m_shootAnimator;
+    private AudioSource m_audioSource;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
 
     private void Start()
     {
+        m_audioSource = GetComponent<AudioSource>();
         m_stats = GetComponent<GunStatistics>();
     }
 
@@ -34,14 +39,30 @@ public class Gun : MonoBehaviour
     {
         if (time == 0)
         {
-            time = Time.deltaTime;
-            GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
-            
-            if (m_stats)
+            GameObject temp;
+            switch (m_stats.BulletType.name)
             {
-                temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
+                default:
+                    temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
+                    temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                    break;
+
+                case "SpreadShot Bullet":
+                    float AngleDif = 120f;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, AngleDif));
+                        temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                        AngleDif -= 15f;
+                    }
+                    break;
+
+                case "Homing Bullet":
+                    break;
+
             }
-            temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+            m_shootAnimator.SetBool("Shoot", true);
+            m_audioSource.Play();
         }
     }
 
