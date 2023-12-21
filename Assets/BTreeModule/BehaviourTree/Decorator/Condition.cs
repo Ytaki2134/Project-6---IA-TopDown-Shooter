@@ -16,6 +16,7 @@ public enum ConditionType
     HasBeenHit,
     IsNearObstacle,
     Retreat,
+    IsObstacleDetected,
 
 }
 
@@ -54,18 +55,39 @@ public class Condition
 
                     return hasAggro == expectedValue; // Maintenir l'état actuel de l'aggro
                 }
+            case ConditionType.IsObstacleDetected:
+                {
+                    Vector2 direction = _tank.transform.up; // Assumant que l'avant du tank est son 'up'
+                    Vector2 raycastStartPoint = _tank.transform.position + (Vector3)(direction * 1.5f);
+                    RaycastHit2D hit = Physics2D.Raycast(raycastStartPoint, direction, 5f);
+
+                    // Debugging visuel
+                    Debug.DrawLine(raycastStartPoint, raycastStartPoint + direction * 5f, hit.collider != null ? Color.red : Color.green, 0.1f);
+
+                    // Debugging pour voir quel objet est touché
+                    if (hit.collider != null)
+                    {
+                        Debug.Log("Hit: " + hit.collider.gameObject.name);
+                    }
+
+                    Debug.Log("isOb " + (hit.collider != null) + " obs " + expectedValue);
+
+                    blackboard.Set("isObstacleDetected", hit.collider != null == expectedValue);
+                    return hit.collider != null == expectedValue;
+                }
+
             case ConditionType.Retreat:
                 bool retreat = blackboard.Get<bool>("retreat");
 
-                return retreat == this.expectedValue; // Use the instance's properties
+                return retreat == expectedValue; // Use the instance's properties
 
             case ConditionType.HealthCheck:
                 float health = (float)blackboard.Get("health");
-                return health > this.threshold == this.expectedValue; // Use the instance's properties
+                return health > threshold == expectedValue; // Use the instance's properties
 
             case ConditionType.CanUsePatternOne:
                 bool canUsePatternOne = (bool)blackboard.Get("canUsePatternOne");
-                return canUsePatternOne == this.expectedValue; // Use the instance's properties
+                return canUsePatternOne == expectedValue; // Use the instance's properties
 
             case ConditionType.ShieldGreaterThanZero:
                 {

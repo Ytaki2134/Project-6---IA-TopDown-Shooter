@@ -21,6 +21,23 @@ MonoBehaviour:
     conditionType: 1
     expectedValue: 0
     threshold: 10
+--- !u!114 &-8792421894364997364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae766dde401ba45ab4e71dfc2c9b56, type: 3}
+  m_Name: ParallelNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ada3573d34813564cbf49bd3719aae55
+  position: {x: 61, y: 59}
+  children: []
 --- !u!114 &-8690934634555671803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +74,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2e5d165f275636b46afeeff45fb8cb85
-  position: {x: 40.660065, y: 217.99991}
+  position: {x: -672.6807, y: 112.99998}
   children:
   - {fileID: -7508699645741066747}
   - {fileID: 221313266588666481}
@@ -77,7 +94,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 3773f6dbb20888e4fb01d14ba551123c
-  position: {x: -221.33997, y: 330.99994}
+  position: {x: -934.68066, y: 225.99997}
 --- !u!114 &-7379837130916789144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,8 +110,8 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 04084e057218801419d7af1d9de93b39
-  position: {x: 41.660034, y: 92.999954}
-  child: {fileID: -8243795725627372111}
+  position: {x: 44.999878, y: -76.99999}
+  child: {fileID: 0}
 --- !u!114 &-4255047457075654438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +250,32 @@ MonoBehaviour:
   - {fileID: -4255047457075654438}
   - {fileID: 8728005958073956066}
   - {fileID: -730927874198100094}
+  - {fileID: 418129443225481268}
+  - {fileID: 68300963851760274}
+  - {fileID: 6316348910193847248}
+  - {fileID: 847396671581305323}
+  - {fileID: -8792421894364997364}
+--- !u!114 &68300963851760274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c9c6402be16c1b34298cbe8bbce2297e
+  position: {x: 198.99995, y: 231.99995}
+  child: {fileID: 6316348910193847248}
+  condition:
+    conditionType: 8
+    expectedValue: 1
+    threshold: 0
 --- !u!114 &221313266588666481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +291,23 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 8cdc861e57cdfcb4085ed8e791f3bcac
-  position: {x: -26.339996, y: 369.99997}
+  position: {x: -739.68066, y: 264.99997}
+--- !u!114 &418129443225481268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734c4badfb18cb34fb0750dc24f5b613, type: 3}
+  m_Name: ActionChaseV2
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e826b67813b69c94d9c95515da6181d0
+  position: {x: -22.000113, y: 378.00006}
 --- !u!114 &622537260449578542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +328,27 @@ MonoBehaviour:
   - {fileID: -730927874198100094}
   - {fileID: -4255047457075654438}
   - {fileID: 8728005958073956066}
+--- !u!114 &847396671581305323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: ae88eaa5b4075ae4aac532799ec6fca7
+  position: {x: -14.000097, y: 238.99998}
+  child: {fileID: 418129443225481268}
+  condition:
+    conditionType: 8
+    expectedValue: 0
+    threshold: 0
 --- !u!114 &2401133032313590111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,9 +439,25 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 44cb7639f051c2648bdc4ba37fdd02ec
-  position: {x: 182.65996, y: 361.99997}
+  position: {x: -530.68066, y: 256.99997}
   _bulletPrefab: {fileID: 0}
   bulletSpeed: 10
+--- !u!114 &6316348910193847248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138065794865b204a89bb79a33b44d47, type: 3}
+  m_Name: ActionAvoidObstacle
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: cc405eb95f5ae484ebc5f69f015db7a7
+  position: {x: 190.99994, y: 375}
 --- !u!114 &8728005958073956066
 MonoBehaviour:
   m_ObjectHideFlags: 0

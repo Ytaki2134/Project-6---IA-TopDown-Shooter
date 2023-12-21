@@ -57,6 +57,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("retreatDistance", 10f);
         tree.blackboard.Set("checkObstacleCooldown", 20f);
 
+        tree.blackboard.Set("isObstacleDetected", false);
 
 
 
