@@ -89,6 +89,7 @@ public class BehaviourTreeRunner : MonoBehaviour
     void Update()
     {
         tree.Update();
+
     }
 
     public GameObject[] GetSummonList()
