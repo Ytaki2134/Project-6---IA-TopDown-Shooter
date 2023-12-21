@@ -1,13 +1,16 @@
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform m_pivot;
     [SerializeField] private Transform m_gunEnd;
-    private Vector2 m_targetPosition = new(0,0);
+    private Vector2 m_targetPosition = new(0, 0);
     private Quaternion m_targetRotation;
     private GunStatistics m_stats;
 
+    [SerializeField] private float duration;
+    private float time = 0;
     private void Start()
     {
         m_stats = GetComponent<GunStatistics>();
@@ -15,19 +18,27 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if(m_targetPosition != new Vector2(0,0))
+        if (m_targetPosition != new Vector2(0, 0))
             FollowTargetPosition();
     }
 
     public void Fire()
     {
-        GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
-
-        if (m_stats.IsPlayer)
+        if (time == 0)
         {
-            temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
+            time = Time.deltaTime;
+            GameObject temp = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation);
+
+            if (m_stats.IsPlayer)
+            {
+                temp.transform.rotation *= Quaternion.Euler(0, 0, 90f);
+            }
+            temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
         }
-        temp.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+        else
+        {
+            time = (time > duration ? time = 0 : time += Time.deltaTime);
+        }
     }
 
     private void FollowTargetPosition()

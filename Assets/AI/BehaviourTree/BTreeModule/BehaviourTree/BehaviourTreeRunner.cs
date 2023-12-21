@@ -20,6 +20,8 @@ public class BehaviourTreeRunner : MonoBehaviour
     private GameObject _minePrefab;
     [SerializeField]
     private GameObject _bullet2Prefab;
+    [SerializeField]
+    private GameObject[] _summonList;
 
 
     private Movement  _movement;
@@ -55,11 +57,17 @@ public class BehaviourTreeRunner : MonoBehaviour
         tree.blackboard.Set("aggroStartDistance", 10f);
         tree.blackboard.Set("aggroEndDistance", 20f);
         tree.blackboard.Set("hasBeenHit", false);
+        tree.blackboard.Set("Summon", _summonList);
     }
 
     // Update is called once per frame
     void Update()
     {
         tree.Update();
+    }
+
+    public GameObject[] GetSummonList()
+    {
+        return _summonList;
     }
 }
