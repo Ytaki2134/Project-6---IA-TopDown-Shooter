@@ -21,6 +21,9 @@ namespace Assets.Scripts.FSM
         private Gun gun;
         public Gun Gun { get => gun; set => gun = value; }
 
+        private TankStatistics tankStatistics;
+        public TankStatistics TankStatistics { get => tankStatistics; set => tankStatistics = value; }
+
         public void Awake()
         {
             _currentState = null;
@@ -31,8 +34,8 @@ namespace Assets.Scripts.FSM
             player = npc.GetPlayer();
 
             movement = GetComponentInChildren<Movement>();
-
             gun = GetComponentInChildren<Gun>();
+            tankStatistics = GetComponent<TankStatistics>();
 
             foreach (AbstractFSMState state in _validStates)
             {

@@ -481,7 +481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patrolPoints: []
-  _player: {fileID: 0}
 --- !u!50 &1892042885323986271
 Rigidbody2D:
   serializedVersion: 4
@@ -546,6 +545,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c6cb577b81f7ef40aee7ffcc0a21958, type: 2}
   - {fileID: 11400000, guid: 47ee117d75ccea0449e84de9f21d13e4, type: 2}
   - {fileID: 11400000, guid: e7e6b5b10aa7d9e4aa2c41be35710014, type: 2}
+  - {fileID: 11400000, guid: bab75903ae277fb44847610a85d3772d, type: 2}
 --- !u!1 &8394301354479254328
 GameObject:
   m_ObjectHideFlags: 0

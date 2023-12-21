@@ -8,7 +8,6 @@ namespace Assets.Scripts.FSM
     {
         private Movement m_movement;
         private float _fireRange;
-        //private GameObject player;
 
         public override void OnEnable()
         {
@@ -31,10 +30,10 @@ namespace Assets.Scripts.FSM
                 {
                     m_movement = context.Movement;
 
-                    m_movement.SetSpeed(3f);
-                    m_movement.SetRotationSpeed(2f);
-                    m_movement.SetBrakeSpeed(1f);
-                    m_movement.SetBrakeRotationSpeed(1f);
+                    m_movement.SetSpeed(context.TankStatistics.Speed);
+                    m_movement.SetRotationSpeed(context.TankStatistics.RotationSpeed);
+                    m_movement.SetBrakeSpeed(context.TankStatistics.BrakeSpeedMod);
+                    m_movement.SetBrakeRotationSpeed(context.TankStatistics.BrakeRotationSpeedMod);
 
                     EnteredState = true;
                 }
