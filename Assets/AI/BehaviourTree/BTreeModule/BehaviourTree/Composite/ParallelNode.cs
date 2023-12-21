@@ -12,21 +12,11 @@ public class ParallelNode : CompisiteNode
         RequireOne,
         RequireAll
     }
-
-    private Policy successPolicy;
-    private Policy failurePolicy;
-
-    /*    public ParallelNode(Policy successPolicy, Policy failurePolicy)
-        {
-            this.successPolicy = successPolicy;
-            this.failurePolicy = failurePolicy;
-        }
-    */
+    [SerializeField] private Policy successPolicy;
 
     protected override void OnStart()
     {
-        this.successPolicy = Policy.RequireAll;
-        this.failurePolicy = Policy.RequireOne;
+
     }
 
     protected override void OnStop()
@@ -51,7 +41,7 @@ public class ParallelNode : CompisiteNode
                     break;
                 case State.Failure:
                     failureCount++;
-                    if (failurePolicy == Policy.RequireOne)
+                    if (successPolicy == Policy.RequireOne)
                         return State.Failure;
                     break;
             }
@@ -59,10 +49,7 @@ public class ParallelNode : CompisiteNode
 
         if (successPolicy == Policy.RequireAll && successCount == m_children.Count)
             return State.Success;
-
-        if (failurePolicy == Policy.RequireAll && failureCount == m_children.Count)
+        else
             return State.Failure;
-
-        return State.Running;
     }
 }
