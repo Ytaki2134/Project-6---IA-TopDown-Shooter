@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AI/StateMachine/FSMStates/ChaseAndFire.asset.meta
+guid: 47ee117d75ccea0449e84de9f21d13e4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+========
+guid: 275cf88f2e7ed534f9b5bb074ac8c9e5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+>>>>>>>> Tank-Prefabs:Assets/Ressources/Animations/Gun Animation/Bullets/Missile Bullet.anim.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

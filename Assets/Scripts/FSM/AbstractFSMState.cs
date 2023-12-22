@@ -1,53 +1,51 @@
-using Assets.Scripts.NPC;
+using Assets.Scripts.FSM;
 using UnityEngine;
-using UnityEngine.AI;
+using Assets.Scripts.NPCCode;
 
 public abstract class AbstractFSMState : ScriptableObject
 {
-    protected NavMeshAgent _navMeshAgent;
     protected NPC _npc;
+    protected FiniteStateMachine _fsm;
 
     public ExecutionState ExecutionState { get; protected set; }
+    public FSMStateType StateType { get; protected set; }
+    public bool EnteredState { get; protected set; }
     
     public virtual void OnEnable()
     {
         ExecutionState = ExecutionState.NONE;
     }
 
-    public virtual bool EnterState()
+    public virtual bool EnterState(FiniteStateMachine context)
     {
-        bool successNavMesh = true;
         bool successNPC = true;
         ExecutionState = ExecutionState.ACTIVE;
-
-        //navMeshAgent existe ?
-        successNavMesh = (_navMeshAgent != null);
 
         //executingAgent existe ?
         successNPC = (_npc != null);
 
-        return successNavMesh & successNPC;
+        return successNPC;
     }
 
-    public abstract void UpdateState();
+    public abstract void UpdateState(FiniteStateMachine context);
 
-    public virtual bool ExitState()
+    public virtual bool ExitState(FiniteStateMachine context)
     {
         ExecutionState = ExecutionState.COMPLETED;
         return true;
     }
 
-    public virtual void SetNavMeshAgent(NavMeshAgent navMeshAgent)
+    public virtual void SetExecutingFSM(FiniteStateMachine fsm)
     {
-        if(navMeshAgent != null)
+        if (fsm != null)
         {
-            _navMeshAgent = navMeshAgent;
+            _fsm = fsm;
         }
     }
 
     public virtual void SetExecutingNPC(NPC npc)
     {
-        if (_npc != null)
+        if (npc != null)
         {
             _npc = npc;
         }

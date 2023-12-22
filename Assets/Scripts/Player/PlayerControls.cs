@@ -18,7 +18,6 @@ public class PlayerControls : MonoBehaviour
     private TankStatistics m_tankStatistics;
     private Movement m_movement;
     private Gun m_gun;
-    //Animation Pallet Index : 1 = Standard, 2 = SpreadShot, 3 = ?, 4 = ?, 5 = ?
     public int type = 0;
 
     void Awake()
@@ -84,7 +83,7 @@ public class PlayerControls : MonoBehaviour
 
         // FIRE
 
-        m_inputs.Player.Fire.performed += ctx =>
+        m_inputs.Player.Fire.started += ctx =>
         {
             m_gun.Fire();
         };

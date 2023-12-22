@@ -1,21 +1,23 @@
 using Assets.Scripts.FSM;
 using UnityEngine;
-using UnityEngine.AI;
 
-namespace Assets.Scripts.NPC
+namespace Assets.Scripts.NPCCode
 {
-    [RequireComponent(typeof(NavMeshAgent), typeof(FiniteStateMachine))]
+    //[RequireComponent(typeof(NavMeshAgent), typeof(FiniteStateMachine))]
+
     public class NPC : MonoBehaviour
     {
-        //[SerializeField] NPCPatrolPoints _patrolPoints;
+        [SerializeField] PatrolPoints[] _patrolPoints;
+        [SerializeField] GameObject _player;
+        [SerializeField] int _index;
+        // Index : 1 = Standard, 2 = SpreadShot, 3 = Sniper, 4 = Missile, 5 = lance-flamme
 
-        NavMeshAgent _navMeshAgent;
         FiniteStateMachine _finiteStateMachine;
 
         public void Awake()
         {
-            _navMeshAgent = this.GetComponent<NavMeshAgent>();
             _finiteStateMachine = this.GetComponent<FiniteStateMachine>();
+            //_player = GameObject.FindGameObjectWithTag("Player");
         }
 
         public void Start()
@@ -28,12 +30,30 @@ namespace Assets.Scripts.NPC
 
         }
 
-        /*public NPCPatrolPoint[] PatrolPoints
+        public PatrolPoints[] PatrolPoints
         {
             get
             {
                 return _patrolPoints;
             }
-        }*/
+        }
+
+        public GameObject GetPlayer()
+        {
+            if (_player != null)
+            {
+                Debug.Log("Player found: " + _player);
+            }
+            else
+            {
+                Debug.LogWarning("Player not found!");
+            }
+            return _player;
+        }
+
+        public int GetIndex()
+        {
+            return _index;
+        }
     }
 }

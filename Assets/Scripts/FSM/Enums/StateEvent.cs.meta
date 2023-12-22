@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/FSM/Enums/StateEvent.cs.meta
+guid: ba1bd0e3733127d4c8d14242fe73e785
+========
+guid: 735839246286c3a49b84fb1aa8782271
+>>>>>>>> Tank-Prefabs:Assets/Scripts/DestructionBlock.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

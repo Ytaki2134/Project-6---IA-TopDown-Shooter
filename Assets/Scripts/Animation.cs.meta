@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/FSM/Enums/FSMStateType.cs.meta
+guid: 5fa64a56840b9564284875e3af65ae40
+========
 guid: 05a72ebc6515400478097b9970fe9f9c
+>>>>>>>> Tank-Prefabs:Assets/Scripts/Animation.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

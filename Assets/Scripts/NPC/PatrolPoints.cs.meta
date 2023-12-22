@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/NPC/PatrolPoints.cs.meta
+guid: 804c55262b1f7124599ca06cf276cba7
+========
+guid: c32edf6bb655505458f804b469149ec4
+>>>>>>>> Tank-Prefabs:Assets/Scripts/GunAnimation.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

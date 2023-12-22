@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1688843868088823625}
   - component: {fileID: 2780898056762291757}
   - component: {fileID: 1562987147120906463}
+  - component: {fileID: 7779743277501370949}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -895,6 +896,19 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &7779743277501370949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567045250596314758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2d57fa284ddb74ea0ee154bf08217b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marge: 0.01
 --- !u!1 &2846086811463940779
 GameObject:
   m_ObjectHideFlags: 0
@@ -42939,6 +42953,7 @@ GameObject:
   - component: {fileID: 7543425775499972222}
   - component: {fileID: 5134433536610190044}
   - component: {fileID: 3833960328434208317}
+  - component: {fileID: 8813385248348395854}
   m_Layer: 0
   m_Name: GreenContainer
   m_TagString: Untagged
@@ -43248,6 +43263,19 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &8813385248348395854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7478285021673485521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2d57fa284ddb74ea0ee154bf08217b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marge: 0.01
 --- !u!1 &8323705897864823524
 GameObject:
   m_ObjectHideFlags: 0
@@ -43260,7 +43288,7 @@ GameObject:
   - component: {fileID: 8846220424235758213}
   - component: {fileID: 84409775053690622}
   - component: {fileID: 1950024140831956449}
-  - component: {fileID: 4121639752404822011}
+  - component: {fileID: 1010768340360323430}
   m_Layer: 0
   m_Name: Destructible Wall
   m_TagString: Untagged
@@ -45034,7 +45062,7 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &4121639752404822011
+--- !u!114 &1010768340360323430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45043,7 +45071,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8323705897864823524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735839246286c3a49b84fb1aa8782271, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2d57fa284ddb74ea0ee154bf08217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   marge: 0.01

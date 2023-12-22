@@ -8,6 +8,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform m_pivot;
     [SerializeField] private Transform m_gunEnd;
     [SerializeField] private Animator m_shootAnimator;
+    [SerializeField] private float duration;
+    private float time = 0;
     private AudioSource m_audioSource;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
@@ -26,6 +28,16 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         FollowTargetPosition();
+
+        if (time > 0)
+        {
+            time += Time.deltaTime;
+        }
+
+        if (time > duration)
+        {
+            time = 0;
+        }
     }
 
     private void Reload()
@@ -69,31 +81,32 @@ public class Gun : MonoBehaviour
         m_audioSource.Play();
     }
 
-    public void FireStop()
+
+public void FireStop()
+{
+    m_shootAnimator.SetBool("Loop", false);
+
+    switch (m_stats.BulletType.name)
     {
-        m_shootAnimator.SetBool("Loop", false);
-
-        switch (m_stats.BulletType.name)
-        {
-            default:
-                break;
-            case "Flame Bullet":
-                Destroy(m_bullet);
-                break;
-        }
+        default:
+            break;
+        case "Flame Bullet":
+            Destroy(m_bullet);
+            break;
     }
+}
 
-    private void FollowTargetPosition()
-    {
-        //Rotate Sprite
-        var dir = (Vector3)m_targetPosition - transform.position;
+public void FollowTargetPosition()
+{
+    //Rotate Sprite
+    var dir = (Vector3)m_targetPosition - transform.position;
 
-        m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
-        m_pivot.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_stats.RotationSpeed * m_stats.BrakeRotationSpeedMod);
-    }
+    m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
+    m_pivot.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_stats.RotationSpeed * m_stats.BrakeRotationSpeedMod);
+}
 
-    public void SetTargetPosition(Vector2 targetPosition)
-    {
-        m_targetPosition = targetPosition;
-    }
+public void SetTargetPosition(Vector2 targetPosition)
+{
+    m_targetPosition = targetPosition;
+}
 }

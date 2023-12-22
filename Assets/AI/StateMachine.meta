@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AI/StateMachine.meta
 guid: b3021459e639aaa4a9d98c76c40d6270
+========
+guid: 1b42a84938576274bb3df721bd439ad5
+>>>>>>>> Tank-Prefabs:Assets/AI/BehaviourTree.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

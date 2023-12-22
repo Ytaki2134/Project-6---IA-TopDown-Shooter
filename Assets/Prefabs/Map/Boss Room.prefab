@@ -19023,7 +19023,7 @@ GameObject:
   - component: {fileID: 5444079397093576191}
   - component: {fileID: 2403796207767897052}
   - component: {fileID: 7298643665990693405}
-  - component: {fileID: 5968781019451586703}
+  - component: {fileID: 3712515259661474101}
   m_Layer: 0
   m_Name: DestructibleWall
   m_TagString: Untagged
@@ -19617,7 +19617,7 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &5968781019451586703
+--- !u!114 &3712515259661474101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19626,7 +19626,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4954963479103449642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735839246286c3a49b84fb1aa8782271, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2d57fa284ddb74ea0ee154bf08217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   marge: 0.01
@@ -21754,7 +21754,7 @@ GameObject:
   - component: {fileID: 5601349557069862257}
   - component: {fileID: 1364099060336954903}
   - component: {fileID: 3139099779355529664}
-  - component: {fileID: 5162096699868684503}
+  - component: {fileID: 2603771229394933727}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -22324,7 +22324,7 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &5162096699868684503
+--- !u!114 &2603771229394933727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22333,7 +22333,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8312986204955403388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735839246286c3a49b84fb1aa8782271, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2d57fa284ddb74ea0ee154bf08217b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   marge: 0.01

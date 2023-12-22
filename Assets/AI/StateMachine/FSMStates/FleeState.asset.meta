@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AI/StateMachine/FSMStates/FleeState.asset.meta
+guid: 0c6cb577b81f7ef40aee7ffcc0a21958
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+========
+guid: eac9bc20d72805b4a8ce2af630565916
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+>>>>>>>> Tank-Prefabs:Assets/Ressources/Animations/Gun Animation/Bullets/Sniper Bullet.anim.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

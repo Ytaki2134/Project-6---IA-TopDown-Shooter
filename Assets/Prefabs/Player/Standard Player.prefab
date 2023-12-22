@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4930386126415529225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c32edf6bb655505458f804b469149ec4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fe5cd29dd5bd16439761940af2f874f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_animator: {fileID: 7926313954129691353}
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
   m_shootAnimator: {fileID: 7926313954129691353}
+  duration: 0
   m_canFire: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:

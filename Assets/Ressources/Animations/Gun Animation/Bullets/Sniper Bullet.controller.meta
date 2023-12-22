@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AI/StateMachine/FSMStates/ChaseState.asset.meta
+guid: e64bf43240663304183a7adcbe9b05a5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+========
 guid: 0c2c6ba2d17455e469d724d93d7ae05b
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
+>>>>>>>> Tank-Prefabs:Assets/Ressources/Animations/Gun Animation/Bullets/Sniper Bullet.controller.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public void NextScene()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
     }
     public void GoToMenu()
     {

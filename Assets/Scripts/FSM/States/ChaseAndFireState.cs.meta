@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/FSM/States/ChaseAndFireState.cs.meta
+guid: d9f3aea3a4812134b90e1ad2a6bea08f
+========
+guid: 7cc6809d9059dca47ae5ee5b91ec2a70
+>>>>>>>> Tank-Prefabs:Assets/AI/BehaviourTree/BTreeEnemi/ActionChase.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

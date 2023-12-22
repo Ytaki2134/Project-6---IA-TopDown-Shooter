@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/AI/StateMachine/FSMStates/FleeAndFire.asset.meta
+guid: e7e6b5b10aa7d9e4aa2c41be35710014
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+========
+guid: 2816580f56f3915428865fce3722fb13
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+>>>>>>>> Tank-Prefabs:Assets/Ressources/Animations/Gun Animation/Bullets/Missile Bullet.controller.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

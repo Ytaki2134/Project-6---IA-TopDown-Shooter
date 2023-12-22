@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/FSM/Enums.meta
 guid: 19df8c9635cc3f34a8176f822f2b1cc5
+========
+guid: b3021459e639aaa4a9d98c76c40d6270
+>>>>>>>> Tank-Prefabs:Assets/AI/StateMachine.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
