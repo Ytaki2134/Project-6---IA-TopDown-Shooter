@@ -32,34 +32,43 @@ namespace Assets.Scripts.FSM.States
             {
                 Debug.Log("UPDATING IDLE STATE");
                 _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
-
-                switch (context.Index)
+                
+                if (context.TankStatistics.Health <= 0 )
                 {
-                    case 1: case 2: case 5:
-                        if (_distance <= 15f)
-                        {
-                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
-                            break;
-                        }
-                        else
-                        {
-                            _fsm.EnterState(FSMStateType.PATROL);
-                            break;
-                        }
+                    _fsm.EnterState(FSMStateType.DEAD);
+                }
+                else
+                {
+                    switch (context.Index)
+                    {
+                        case 1:
+                        case 2:
+                        case 5:
+                            if (_distance <= 15f)
+                            {
+                                _fsm.EnterState(FSMStateType.PATROL);
+                                break;
+                            }
+                            else
+                            {
+                                _fsm.EnterState(FSMStateType.PATROL);
+                                break;
+                            }
 
-                    case 3:
-                        if (_distance <= 30f)
-                        {
-                            _fsm.EnterState(FSMStateType.IDLE_AND_FIRE);
-                        }
-                        break;
+                        case 3:
+                            if (_distance <= 30f)
+                            {
+                                _fsm.EnterState(FSMStateType.IDLE_AND_FIRE);
+                            }
+                            break;
 
-                    case 4:
-                        if (_distance <= 20f)
-                        {
-                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
-                        }
-                        break;
+                        case 4:
+                            if (_distance <= 20f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                            }
+                            break;
+                    }
                 }
             }
         }

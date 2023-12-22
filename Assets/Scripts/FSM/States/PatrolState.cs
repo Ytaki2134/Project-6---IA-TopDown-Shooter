@@ -61,25 +61,34 @@ namespace Assets.Scripts.FSM
                 Debug.Log("UPDATING PATROL STATE");
                 _distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
 
-                switch (context.Index)
+                if (context.TankStatistics.Health <= 0)
                 {
-                    case 1: case 2: case 5:
-                        if (_distance <= 15f)
-                        {
-                            _fsm.EnterState(FSMStateType.CHASE);
-                        }
-                        break;
-
-                    case 3:
-                        break;
-
-                    case 4:
-                        break;
+                    _fsm.EnterState(FSMStateType.DEAD);
                 }
-                if (m_movement != null)
+                else
                 {
-                    m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
-                    m_movement.Move();
+                    switch (context.Index)
+                    {
+                        case 1:
+                        case 2:
+                        case 5:
+                            if (_distance <= 15f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE);
+                            }
+                            break;
+
+                        case 3:
+                            break;
+
+                        case 4:
+                            break;
+                    }
+                    if (m_movement != null)
+                    {
+                        m_movement.SetCurrentMovement(((Vector2)_patrolPoints[_currentPatrolIndex].transform.position - (Vector2)_npc.transform.position).normalized);
+                        m_movement.Move();
+                    }
                 }
             }
         }

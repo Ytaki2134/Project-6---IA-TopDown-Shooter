@@ -29,7 +29,6 @@ public class Gun : MonoBehaviour
         {
             time += Time.deltaTime;
         }
-
         if (time > duration)
         {
             time = 0;
@@ -39,6 +38,7 @@ public class Gun : MonoBehaviour
     public void Fire()
     {
         if (time == 0) {
+            time = Time.deltaTime;
             switch (m_stats.BulletType.name)
             {
                 default:
@@ -82,7 +82,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void FollowTargetPosition()
+    private void FollowTargetPosition()
     {
         //Rotate Sprite
         var dir = (Vector3) m_targetPosition - transform.position;

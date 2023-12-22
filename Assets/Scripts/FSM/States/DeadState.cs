@@ -30,7 +30,7 @@ namespace Assets.Scripts.FSM.States
         {
             if (EnteredState)
             {
-                //Debug.Log("UPDATING DEAD STATE");
+                Debug.Log("UPDATING DEAD STATE");
             }
         }
 

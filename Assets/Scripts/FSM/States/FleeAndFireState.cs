@@ -55,24 +55,29 @@ namespace Assets.Scripts.FSM.States
                     Debug.Log("UPDATING FLEE AND FIRE STATE");
                     _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
-
-                    switch (context.Index)
+                    if (context.TankStatistics.Health <= 0)
                     {
-                        case 3:
-                            if (_distance >= 15f)
-                            {
-                                _fsm.EnterState(FSMStateType.IDLE_AND_FIRE);
-                            }
-                            break;
+                        _fsm.EnterState(FSMStateType.DEAD);
                     }
-                    context.Gun.SetTargetPosition(context.Player.transform.position);
-                    context.Gun.FollowTargetPosition();
-                    context.Gun.Fire();
-
-                    if (m_movement != null)
+                    else
                     {
-                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
-                        m_movement.Move();
+                        switch (context.Index)
+                        {
+                            case 3:
+                                if (_distance >= 15f)
+                                {
+                                    _fsm.EnterState(FSMStateType.IDLE_AND_FIRE);
+                                }
+                                break;
+                        }
+                        context.Gun.SetTargetPosition(context.Player.transform.position);
+                        context.Gun.Fire();
+
+                        if (m_movement != null)
+                        {
+                            m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position + (Vector2)_npc.transform.position).normalized);
+                            m_movement.Move();
+                        }
                     }
                 }
             }
