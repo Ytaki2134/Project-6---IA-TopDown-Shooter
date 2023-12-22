@@ -55,5 +55,9 @@ namespace Assets.Scripts.NPCCode
         {
             return _index;
         }
+        public void DestroyObject()
+        {
+            Destroy(gameObject);
+        }
     }
 }

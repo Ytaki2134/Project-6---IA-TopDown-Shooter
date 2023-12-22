@@ -225,8 +225,8 @@ MonoBehaviour:
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
   m_shootAnimator: {fileID: 7926313954129691353}
-  m_canFire: 1
   duration: 1
+  m_canFire: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 7760592605917230738}
-  Speed: 110
+  Speed: 15
   BrakeSpeedMod: 0.4
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5

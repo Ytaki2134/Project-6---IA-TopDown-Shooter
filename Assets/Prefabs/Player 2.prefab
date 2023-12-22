@@ -225,9 +225,7 @@ MonoBehaviour:
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
   m_shootAnimator: {fileID: 7926313954129691353}
-  duration: 0
   m_canFire: 1
-  duration: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +923,7 @@ GameObject:
   - component: {fileID: 217730489011069212}
   - component: {fileID: 1892042885323986271}
   - component: {fileID: 6029557120383368668}
+  - component: {fileID: 4918939099781084341}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player
@@ -964,7 +963,7 @@ MonoBehaviour:
   m_vCamera: {fileID: 0}
   m_maxZoom: 18
   m_minZoom: 8
-  m_trackAudioSource: {fileID: 0}
+  m_trackAudioSource: {fileID: 4500232754569121374, guid: dcc07c6756154af4e914af6253734664, type: 3}
   m_hullAnimator: {fileID: 3314272762012262388}
   m_gunAnimator: {fileID: 5383473214053400043}
   m_shootAnimator: {fileID: 7926313954129691353}
@@ -1024,7 +1023,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7760592605917230738}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a48325c1e960ca4e88cff0cd18d3dfe, type: 3}
   m_Name: 

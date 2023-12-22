@@ -13,10 +13,9 @@ namespace Assets.Scripts.FSM.States
         public override void OnEnable()
         {
             base.OnEnable();
-            _canFire = false;
+            _canFire = true;
             StateType = FSMStateType.CHASE_AND_FIRE;
         }
-
 
         public override bool EnterState(FiniteStateMachine context)
         {
@@ -38,7 +37,7 @@ namespace Assets.Scripts.FSM.States
                     m_movement.SetBrakeSpeed(context.TankStatistics.BrakeSpeedMod);
                     m_movement.SetBrakeRotationSpeed(context.TankStatistics.BrakeRotationSpeedMod);
 
-                    CheckWeapon(context);
+
                     EnteredState = true;
                 }
             }
@@ -101,14 +100,6 @@ namespace Assets.Scripts.FSM.States
                         }
                     }
                 }
-            }
-        }
-
-        public void CheckWeapon(FiniteStateMachine context)
-        {
-            if (context.Gun != null)
-            {
-                _canFire = true;
             }
         }
     }

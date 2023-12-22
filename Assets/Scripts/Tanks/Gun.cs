@@ -8,8 +8,6 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform m_pivot;
     [SerializeField] private Transform m_gunEnd;
     [SerializeField] private Animator m_shootAnimator;
-    [SerializeField] private float duration;
-    private float time = 0;
     private AudioSource m_audioSource;
     private Vector2 m_targetPosition;
     private Quaternion m_targetRotation;
@@ -41,7 +39,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void Reload()
+    public void Reload()
     {
         m_canFire = true;
     }

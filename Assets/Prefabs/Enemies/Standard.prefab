@@ -225,7 +225,7 @@ MonoBehaviour:
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
   m_shootAnimator: {fileID: 7926313954129691353}
-  duration: 1
+  m_canFire: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,8 +242,9 @@ MonoBehaviour:
   BulletSpeed: 4
   RotationSpeed: 6
   BrakeRotationSpeedMod: 1.5
+  ReloadTime: 1
   BulletType: {fileID: 3275306726565939084, guid: 2de714b2001083b40b12deeecf16d369, type: 3}
-  IsPlayer: 1
+  IsPlayer: 0
 --- !u!95 &5383473214053400043
 Animator:
   serializedVersion: 5
@@ -958,7 +959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee0911c3053c5a46aa769ad26e87910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolPoints: []
+  _patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   _player: {fileID: 0}
   _index: 1
 --- !u!50 &1892042885323986271
@@ -1001,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 7760592605917230738}
-  Speed: 110
+  Speed: 10
   BrakeSpeedMod: 0.4
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5
