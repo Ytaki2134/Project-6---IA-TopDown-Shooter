@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEditor;
+using Unity.VisualScripting;
 
 // Classe NodeView
 // Cette classe est une extension de la classe Node d'Unity Editor et représente la visualisation graphique d'un nœud dans l'éditeur d'arbre comportemental.
@@ -15,7 +18,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
 
     // Constructeur
     // Initialise la vue du nœud avec les données du nœud de l'arbre comportemental. 
-    public NodeView(Node node) : base("Assets/AI/BehaviourTree/BTreeModule/NodeView.uxml")
+    public NodeView(Node node) : base("Assets/AI/BehaviourTree/BTreeModule/Editor/NodeView.uxml")
     {
         this.node = node;
         this.title = node.name;  // Titre du nœud dans l'éditeur

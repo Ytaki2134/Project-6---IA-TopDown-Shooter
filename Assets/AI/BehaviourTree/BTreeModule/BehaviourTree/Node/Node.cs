@@ -1,10 +1,12 @@
-
-
+using System.Collections;
+using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor.Experimental.GraphView;
+#endif
 using UnityEngine;
 // Classe Node
 // Classe de base abstraite pour les nœuds dans un arbre comportemental. 
 // Chaque nœud représente une tâche ou une décision et peut être dans un état de succès, d'échec ou en cours d'exécution.
-
 public abstract class Node : ScriptableObject
 {
     // Énumération pour les états possibles d'un nœud.
