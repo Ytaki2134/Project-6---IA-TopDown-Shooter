@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -6,17 +6,17 @@ using UnityEngine;
 
 using UnityEngine.InputSystem.HID;
 // Classe BehaviourTree
-// Cette classe représente un arbre comportemental dans un système d'IA. 
-// Elle gère les nœuds de l'arbre et leurs interactions, permettant la création, la mise à jour, et la suppression de nœuds.
+// Cette classe reprï¿½sente un arbre comportemental dans un systï¿½me d'IA. 
+// Elle gï¿½re les nï¿½uds de l'arbre et leurs interactions, permettant la crï¿½ation, la mise ï¿½ jour, et la suppression de nï¿½uds.
 [CreateAssetMenu()]
 public class BehaviourTree : ScriptableObject
 {
-    public Node rootNode;  // Le nœud racine de l'arbre
-    public Node.State treeState = Node.State.Running;  // L'état actuel de l'arbre
-    public List<Node> nodes = new List<Node>();  // Liste de tous les nœuds dans l'arbre
+    public Node rootNode;  // Le nï¿½ud racine de l'arbre
+    public Node.State treeState = Node.State.Running;  // L'ï¿½tat actuel de l'arbre
+    public List<Node> nodes = new List<Node>();  // Liste de tous les nï¿½uds dans l'arbre
     public Blackboard blackboard = new Blackboard();
     // Fonction Update
-    // Met à jour l'arbre comportemental en commençant par le nœud racine et retourne l'état actuel de l'arbre.
+    // Met ï¿½ jour l'arbre comportemental en commenï¿½ant par le nï¿½ud racine et retourne l'ï¿½tat actuel de l'arbre.
     public Node.State Update()
     {
         if (rootNode.state == Node.State.Running)
@@ -27,7 +27,7 @@ public class BehaviourTree : ScriptableObject
     }
 #if UNITY_EDITOR
     // Fonction CreateNode
-    // Crée un nouveau nœud de type spécifié, l'ajoute à l'arbre et l'enregistre dans la base de données d'assets.
+    // Crï¿½e un nouveau nï¿½ud de type spï¿½cifiï¿½, l'ajoute ï¿½ l'arbre et l'enregistre dans la base de donnï¿½es d'assets.
     public Node CreateNode(System.Type type)
     {
         Node node = ScriptableObject.CreateInstance(type) as Node;
@@ -39,7 +39,7 @@ public class BehaviourTree : ScriptableObject
         Undo.RecordObject(this, "Behaviour Tree (CreateNode)");
 
         nodes.Add(node);
-        if(!Application.isPlaying)
+        if (!Application.isPlaying)
         {
             AssetDatabase.AddObjectToAsset(node, this);
 
@@ -50,7 +50,7 @@ public class BehaviourTree : ScriptableObject
     }
 
     // Fonction DeleteNode
-    // Supprime un nœud spécifié de l'arbre et de la base de données d'assets.
+    // Supprime un nï¿½ud spï¿½cifiï¿½ de l'arbre et de la base de donnï¿½es d'assets.
     public void DeleteNode(Node node)
     {
         Undo.RecordObject(this, "Behaviour Tree (DeleteNode)");
@@ -62,7 +62,7 @@ public class BehaviourTree : ScriptableObject
     }
 
     // Fonction AddChild
-    // Ajoute un nœud enfant à un nœud parent spécifié dans l'arbre.
+    // Ajoute un nï¿½ud enfant ï¿½ un nï¿½ud parent spï¿½cifiï¿½ dans l'arbre.
     public void AddChild(Node parent, Node child)
     {
         DecoratorNode decorator = parent as DecoratorNode;
@@ -90,12 +90,12 @@ public class BehaviourTree : ScriptableObject
             Undo.RecordObject(composite, "Behaviour Tree (AddChild)");
 
             composite.AddChildren(child);
-            EditorUtility.SetDirty(composite); 
+            EditorUtility.SetDirty(composite);
         }
     }
 
     // Fonction RemoveChild
-    // Supprime un nœud enfant d'un nœud parent spécifié dans l'arbre.
+    // Supprime un nï¿½ud enfant d'un nï¿½ud parent spï¿½cifiï¿½ dans l'arbre.
     public void RemoveChild(Node parent, Node child)
     {
         DecoratorNode decorator = parent as DecoratorNode;
@@ -131,7 +131,7 @@ public class BehaviourTree : ScriptableObject
 
 #endif
     // Fonction GetChildren
-    // Retourne une liste des nœuds enfants d'un nœud parent spécifié.
+    // Retourne une liste des nï¿½uds enfants d'un nï¿½ud parent spï¿½cifiï¿½.
     public List<Node> GetChildren(Node parent)
     {
         List<Node> children = new List<Node>();
@@ -166,14 +166,14 @@ public class BehaviourTree : ScriptableObject
     }
 
     // Fonction Clone
-    // Crée et retourne une copie profonde de l'arbre comportemental.
+    // Crï¿½e et retourne une copie profonde de l'arbre comportemental.
     public BehaviourTree Clone()
     {
         BehaviourTree tree = Instantiate(this);
         tree.rootNode = tree.rootNode.Clone();
         tree.nodes = new List<Node>();
         Traverse(tree.rootNode, (n) => {
-            n.blackboard = tree.blackboard; // Assurez-vous que le blackboard est mis à jour
+            n.blackboard = tree.blackboard; // Assurez-vous que le blackboard est mis ï¿½ jour
             tree.nodes.Add(n);
         });
         return tree;

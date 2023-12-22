@@ -133,6 +133,23 @@ MonoBehaviour:
   started: 0
   guid: 4620efe6a36f31c4fb3546c2ea7b5db0
   position: {x: 915.2733, y: 372.99985}
+--- !u!114 &-4117348659059716384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b9bc65103b6e04eb47b66b534b792e, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d86d4d97b00dda648b00083fca631908
+  position: {x: 0, y: 0}
+  child: {fileID: 0}
 --- !u!114 &-3342898975082756637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,34 +263,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
+  m_Script: {fileID: 11500000, guid: a4e215bc365d3b4428fd5b0cf0284ae1, type: 3}
   m_Name: Alpha
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 5791007741913572796}
+  rootNode: {fileID: -4117348659059716384}
   treeState: 0
   nodes:
-  - {fileID: 5791007741913572796}
-  - {fileID: -2872941753425433529}
-  - {fileID: -8825413164901326946}
+  - {fileID: 221313266588666481}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: -2008298683894607741}
   - {fileID: 221313266588666481}
   - {fileID: -7508699645741066747}
   - {fileID: 6258578684720421218}
-  - {fileID: -8243795725627372111}
-  - {fileID: 4436425571605636286}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: -1182013637966858637}
-  - {fileID: -1339873745536239260}
-  - {fileID: -8690934634555671803}
-  - {fileID: 622537260449578542}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: -4255047457075654438}
   - {fileID: 8728005958073956066}
   - {fileID: -730927874198100094}
-  - {fileID: -5830960015125909136}
-  - {fileID: 628310520230688496}
-  - {fileID: 2816823088900380450}
-  - {fileID: 377200759975066210}
-  - {fileID: 1593315684219202409}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 2038148345988509197}
+  - {fileID: -4117348659059716384}
 --- !u!114 &221313266588666481
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 // Classe RootNode
 // Cette classe est une spécialisation de Node et représente le nœud racine d'un arbre comportemental. 
