@@ -29,14 +29,7 @@ public class Gun : MonoBehaviour
         if (m_targetPosition != new Vector2(0, 0))
             FollowTargetPosition();
 
-        if (time > 0)
-        {
-            time += Time.deltaTime;
-        }
-        if (time > duration)
-        {
-            time = 0;
-        }
+   
     }
 
     public void Reload()
