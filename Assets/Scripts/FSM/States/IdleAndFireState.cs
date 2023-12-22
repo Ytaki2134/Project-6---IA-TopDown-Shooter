@@ -30,34 +30,43 @@ namespace Assets.Scripts.FSM.States
         {
             if (EnteredState)
             {
-                Debug.Log("UPDATING IDLE AND FIRE STATE");
+                //Debug.Log("UPDATING IDLE AND FIRE STATE");
                 _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
-                switch (context.Index)
+                if (context.TankStatistics.Health <= 0)
                 {
-                    case 1:
-                        break;
+                    _fsm.EnterState(FSMStateType.DEAD);
+                }
+                else
+                {
+                    switch (context.Index)
+                    {
+                        case 1:
+                            break;
 
-                    case 2:
-                        break;
+                        case 2:
+                            break;
 
-                    case 3:
-                        if (_distance <= 15f)
-                        {
-                            _fsm.EnterState(FSMStateType.FLEE_AND_FIRE);
-                        }
-                        else if (_distance >= 30f)
-                        {
-                            _fsm.EnterState(FSMStateType.IDLE);
-                        }
-                        break;
+                        case 3:
+                            if (_distance <= 15f)
+                            {
+                                _fsm.EnterState(FSMStateType.FLEE_AND_FIRE);
+                            }
+                            else if (_distance >= 30f)
+                            {
+                                _fsm.EnterState(FSMStateType.IDLE);
+                            }
+                            break;
 
-                    case 4:
-                        if (_distance >= 15f)
-                        {
-                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
-                        }
-                        break;
+                        case 4:
+                            if (_distance >= 15f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                            }
+                            break;
+                    }
+                    context.Gun.SetTargetPosition(context.Player.transform.position);
+                    context.Gun.Fire();
                 }
             }
         }

@@ -46,54 +46,61 @@ namespace Assets.Scripts.FSM
         {
             if (EnteredState)
             {
-                Debug.Log("UPDATING CHASE STATE");
+                //Debug.Log("UPDATING CHASE STATE");
                 _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
-                switch (context.Index)
+                if (context.TankStatistics.Health <= 0)
                 {
-                    case 1:
-                        if (_distance <= 10f)
-                        {
-                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
-                        }
-                        else if (_distance >= 20f)
-                        {
-                            _fsm.EnterState(FSMStateType.PATROL);
-                        }
-                        break;
-
-                    case 2:
-                        if (_distance <= 6f)
-                        {
-                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
-                        }
-                        else if (_distance >= 20f)
-                        {
-                            _fsm.EnterState(FSMStateType.PATROL);
-                        }
-                        break;
-
-                    case 3:
-                        break;
-
-                    case 4:
-                        if (_distance >= 25f)
-                        {
-                            _fsm.EnterState(FSMStateType.IDLE);
-                        }
-                        break;
-
-                    case 5:
-                        if (_distance <= 4f)
-                        {
-                            _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
-                        }
-                        break;
+                    _fsm.EnterState(FSMStateType.DEAD);
                 }
-                if (m_movement != null)
+                else
                 {
-                    m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
-                    m_movement.Move();
+                    switch (context.Index)
+                    {
+                        case 1:
+                            if (_distance <= 10f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                            }
+                            else if (_distance >= 20f)
+                            {
+                                _fsm.EnterState(FSMStateType.PATROL);
+                            }
+                            break;
+
+                        case 2:
+                            if (_distance <= 6f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                            }
+                            else if (_distance >= 20f)
+                            {
+                                _fsm.EnterState(FSMStateType.PATROL);
+                            }
+                            break;
+
+                        case 3:
+                            break;
+
+                        case 4:
+                            if (_distance >= 25f)
+                            {
+                                _fsm.EnterState(FSMStateType.IDLE);
+                            }
+                            break;
+
+                        case 5:
+                            if (_distance <= 4f)
+                            {
+                                _fsm.EnterState(FSMStateType.CHASE_AND_FIRE);
+                            }
+                            break;
+                    }
+                    if (m_movement != null)
+                    {
+                        m_movement.SetCurrentMovement(((Vector2)context.Player.transform.position - (Vector2)_npc.transform.position).normalized);
+                        m_movement.Move();
+                    }
                 }
             }
         }

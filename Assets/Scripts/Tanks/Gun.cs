@@ -33,7 +33,6 @@ public class Gun : MonoBehaviour
         {
             time += Time.deltaTime;
         }
-
         if (time > duration)
         {
             time = 0;
@@ -81,32 +80,31 @@ public class Gun : MonoBehaviour
         m_audioSource.Play();
     }
 
-
-public void FireStop()
-{
-    m_shootAnimator.SetBool("Loop", false);
-
-    switch (m_stats.BulletType.name)
+    public void FireStop()
     {
-        default:
-            break;
-        case "Flame Bullet":
-            Destroy(m_bullet);
-            break;
+        m_shootAnimator.SetBool("Loop", false);
+
+        switch (m_stats.BulletType.name)
+        {
+            default:
+                break;
+            case "Flame Bullet":
+                Destroy(m_bullet);
+                break;
+        }
     }
-}
 
-public void FollowTargetPosition()
-{
-    //Rotate Sprite
-    var dir = (Vector3)m_targetPosition - transform.position;
+    private void FollowTargetPosition()
+    {
+        //Rotate Sprite
+        var dir = (Vector3)m_targetPosition - transform.position;
 
-    m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
-    m_pivot.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_stats.RotationSpeed * m_stats.BrakeRotationSpeedMod);
-}
+        m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f);
+        m_pivot.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_stats.RotationSpeed * m_stats.BrakeRotationSpeedMod);
+    }
 
-public void SetTargetPosition(Vector2 targetPosition)
-{
-    m_targetPosition = targetPosition;
-}
+    public void SetTargetPosition(Vector2 targetPosition)
+    {
+        m_targetPosition = targetPosition;
+    }
 }

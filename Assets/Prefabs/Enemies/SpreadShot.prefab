@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4863508806457851191}
   - component: {fileID: 2918516256401154968}
   - component: {fileID: 7926313954129691353}
-  m_Layer: 0
-  m_Name: ShootAnimation
+  m_Layer: 7
+  m_Name: Shoot Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4930386126415529225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c32edf6bb655505458f804b469149ec4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fe5cd29dd5bd16439761940af2f874f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_animator: {fileID: 7926313954129691353}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2149746214985386141}
   - component: {fileID: 5383473214053400043}
   - component: {fileID: 1697558707435873438}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 5143301456740165535}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -199,7 +199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 6c8b26ef1d9b990498a49a0d91190490, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd7b37d45ec7d6e4fba01d7e9478c9bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_gunEnd: {fileID: 4845898277217722430}
   m_shootAnimator: {fileID: 7926313954129691353}
   m_canFire: 1
+  duration: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,8 +244,8 @@ MonoBehaviour:
   RotationSpeed: 6
   BrakeRotationSpeedMod: 1.5
   ReloadTime: 1
-  BulletType: {fileID: 3275306726565939084, guid: 7984073929aadc343a4c28d9b5f28e6c, type: 3}
-  IsPlayer: 1
+  BulletType: {fileID: 3275306726565939084, guid: 19c717be69e98414fb60ee56dd11f577, type: 3}
+  IsPlayer: 0
 --- !u!95 &5383473214053400043
 Animator:
   serializedVersion: 5
@@ -373,7 +374,7 @@ GameObject:
   - component: {fileID: 5972739479624454072}
   - component: {fileID: 2801555615581934149}
   - component: {fileID: 5428921842429080932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Track L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,9 +390,9 @@ Transform:
   m_GameObject: {fileID: 5323438773289306188}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.25, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -0.7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2119177166419826634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -436,7 +437,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ef0454c18b19084bb48a3e69d40e75b, type: 3}
+  m_Sprite: {fileID: 631495205, guid: 82c7a0fa8edf7e74f938b1286515abdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -478,7 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119177166419826634}
   - component: {fileID: 2000728643152143983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4845898277217722430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +645,7 @@ GameObject:
   - component: {fileID: 7450163294200336142}
   - component: {fileID: 3314272762012262388}
   - component: {fileID: 2139767104055695342}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +661,7 @@ Transform:
   m_GameObject: {fileID: 6999172936890860945}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -709,7 +710,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 315e95988df883b4e95ba08256d3e395, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e9718c715835c44c889d4cae7398592, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -781,7 +782,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -792,7 +793,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2.2}
+  m_Size: {x: 1.45, y: 2.2}
   m_EdgeRadius: 0
 --- !u!95 &3314272762012262388
 Animator:
@@ -920,11 +921,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8920954497795880858}
-  - component: {fileID: 7368401181109211917}
+  - component: {fileID: 1992742534302012223}
   - component: {fileID: 1892042885323986271}
   - component: {fileID: 6029557120383368668}
-  m_Layer: 6
-  m_Name: Sniper Player
+  - component: {fileID: 7865062229905173713}
+  m_Layer: 7
+  m_Name: SpreadShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -946,7 +948,7 @@ Transform:
   - {fileID: 5676789233512348038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7368401181109211917
+--- !u!114 &1992742534302012223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -955,21 +957,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7760592605917230738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6acea6c1e18a8074ab45d32c53cd4138, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ee0911c3053c5a46aa769ad26e87910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 0}
-  m_vCamera: {fileID: 0}
-  m_maxZoom: 18
-  m_minZoom: 8
-  m_trackAudioSource: {fileID: 2000728643152143983}
-  m_hullAnimator: {fileID: 3314272762012262388}
-  m_gunAnimator: {fileID: 5383473214053400043}
-  m_shootAnimator: {fileID: 7926313954129691353}
-  m_trackAnimator:
-  - {fileID: 5428921842429080932}
-  - {fileID: 5375654968379929681}
-  type: 3
+  _patrolPoints: []
+  _player: {fileID: 0}
+  _index: 2
 --- !u!50 &1892042885323986271
 Rigidbody2D:
   serializedVersion: 4
@@ -1015,6 +1008,27 @@ MonoBehaviour:
   RotationSpeed: 2.5
   BrakeRotationSpeedMod: 1.5
   Health: 20
+--- !u!114 &7865062229905173713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760592605917230738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5672d7a3595142b4b964ac7dd38f3961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _validStates:
+  - {fileID: 11400000, guid: 222d7dc443f47514ca79b7d18b803d19, type: 2}
+  - {fileID: 11400000, guid: 1aa4d42075bad6847b31aa3b3c715b6a, type: 2}
+  - {fileID: 11400000, guid: 8f5ef66125248894ab8b7d45d099547e, type: 2}
+  - {fileID: 11400000, guid: 0c6cb577b81f7ef40aee7ffcc0a21958, type: 2}
+  - {fileID: 11400000, guid: 47ee117d75ccea0449e84de9f21d13e4, type: 2}
+  - {fileID: 11400000, guid: e7e6b5b10aa7d9e4aa2c41be35710014, type: 2}
+  - {fileID: 11400000, guid: bab75903ae277fb44847610a85d3772d, type: 2}
+  - {fileID: 11400000, guid: 7ae1b2e7ba6f2534bbaf9d0134971794, type: 2}
 --- !u!1 &8394301354479254328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570672341128253340}
   - component: {fileID: 3748584715514707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,7 +1055,7 @@ Transform:
   m_GameObject: {fileID: 8394301354479254328}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.23, z: 0}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1111,7 +1125,7 @@ GameObject:
   - component: {fileID: 320476939767675877}
   - component: {fileID: 2353244330307718991}
   - component: {fileID: 5375654968379929681}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Track R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,10 +1140,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8979797374847315014}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.25, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2119177166419826634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1174,7 +1188,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ef0454c18b19084bb48a3e69d40e75b, type: 3}
+  m_Sprite: {fileID: 631495205, guid: 82c7a0fa8edf7e74f938b1286515abdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
