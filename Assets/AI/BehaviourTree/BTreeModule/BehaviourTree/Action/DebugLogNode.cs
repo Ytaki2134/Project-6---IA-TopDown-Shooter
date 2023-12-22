@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if UNITY_EDITOR
+
 public class DebugLogNode : ActionNode
 {
     public string message;
@@ -21,4 +21,3 @@ public class DebugLogNode : ActionNode
         return State.Success;
     }
 }
-#endif

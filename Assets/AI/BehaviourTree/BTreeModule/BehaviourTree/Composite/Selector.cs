@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
-public class Selector : CompisiteNode {
+
+    public class Selector : CompisiteNode {
         protected int current;
 
         protected override void OnStart() {
@@ -31,4 +31,3 @@ public class Selector : CompisiteNode {
             return State.Failure;
         }
     }
-#endif

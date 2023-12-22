@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-#if UNITY_EDITOR
+
 using UnityEngine.InputSystem.HID;
 // Classe BehaviourTree
 // Cette classe représente un arbre comportemental dans un système d'IA. 
@@ -25,7 +25,7 @@ public class BehaviourTree : ScriptableObject
         }
         return treeState;
     }
-
+#if UNITY_EDITOR
     // Fonction CreateNode
     // Crée un nouveau nœud de type spécifié, l'ajoute à l'arbre et l'enregistre dans la base de données d'assets.
     public Node CreateNode(System.Type type)
@@ -129,6 +129,7 @@ public class BehaviourTree : ScriptableObject
         }
     }
 
+#endif
     // Fonction GetChildren
     // Retourne une liste des nœuds enfants d'un nœud parent spécifié.
     public List<Node> GetChildren(Node parent)
@@ -179,4 +180,3 @@ public class BehaviourTree : ScriptableObject
     }
 
 }
-#endif

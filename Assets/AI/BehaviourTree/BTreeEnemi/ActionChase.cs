@@ -1,45 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
-#if UNITY_EDITOR
+
 public class ActionChase : ActionNode
 {
 
-    private int _dist;
-    private GameObject _targetToMove;
-    private GameObject _me;
+    private GameObject _enemy;
+    private GameObject _tank;
 
+    private Movement _movement;
+    private float minDistance;  // Distance minimale ? maintenir
+    private float maxDistance;
+    private AudioManager m_audioManager;
+    private Animator _animatorTrack1;
+    private Animator _animatorTrack2;
+    private float bufferDistance;
 
     protected override void OnStart()
     {
-        _targetToMove = blackboard._targetToMove;
-        _me = blackboard._targetGameObject;
-        _dist = 5;
+        _enemy = blackboard.Get("targetEnemi") as GameObject;
+        _tank = blackboard.Get("targetGameObject") as GameObject;
+        _movement = blackboard.Get("movement") as Movement;
+        maxDistance = blackboard.Get<float>("distanceMax");
+        minDistance = blackboard.Get<float>("distanceMin");
+        m_audioManager = blackboard.Get<AudioManager>("audioManager");
+        _animatorTrack1 = blackboard.Get<Animator>("animatorTrack1");
+        _animatorTrack2 = blackboard.Get<Animator>("animatorTrack2");
+        bufferDistance = blackboard.Get<float>("bufferDistance");
+
     }
 
     protected override void OnStop()
     {
-       
     }
 
     protected override State OnUpdate()
     {
-
-
-        if (Vector2.Distance(_targetToMove.GetComponent<Transform>().position, _me.transform.position) < _dist) {
-
-            _me.GetComponent<Transform>().position = Vector2.MoveTowards(_me.GetComponent<Transform>().position, _targetToMove.GetComponent<Transform>().position
-                ,blackboard._speed * Time.deltaTime);
-            Vector2 direction = (_targetToMove.GetComponent<Transform>().position - _me.GetComponent<Transform>().position).normalized;
-            
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            _me.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle);
+        if (_enemy == null || _tank == null)
+        {
+            return State.Failure;
+        }
+        float currentDistance = Vector2.Distance(_tank.transform.position, _enemy.transform.position);
+        if (currentDistance > minDistance + bufferDistance && currentDistance < maxDistance - bufferDistance)
+        {
+            _movement.SetSpeed(0);
+            // Dans la zone tampon, maintenez l'état actuel
             return State.Running;
         }
         else
         {
-            return State.Failure;
+            _movement.SetSpeed(blackboard.Get<float>("speed"));
+
         }
+
+        if (currentDistance > maxDistance)
+        {
+
+            _movement.RotateAndMoveTowards(_tank.transform, _enemy.transform);
+            m_audioManager.PlaySound();
+            _animatorTrack1.SetBool("Enable", true);
+            _animatorTrack2.SetBool("Enable", true);
+
+        }
+        else if (currentDistance < minDistance)
+        {
+            _movement.RotateAndMoveAwayFrom(_tank.transform, _enemy.transform);
+            m_audioManager.PlaySound();
+
+        }
+        else
+        {
+            m_audioManager.StopSound();
+            _animatorTrack1.SetBool("Enable", false);
+            _animatorTrack2.SetBool("Enable", false);
+
+
+        }
+
+        return State.Running;
     }
+
 }
-#endif

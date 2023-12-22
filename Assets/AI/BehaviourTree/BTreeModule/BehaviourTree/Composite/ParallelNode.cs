@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using static Unity.VisualScripting.Metadata;
+#endif
 
 public class ParallelNode : CompisiteNode
 {
@@ -11,18 +12,11 @@ public class ParallelNode : CompisiteNode
         RequireOne,
         RequireAll
     }
-
-    private Policy successPolicy;
-    private Policy failurePolicy;
-
-    public ParallelNode(Policy successPolicy, Policy failurePolicy)
-    {
-        this.successPolicy = successPolicy;
-        this.failurePolicy = failurePolicy;
-    }
+    [SerializeField] private Policy successPolicy;
 
     protected override void OnStart()
     {
+
     }
 
     protected override void OnStop()
@@ -32,7 +26,6 @@ public class ParallelNode : CompisiteNode
     protected override State OnUpdate()
     {
         int successCount = 0;
-        int failureCount = 0;
 
         foreach (Node child in m_children)
         {
@@ -46,20 +39,13 @@ public class ParallelNode : CompisiteNode
                         return State.Success;
                     break;
                 case State.Failure:
-                    failureCount++;
-                    if (failurePolicy == Policy.RequireOne)
-                        return State.Failure;
                     break;
             }
         }
 
         if (successPolicy == Policy.RequireAll && successCount == m_children.Count)
             return State.Success;
-
-        if (failurePolicy == Policy.RequireAll && failureCount == m_children.Count)
-            return State.Failure;
-
-        return State.Running;
+        
+        return State.Failure;
     }
 }
-#endif

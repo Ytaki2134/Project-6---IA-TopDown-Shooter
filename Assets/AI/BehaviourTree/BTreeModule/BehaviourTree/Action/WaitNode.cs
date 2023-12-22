@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if UNITY_EDITOR
+
 public class WaitNode : ActionNode
 {
 
@@ -25,4 +25,3 @@ public class WaitNode : ActionNode
         return State.Running;
     }
 }
-#endif

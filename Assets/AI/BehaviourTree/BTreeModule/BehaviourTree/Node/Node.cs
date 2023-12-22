@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor.Experimental.GraphView;
-
+#endif
 using UnityEngine;
 // Classe Node
 // Classe de base abstraite pour les nœuds dans un arbre comportemental. 
@@ -62,4 +62,3 @@ public abstract class Node : ScriptableObject
     protected abstract State OnUpdate();
 
 }
-#endif

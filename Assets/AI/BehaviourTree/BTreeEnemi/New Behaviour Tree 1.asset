@@ -1,0 +1,206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7126562151083328504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae766dde401ba45ab4e71dfc2c9b56, type: 3}
+  m_Name: ParallelNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 60176bbe33ef03f478c1df63d721ff32
+  position: {x: 122.165985, y: 244.30005}
+  children:
+  - {fileID: -81766544261262434}
+  - {fileID: -1348348469066681771}
+  - {fileID: 6630541428199934048}
+--- !u!114 &-4627482449141414973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f652902957a87542a43637c6f85fc69, type: 3}
+  m_Name: Selector
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 055ede324a3bb87479ce16d765ccfab5
+  position: {x: 240, y: 40}
+  children:
+  - {fileID: -7126562151083328504}
+  - {fileID: 5364926092780853965}
+--- !u!114 &-3615473451249562142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66724ee97b1079244bda0609082442f5, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 1
+  guid: c6d66db67dab3a2469413953e61bba1b
+  position: {x: 223, y: -271}
+  child: {fileID: 5165391369310523967}
+--- !u!114 &-1348348469066681771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f2aa6fcf6e8c644b80e78f584da6dc, type: 3}
+  m_Name: ActionRotateAndTarget
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: e9eb7642eb621c746a1ff9a9c6c314bd
+  position: {x: -22.916412, y: 451.43735}
+--- !u!114 &-1320383642135232001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 6368f120a2d0c2445b23a355b6282419
+  position: {x: 515.8376, y: 439.225}
+  condition:
+    conditionType: 0
+    expectedValue: 1
+--- !u!114 &-81766544261262434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0731f6b0b1289f2429bf38daf6bbeec5, type: 3}
+  m_Name: GuardConditionNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: a283b90b2bae4fc4da230531d9d094bb
+  position: {x: -214.62639, y: 455.64612}
+  condition:
+    conditionType: 0
+    expectedValue: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2127d685d9b9a458dd734571385074, type: 3}
+  m_Name: New Behaviour Tree 1
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: -3615473451249562142}
+  treeState: 0
+  nodes:
+  - {fileID: -3615473451249562142}
+  - {fileID: 6630541428199934048}
+  - {fileID: -1348348469066681771}
+  - {fileID: -1320383642135232001}
+  - {fileID: 4059952181178444391}
+  - {fileID: 5165391369310523967}
+  - {fileID: -81766544261262434}
+  - {fileID: -4627482449141414973}
+  - {fileID: 5364926092780853965}
+  - {fileID: -7126562151083328504}
+--- !u!114 &4059952181178444391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82df8f3d9109e424786d63bf18a2aabf, type: 3}
+  m_Name: ActionRotationCanon
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c30c9673637d5cf46a974044c6859487
+  position: {x: 713.83765, y: 442.225}
+--- !u!114 &5165391369310523967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af6f32edf71ea647bd56aee7dcfe462, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 2a6110075b4f71a4594db1fe6674febb
+  position: {x: 214.7608, y: -161.71323}
+  child: {fileID: -4627482449141414973}
+--- !u!114 &5364926092780853965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d17870285de3489e0b18424f1cc60, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 5a8cdcff6dee74247880e6c9c5d937aa
+  position: {x: 411.01602, y: 310.55}
+  children:
+  - {fileID: -1320383642135232001}
+  - {fileID: 4059952181178444391}
+--- !u!114 &6630541428199934048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e740e06467d5641b9c63481eb4f426, type: 3}
+  m_Name: ActionPatrolEnemi
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 98af9a6c12056da4eb4552d05fc87918
+  position: {x: 174.35506, y: 454.935}
+  _targetGameObject: {fileID: 0}
