@@ -574,6 +574,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1151604440}
+    - target: {fileID: 2149746214985386141, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
+      propertyPath: IsPlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2590822615730116802, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: _validStates.Array.size
       value: 8
