@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2113599384270740720}
   - component: {fileID: 619378820438418913}
   m_Layer: 0
-  m_Name: Enemi
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

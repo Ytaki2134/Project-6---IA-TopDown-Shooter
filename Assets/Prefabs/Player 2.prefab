@@ -964,7 +964,7 @@ MonoBehaviour:
   m_vCamera: {fileID: 0}
   m_maxZoom: 18
   m_minZoom: 8
-  m_trackAudioSource: {fileID: 0}
+  m_trackAudioSource: {fileID: 4500232754569121374, guid: dcc07c6756154af4e914af6253734664, type: 3}
   m_hullAnimator: {fileID: 3314272762012262388}
   m_gunAnimator: {fileID: 5383473214053400043}
   m_shootAnimator: {fileID: 7926313954129691353}
