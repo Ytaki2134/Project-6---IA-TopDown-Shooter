@@ -40,6 +40,7 @@ public class BehaviourTreeRunner : MonoBehaviour
         shieldComponent = GetComponent<Shield>();
         _audioManager = GetComponent<AudioManager>();
         _animatorTrack1 = GetComponent<Transform>().GetChild(1).GetComponent<Transform>().GetChild(0).GetComponent<Animator>();
+
         _animatorTrack2 = GetComponent<Transform>().GetChild(1).GetComponent<Transform>().GetChild(1).GetComponent<Animator>();
 
         shieldComponent.ShieldValue = 20f;

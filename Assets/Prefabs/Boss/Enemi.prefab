@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8185066052680882631}
   - component: {fileID: 8737333905276921976}
+  - component: {fileID: 6187806019332682724}
   m_Layer: 0
   m_Name: Track_1_A R
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6187806019332682724
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2301446432238095416}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d78cabd9879d30a4e81535f359208611, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4180570504376566114
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,13 +116,15 @@ GameObject:
   m_Component:
   - component: {fileID: 2113599384270740720}
   - component: {fileID: 619378820438418913}
-  - component: {fileID: 4613731968029976447}
+  - component: {fileID: 5096112336472288319}
   - component: {fileID: 8197537073095423722}
   - component: {fileID: 1407652212213177671}
   - component: {fileID: 6161621989370635014}
   - component: {fileID: 1227606854954511967}
   - component: {fileID: 3935188226290587356}
   - component: {fileID: 8873218387294883633}
+  - component: {fileID: 8138582953526788902}
+  - component: {fileID: 1048578206358930152}
   m_Layer: 7
   m_Name: Enemi
   m_TagString: Untagged
@@ -117,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 4180570504376566114}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.53, y: 4.01, z: 0}
+  m_LocalPosition: {x: -6.274, y: -3.313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -165,7 +189,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e0521986b0c093a4fbf5a91f03d97a37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -177,7 +201,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4613731968029976447
+--- !u!114 &5096112336472288319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,16 +210,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4180570504376566114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d40a22f37a4bbc24ab297d84a7b3b2ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 5efcc002108f3b04594ab620a3a6cf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 0}
-  _targetGameObject: {fileID: 0}
+  tree: {fileID: 11400000, guid: c66d1e7f4f5ef1e4399cdbb075c8ff28, type: 2}
+  _targetGameObject: {fileID: 4180570504376566114}
   _targetEnemi: {fileID: 0}
   _waypoints: []
-  _minePrefab: {fileID: 0}
-  _WeaponBullet: {fileID: 0}
-  _summonList: []
+  _minePrefab: {fileID: 2385014407767734437, guid: c0eba5d0d49d2ad40bad71fd84ca1e60, type: 3}
+  _WeaponBullet: {fileID: 6366451253971827912}
+  _summonList:
+  - {fileID: 7760592605917230738, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
 --- !u!114 &8197537073095423722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +389,78 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &8138582953526788902
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180570504376566114}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.56, y: 2.56}
+  m_EdgeRadius: 0
+--- !u!50 &1048578206358930152
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180570504376566114}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4709571207241647176
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +556,7 @@ Animator:
   m_GameObject: {fileID: 4709571207241647176}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b1c0bad34a6aa314087a8a2de3da3211, type: 2}
+  m_Controller: {fileID: 9100000, guid: d78cabd9879d30a4e81535f359208611, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -611,7 +708,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: bab917dcfa808564bab78ad00f879867, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -657,7 +754,7 @@ MonoBehaviour:
   RotationSpeed: 6
   BrakeRotationSpeedMod: 1
   ReloadTime: 1
-  BulletType: {fileID: 8384666743012348179, guid: 91e2d6d61acc07442a7d8e565bc1f3f8, type: 3}
+  BulletType: {fileID: 8384666743012348179, guid: 46b7aa2cf4c5ed544b7611a05913d54a, type: 3}
   IsPlayer: 0
 --- !u!114 &58864159106331400
 MonoBehaviour:

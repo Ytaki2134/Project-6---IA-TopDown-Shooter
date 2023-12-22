@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private Transform m_playerTransform;
     private Vector3 m_direction;
     private Quaternion m_targetRotation;
-
+    public GameObject hitEffectPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +95,14 @@ public class Bullet : MonoBehaviour
                 break;
         }
 
+        if (gameObject.tag == "EnemyBossBullet")
+        {
+            InstantiateHitEffect(collision);
+
+
+        }
+
+
     }
 
     //Should only work for flame bullets as other bullets destroy themselves before this function
@@ -112,6 +120,21 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.GetComponent<Hull>() != null)
         {
             collision.gameObject.GetComponent<Hull>().RemoveHealth(m_gunStatistics.BulletDamage);
+        }
+    }
+    private void InstantiateHitEffect(Collider2D collision)
+    {
+        if (hitEffectPrefab != null)
+        {
+            // Calculer le point le plus proche sur le collider du tank
+            Vector2 closestPoint = collision.ClosestPoint(transform.position);
+
+            // Instancier l'effet à ce point
+            GameObject effect = Instantiate(hitEffectPrefab, closestPoint, Quaternion.identity);
+
+            // Ajuster le temps de destruction pour correspondre à la durée de l'animation
+            float effectDuration = 0.2f; // Remplacer par la durée réelle de l'animation
+            Destroy(effect, effectDuration);
         }
     }
 

@@ -17,17 +17,19 @@ public class Gun : MonoBehaviour
     private GameObject m_bullet;
 
     public bool m_canFire = true;
-
+    private AudioManager m_audioManager;
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
         m_stats = GetComponent<GunStatistics>();
+        m_audioManager = GetComponent<AudioManager>();
         //m_canFire = true;
     }
 
     private void Update()
     {
-        FollowTargetPosition();
+        if (m_targetPosition != new Vector2(0, 0))
+            FollowTargetPosition();
 
         if (time > 0)
         {
@@ -46,38 +48,40 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
-        if (!m_canFire)
-            return;
+       if (!m_canFire)
+           return;
+      
+       m_canFire = false;
+       Invoke("Reload", m_stats.ReloadTime);
+      
+       switch (m_stats.BulletType.name)
+       {
+           default:
+               m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
+               m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+               break;
+      
+           case "SpreadShot Bullet":
+               float AngleDif = 120f;
+               for (int i = 0; i < 5; i++)
+               {
+                   m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, AngleDif));
+                   m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+                   AngleDif -= 15f;
+               }
+               break;
+      
+           case "Flame Bullet":
+               m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation, transform);
+               m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
+               break;
+      
+       }
+       m_shootAnimator.SetBool("Shoot", true);
+       m_shootAnimator.SetBool("Loop", true);
+       m_audioSource.Play();
 
-        m_canFire = false;
-        Invoke("Reload", m_stats.ReloadTime);
-
-        switch (m_stats.BulletType.name)
-        {
-            default:
-                m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, 90f));
-                m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
-                break;
-
-            case "SpreadShot Bullet":
-                float AngleDif = 120f;
-                for (int i = 0; i < 5; i++)
-                {
-                    m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation * Quaternion.Euler(0, 0, AngleDif));
-                    m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
-                    AngleDif -= 15f;
-                }
-                break;
-
-            case "Flame Bullet":
-                m_bullet = Instantiate(m_stats.BulletType, m_gunEnd.position, m_pivot.transform.rotation, transform);
-                m_bullet.GetComponent<Bullet>().SetGunStatsRef(m_stats);
-                break;
-
-        }
-        m_shootAnimator.SetBool("Shoot", true);
-        m_shootAnimator.SetBool("Loop", true);
-        m_audioSource.Play();
+   
     }
 
     public void FireStop()
