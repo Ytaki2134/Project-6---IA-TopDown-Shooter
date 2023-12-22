@@ -44,16 +44,8 @@ namespace Assets.Scripts.FSM.States
                         case 1:
                         case 2:
                         case 5:
-                            if (_distance <= 15f)
-                            {
-                                _fsm.EnterState(FSMStateType.PATROL);
-                                break;
-                            }
-                            else
-                            {
-                                _fsm.EnterState(FSMStateType.PATROL);
-                                break;
-                            }
+                            _fsm.EnterState(FSMStateType.PATROL);
+                            break;
 
                         case 3:
                             if (_distance <= 30f)

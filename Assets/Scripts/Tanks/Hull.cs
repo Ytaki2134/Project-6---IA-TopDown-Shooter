@@ -1,3 +1,4 @@
+using Assets.Scripts.NPCCode;
 using UnityEngine;
 
 public class Hull : MonoBehaviour
@@ -44,7 +45,7 @@ public class Hull : MonoBehaviour
         m_audioSource.volume = 1f;
         m_audioSource.Play();
 
-        foreach (Transform t in m_transformList) 
+        foreach (Transform t in m_transformList)
         {
             Destroy(t.gameObject);
         }
@@ -53,6 +54,14 @@ public class Hull : MonoBehaviour
     public void ExplodeEnd()
     {
         m_animator.SetBool("Dead", false);
-        GetComponentInParent<PlayerControls>().DestroyObject();
+        if (gameObject.layer == 6)
+        {
+            GetComponentInParent<PlayerControls>().DestroyObject();
+        }
+        else if (gameObject.layer == 7)
+        {
+            GetComponentInParent<NPC>().DestroyObject();
+        }
+
     }
 }

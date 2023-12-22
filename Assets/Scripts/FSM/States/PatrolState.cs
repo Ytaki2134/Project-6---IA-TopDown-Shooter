@@ -59,8 +59,8 @@ namespace Assets.Scripts.FSM
             if (EnteredState)
             {
                 //Debug.Log("UPDATING PATROL STATE");
-                _distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
-
+                _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
+                Debug.Log(_distance);
                 if (context.TankStatistics.Health <= 0)
                 {
                     _fsm.EnterState(FSMStateType.DEAD);

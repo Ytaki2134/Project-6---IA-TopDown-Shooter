@@ -66,11 +66,19 @@ namespace Assets.Scripts.FSM
 
         public void Update()
         {
-            if( _currentState != null)
+            if (_currentState != null)
             {
                 _currentState.UpdateState(this);
             }
         }
+
+        //public void FixedUpdate()
+        //{
+        //    if (_currentState != null)
+        //    {
+        //        _currentState.UpdateState(this);
+        //    }
+        //}
 
         #region STATE MANAGEMENT
 

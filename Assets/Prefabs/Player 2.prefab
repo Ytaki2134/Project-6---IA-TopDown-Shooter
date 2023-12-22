@@ -225,7 +225,6 @@ MonoBehaviour:
   m_pivot: {fileID: 570672341128253340}
   m_gunEnd: {fileID: 4845898277217722430}
   m_shootAnimator: {fileID: 7926313954129691353}
-  duration: 0
   m_canFire: 1
 --- !u!114 &2149746214985386141
 MonoBehaviour:

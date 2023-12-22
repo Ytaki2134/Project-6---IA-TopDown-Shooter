@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
       value: 
@@ -254,6 +258,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
       value: 
@@ -340,6 +348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flame (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.846283
@@ -401,6 +413,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
       propertyPath: m_Name
       value: Missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8208130562415408977, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
       propertyPath: _player
@@ -483,6 +499,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
       propertyPath: m_Name
       value: Flame (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -766,6 +786,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: m_Name
       value: Sniper (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
@@ -1080,6 +1104,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_Name
       value: SpreadShot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1435,6 +1463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Missile (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8208130562415408977, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
       propertyPath: _player
       value: 
@@ -1762,6 +1794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpreadShot
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.28962
@@ -1823,6 +1859,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: m_Name
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
@@ -1982,6 +2022,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_Name
       value: SpreadShot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2529,6 +2573,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Standard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.214798
@@ -2590,6 +2638,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: m_Name
       value: Sniper (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
@@ -3240,6 +3292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpreadShot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.701965
@@ -3374,6 +3430,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: m_Name
       value: Sniper (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
@@ -3537,6 +3597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Standard
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: bffa3e18a052c864d9fbc3d81a29039e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.3729544
@@ -3614,6 +3678,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_Name
       value: SpreadShot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3750,6 +3818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
       value: 
@@ -3831,6 +3903,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
       propertyPath: m_Name
       value: Flame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 4d79dd7864337404fa55150e48bcec5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4064,6 +4140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpreadShot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8920954497795880858, guid: 85a0778d985a6d846a5bdc1456031b2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.933151
@@ -4125,6 +4205,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: m_Name
       value: Sniper (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8638225987397733669, guid: cae54f6a59a69244bb5d1c928e2c3498, type: 3}
       propertyPath: _player
@@ -4261,6 +4345,10 @@ PrefabInstance:
     - target: {fileID: 7760592605917230738, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
       propertyPath: m_Name
       value: Missile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760592605917230738, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8208130562415408977, guid: 0940138d3f63f20459f12ccea04b84fc, type: 3}
       propertyPath: _player

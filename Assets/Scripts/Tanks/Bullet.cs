@@ -73,8 +73,9 @@ public class Bullet : MonoBehaviour
 
         //Don't kill allied bullets
         if (gameObject.tag == collision.gameObject.tag)
+        {
             return;
-
+        }
 
         if (collision.gameObject.GetComponent<Hull>() != null)
         {
@@ -84,6 +85,7 @@ public class Bullet : MonoBehaviour
         switch (m_gunStatistics.BulletType.name)
         {
             default:
+                Debug.Log(collision.gameObject.name);
                 //Trigger Animation + animation trigger destroy
                 m_animator.SetBool("Hit", true);
                 m_rb.constraints = RigidbodyConstraints2D.FreezePosition;
