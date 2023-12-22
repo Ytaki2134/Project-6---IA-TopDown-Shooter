@@ -46,7 +46,7 @@ namespace Assets.Scripts.FSM
         {
             if (EnteredState)
             {
-                Debug.Log("UPDATING CHASE STATE");
+                //Debug.Log("UPDATING CHASE STATE");
                 _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
                 if (context.TankStatistics.Health <= 0)

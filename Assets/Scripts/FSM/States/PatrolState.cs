@@ -58,7 +58,7 @@ namespace Assets.Scripts.FSM
         {
             if (EnteredState)
             {
-                Debug.Log("UPDATING PATROL STATE");
+                //Debug.Log("UPDATING PATROL STATE");
                 _distance = Vector2.Distance(_npc.transform.position, _patrolPoints[_currentPatrolIndex].transform.position);
 
                 if (context.TankStatistics.Health <= 0)

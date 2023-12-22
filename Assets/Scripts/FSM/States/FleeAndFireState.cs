@@ -52,7 +52,7 @@ namespace Assets.Scripts.FSM.States
             {
                 if (_canFire)
                 {
-                    Debug.Log("UPDATING FLEE AND FIRE STATE");
+                    //Debug.Log("UPDATING FLEE AND FIRE STATE");
                     _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
                     if (context.TankStatistics.Health <= 0)

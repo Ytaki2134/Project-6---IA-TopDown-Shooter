@@ -30,7 +30,7 @@ namespace Assets.Scripts.FSM.States
         {
             if (EnteredState)
             {
-                Debug.Log("UPDATING IDLE AND FIRE STATE");
+                //Debug.Log("UPDATING IDLE AND FIRE STATE");
                 _distance = Vector2.Distance(_npc.transform.position, context.Player.transform.position);
 
                 if (context.TankStatistics.Health <= 0)
