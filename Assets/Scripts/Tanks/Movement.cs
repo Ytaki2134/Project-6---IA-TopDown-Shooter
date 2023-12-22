@@ -1,9 +1,10 @@
+﻿using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private GameObject m_Player;
-    private AudioSource m_audioSource;
 
     private Vector2 m_currentMovement;
     private Quaternion m_targetRotation;
@@ -13,14 +14,15 @@ public class Movement : MonoBehaviour
 
     private float m_rotationSpeed;
     private float m_brakeRotationSpeedMod;
+    private AudioSource m_audioSource;
 
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
     }
-
     public void Move()
     {
+
         //Rotate Sprite
         m_targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-m_currentMovement.x, m_currentMovement.y) * Mathf.Rad2Deg);
         transform.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * m_rotationSpeed * m_brakeRotationSpeedMod);
@@ -29,9 +31,84 @@ public class Movement : MonoBehaviour
         m_Player.GetComponent<Rigidbody2D>().AddForce(transform.up * m_speed * m_brakeSpeedMod);
     }
 
+    public bool IsTargetTooFar(Vector3 targetPosition, Vector3 canonPosition, float dist)
+    {
+        return Vector2.Distance(targetPosition, canonPosition) >= dist;
+    }
+
+    public void ResetCanonPosition(Transform canonTransform, GameObject me)
+    {
+        canonTransform.rotation = Quaternion.Lerp(canonTransform.rotation, me.GetComponent<Transform>().rotation, Time.deltaTime * m_rotationSpeed);
+
+    }
     public void SetMovementVolume(float volume)
     {
         m_audioSource.volume = volume;
+    }
+
+    public void RotateCanonTowardsTarget(Transform canonTransform, Vector3 targetPosition, Blackboard blackboard, float alignmentThreshold)
+    {
+        Vector2 direction = (targetPosition - canonTransform.position).normalized;
+        if (direction != Vector2.zero)
+        {
+            Quaternion toRot = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
+            canonTransform.rotation = Quaternion.Lerp(canonTransform.rotation, toRot, Time.deltaTime * m_rotationSpeed);
+
+
+            float angleDiff = Quaternion.Angle(canonTransform.rotation, toRot);
+            blackboard.Set("readyToShoot", angleDiff <= alignmentThreshold);
+
+        }
+
+    }
+    public void OscillateCanon(float angleOffset, float rotSpeed, float oscillationAngle, Transform mySelff, Transform canonTransform, Blackboard blackboard)
+    {
+        // Mise � jour de l'angle d'oscillation
+        angleOffset += rotSpeed * Time.deltaTime;
+
+        if (angleOffset > oscillationAngle || angleOffset < -oscillationAngle)
+        {
+            rotSpeed = -rotSpeed; // Inverser la direction de l'oscillation
+        }
+
+        // Appliquer l'oscillation
+        Quaternion targetRotation = Quaternion.Euler(0, 0, mySelff.eulerAngles.z + angleOffset);
+        canonTransform.rotation = Quaternion.Lerp(canonTransform.rotation, targetRotation, Time.deltaTime * m_rotationSpeed);
+        blackboard.Set("angleOffset", angleOffset);
+        blackboard.Set("rotSpeed", rotSpeed);
+
+    }
+    private Vector2 avoidanceDirection;
+    private float avoidanceCooldown = 1f; // Temps en secondes avant de pouvoir changer � nouveau la direction d'�vitement
+
+
+
+    public void RotateAndMoveTowards(Transform agentTransform, Transform waypointTransform)
+    {
+        Vector2 direction = (waypointTransform.position - agentTransform.position).normalized;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
+
+        agentTransform.rotation = Quaternion.Lerp(agentTransform.rotation, targetRotation, Time.deltaTime * m_rotationSpeed);
+        agentTransform.position = Vector2.MoveTowards(agentTransform.position, waypointTransform.position, m_speed * Time.deltaTime);
+
+
+    }
+
+    public void RotateAndMoveAwayFrom(Transform agentTransform, Transform waypointTransform)
+    {
+        // Calculer la direction oppos�e par rapport au waypoint
+        Vector2 direction = (agentTransform.position - waypointTransform.position).normalized;
+
+        // Calculer la rotation cible pour faire face � l'oppos� du waypoint
+        Quaternion targetRotation = Quaternion.Euler(0, 0, Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg);
+
+        // Appliquer la rotation
+        agentTransform.rotation = Quaternion.Lerp(agentTransform.rotation, targetRotation, Time.deltaTime * m_rotationSpeed);
+
+        // D�placer l'agent dans la direction oppos�e
+        Vector3 newDirection = new Vector3(direction.x, direction.y, 0); // Conversion de Vector2 en Vector3
+        agentTransform.position = Vector2.MoveTowards(agentTransform.position, agentTransform.position + newDirection, m_speed * Time.deltaTime);
+
     }
 
     #region Setters
@@ -51,7 +128,7 @@ public class Movement : MonoBehaviour
         m_speed = speed;
     }
 
-    public void SetBrakeSpeed(float brakeSpeed) 
+    public void SetBrakeSpeed(float brakeSpeed)
     {
         m_brakeSpeedMod = brakeSpeed;
     }
@@ -65,12 +142,6 @@ public class Movement : MonoBehaviour
     {
         m_brakeRotationSpeedMod = brakeRotationSpeed;
     }
-
-    public Movement GetMovementComponent()
-    {
-        return GetComponentInChildren<Movement>();
-    }
-
 
     #endregion
 }
